@@ -48,23 +48,23 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4">Demande directe</h3>
                   <a href="mailto:hello@agency.com" className="text-xl md:text-2xl font-serif hover:text-muted-foreground transition-colors">
-                    hello@agency.com
+                    dunamis@agency.com
                   </a>
                 </div>
                 
                 <div>
                   <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4">Téléphone</h3>
                   <a href="tel:+1234567890" className="text-xl md:text-2xl font-serif hover:text-muted-foreground transition-colors">
-                    +1 234 567 890
+                    +225 01 71 48 36 27
                   </a>
                 </div>
                 
                 <div>
-                  <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4">Bureaux</h3>
+                  <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4"></h3>
                   <address className="text-xl md:text-2xl font-serif not-italic text-foreground">
-                    123 Digital Ave<br />
-                    Tech District<br />
-                    NY 10001
+                    <br />
+                    <br />
+                    
                   </address>
                 </div>
               </div>

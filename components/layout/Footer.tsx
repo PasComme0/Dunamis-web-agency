@@ -47,19 +47,15 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-6 text-sm">Contact</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
-              <li><a href="mailto:hello@agency.com" className="hover:text-background transition-colors">hello@agency.com</a></li>
-              <li><a href="tel:+1234567890" className="hover:text-background transition-colors">+1 234 567 890</a></li>
-              <li className="mt-2">123 Digital Ave<br/>Tech District, NY 10001</li>
+              <li><a href="mailto:dunamis@agency.com" className="hover:text-background transition-colors">hello@agency.com</a></li>
+              <li><a href="tel:+2250171483627" className="hover:text-background transition-colors">+1 234 567 890</a></li>
             </ul>
           </div>
         </div>
         
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted">&copy; {new Date().getFullYear()} Agency. Tous droits réservés.</p>
-          <div className="flex items-center gap-6 text-sm text-muted">
-            <Link href="/privacy" className="hover:text-background transition-colors">Politique de confidentialité</Link>
-            <Link href="/terms" className="hover:text-background transition-colors">Conditions d&apos;utilisation</Link>
-          </div>
+          
         </div>
       </div>
     </footer>

@@ -1,4 +1,5 @@
 'use client';
+import service from "@/assets/services.png"
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,7 +14,7 @@ export default function ServicesPage() {
       description: 'Sites d\'entreprise, landing pages, e-commerce et applications web sur mesure. Nous concevons des plateformes pensées pour la vitesse, l\'évolutivité et une fiabilité incontestable.',
       features: ['Sites d\'entreprise', 'Landing pages', 'E-commerce', 'Applications web', 'SaaS', 'Refonte', 'Maintenance'],
       cta: 'Créer mon site',
-      href: '/services/web',
+      href: '/contact',
       image: 'https://picsum.photos/seed/agency-web/1200/900'
     },
     {
@@ -51,10 +52,10 @@ export default function ServicesPage() {
       <section className="relative min-h-[60vh] flex flex-col justify-end pb-24 pt-40 px-6 overflow-hidden bg-foreground text-background">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://picsum.photos/seed/agency-services-hero/1920/1080"
-            alt="Atmospheric architecture"
+            src={service}
+            alt="Services Hero"
             fill
-            className="object-cover opacity-40 mix-blend-overlay grayscale"
+            className="object-cover opacity-40 mix-blend-overlay "
             sizes="100vw"
             referrerPolicy="no-referrer"
             priority
@@ -68,11 +69,7 @@ export default function ServicesPage() {
               Des services numériques conçus autour de votre <span className="italic font-light">entreprise.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-lg md:text-xl text-background/80 max-w-2xl leading-relaxed">
-              Nos compétences spécialisées peuvent être déployées individuellement pour résoudre des défis spécifiques, ou combinées en une transformation numérique complète de bout en bout.
-            </p>
-          </Reveal>
+       
         </div>
       </section>
 
