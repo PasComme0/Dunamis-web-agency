@@ -1,6 +1,6 @@
 'use client';
 
-import dunamis from "@/assets/dunamis.png"
+import dunamis from "@/assets/Dunamis.png"
 import image1 from "@/assets/download.png";
 import image2 from "@/assets/image2.png";
 import Link from 'next/link';
