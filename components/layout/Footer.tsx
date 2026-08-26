@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted">&copy; {new Date().getFullYear()} Dunamis. Tous droits réservés.</p>
 
         </div>
