@@ -13,7 +13,7 @@ const articles = [
     category: 'UX/UI',
     date: '12 Août 2026',
     readTime: '6 min de lecture',
-    image: 'https://picsum.photos/seed/agency-blog-1/1200/800',
+    image: 'https://picsum.photos/seed/Dunamis-blog-1/1200/800',
     href: '/resources/roi-of-accessibility'
   },
   {
@@ -23,7 +23,7 @@ const articles = [
     category: 'Développement Web',
     date: '28 Juil 2026',
     readTime: '8 min de lecture',
-    image: 'https://picsum.photos/seed/agency-blog-2/1200/800',
+    image: 'https://picsum.photos/seed/Dunamis-blog-2/1200/800',
     href: '/resources/page-builders-hidden-costs'
   },
   {
@@ -33,7 +33,7 @@ const articles = [
     category: 'Stratégie Digitale',
     date: '15 Juin 2026',
     readTime: '5 min de lecture',
-    image: 'https://picsum.photos/seed/agency-blog-3/1200/800',
+    image: 'https://picsum.photos/seed/Dunamis-blog-3/1200/800',
     href: '/resources/brand-strategy-digital-execution'
   },
   {
@@ -43,7 +43,7 @@ const articles = [
     category: 'Design',
     date: '04 Mai 2026',
     readTime: '7 min de lecture',
-    image: 'https://picsum.photos/seed/agency-blog-4/1200/800',
+    image: 'https://picsum.photos/seed/Dunamis-blog-4/1200/800',
     href: '/resources/context-first-mobile-ux'
   },
   {
@@ -53,7 +53,7 @@ const articles = [
     category: 'Business',
     date: '22 Avr 2026',
     readTime: '10 min de lecture',
-    image: 'https://picsum.photos/seed/agency-blog-5/1200/800',
+    image: 'https://picsum.photos/seed/Dunamis-blog-5/1200/800',
     href: '/resources/technical-debt-liability'
   },
   {
@@ -63,7 +63,7 @@ const articles = [
     category: 'UX/UI',
     date: '10 Mar 2026',
     readTime: '4 min de lecture',
-    image: 'https://picsum.photos/seed/agency-blog-6/1200/800',
+    image: 'https://picsum.photos/seed/Dunamis-blog-6/1200/800',
     href: '/resources/monochromatic-b2b-saas'
   }
 ];
@@ -77,7 +77,7 @@ export default function ResourcesPage() {
           <div className="max-w-3xl">
             <Reveal>
               <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-serif leading-[1] mb-8 text-balance tracking-tight">
-                Idées & <br/><span className="italic font-light">Stratégie.</span>
+                Idées & <br /><span className="italic font-light">Stratégie.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
@@ -86,15 +86,6 @@ export default function ResourcesPage() {
               </p>
             </Reveal>
           </div>
-          
-          <Reveal delay={0.2}>
-            <div className="flex gap-4 text-sm font-medium uppercase tracking-widest text-background/60">
-              <span className="text-background">Tout</span>
-              <span className="hover:text-background cursor-pointer transition-colors">Ingénierie</span>
-              <span className="hover:text-background cursor-pointer transition-colors">Design</span>
-              <span className="hover:text-background cursor-pointer transition-colors">Stratégie</span>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -107,7 +98,7 @@ export default function ResourcesPage() {
                 <Link href={article.href} className="group flex flex-col gap-6">
                   {/* Image Container */}
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-                    <Image 
+                    <Image
                       src={article.image}
                       alt={article.title}
                       fill
@@ -116,7 +107,7 @@ export default function ResourcesPage() {
                       referrerPolicy="no-referrer"
                     />
                   </div>
-                  
+
                   {/* Metadata */}
                   <div className="flex items-center gap-3 text-xs font-medium text-muted-foreground uppercase tracking-widest">
                     <span className="text-foreground">{article.category}</span>
@@ -125,7 +116,7 @@ export default function ResourcesPage() {
                     <span className="w-1 h-1 bg-border rounded-full" />
                     <span>{article.readTime}</span>
                   </div>
-                  
+
                   {/* Title & Excerpt */}
                   <div className="flex flex-col gap-4">
                     <h2 className="text-2xl md:text-3xl font-serif text-balance leading-snug group-hover:text-muted-foreground transition-colors">
@@ -135,7 +126,7 @@ export default function ResourcesPage() {
                       {article.excerpt}
                     </p>
                   </div>
-                  
+
                   {/* CTA */}
                   <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-foreground">
                     <span className="pb-0.5 border-b border-foreground/30 group-hover:border-foreground transition-colors">Lire l&apos;article</span>
@@ -157,13 +148,13 @@ export default function ResourcesPage() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-lg text-background/70 mb-12 leading-relaxed max-w-xl text-center">
+            <p className="text-lg text-background/70 mb-12 leading-relaxed max-w-xl text-center mx-auto">
               Discutons de la manière dont nous pouvons créer un avantage numérique pour votre entreprise.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="inline-flex items-center justify-center px-10 py-5 text-sm font-medium text-foreground bg-background hover:bg-background/90 transition-colors uppercase tracking-widest rounded-none"
             >
               Démarrer un projet

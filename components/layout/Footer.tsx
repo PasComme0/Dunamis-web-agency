@@ -7,13 +7,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
           <div className="lg:col-span-2">
             <Link href="/" className="font-serif text-2xl tracking-tight font-medium inline-block mb-6">
-              Agency.
+              Dunamis.
             </Link>
             <p className="text-muted text-sm leading-relaxed max-w-xs">
               Solutions digitales pour les entreprises ambitieuses. Nous concevons des plateformes génératrices de résultats.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-medium mb-6 text-sm">Services</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
@@ -23,7 +23,7 @@ export default function Footer() {
               <li><Link href="/services/consulting" className="hover:text-background transition-colors">Conseil</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-medium mb-6 text-sm">L&apos;Agence</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
@@ -34,7 +34,7 @@ export default function Footer() {
               <li><Link href="/contact" className="hover:text-background transition-colors">Contact</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-medium mb-6 text-sm">Ressources</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
@@ -43,19 +43,19 @@ export default function Footer() {
               <li><Link href="/articles" className="hover:text-background transition-colors">Articles</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-medium mb-6 text-sm">Contact</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
-              <li><a href="mailto:dunamis@agency.com" className="hover:text-background transition-colors">hello@agency.com</a></li>
-              <li><a href="tel:+2250171483627" className="hover:text-background transition-colors">+1 234 567 890</a></li>
+              <li><a href="mailto:dunamis@Dunamis.com" className="hover:text-background transition-colors">dunamis@Dunamis.com</a></li>
+              <li><a href="tel:+2250171483627" className="hover:text-background transition-colors">+225 0584583936</a></li>
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted">&copy; {new Date().getFullYear()} Agency. Tous droits réservés.</p>
-          
+          <p className="text-sm text-muted">&copy; {new Date().getFullYear()} Dunamis. Tous droits réservés.</p>
+
         </div>
       </div>
     </footer>

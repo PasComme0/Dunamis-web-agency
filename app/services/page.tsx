@@ -1,5 +1,9 @@
 'use client';
 import service from "@/assets/services.png"
+import web from "@/assets/web.png"
+import mobile from "@/assets/mobile.png"
+import graphic from "@/assets/graphic.png"
+
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,7 +19,7 @@ export default function ServicesPage() {
       features: ['Sites d\'entreprise', 'Landing pages', 'E-commerce', 'Applications web', 'SaaS', 'Refonte', 'Maintenance'],
       cta: 'Créer mon site',
       href: '/contact',
-      image: 'https://picsum.photos/seed/agency-web/1200/900'
+      image: web,
     },
     {
       id: '02',
@@ -24,7 +28,7 @@ export default function ServicesPage() {
       features: ['Android', 'iOS', 'Multiplateforme', 'Applications métiers', 'MVP'],
       cta: 'Discuter de mon application',
       href: '/services/mobile',
-      image: 'https://picsum.photos/seed/agency-mobile/1200/900'
+      image: mobile
     },
     {
       id: '03',
@@ -33,16 +37,7 @@ export default function ServicesPage() {
       features: ['Flyers promotionnels', 'Graphismes réseaux sociaux', 'Créations publicitaires', 'Supports de marque'],
       cta: 'Demander un design',
       href: '/services/design',
-      image: 'https://picsum.photos/seed/agency-design/1200/900'
-    },
-    {
-      id: '04',
-      title: 'Conseil',
-      description: 'Stratégie, audits UX, transformation numérique et accompagnement technique pour garantir que vos investissements soient parfaitement alignés avec vos objectifs commerciaux.',
-      features: ['Audit digital', 'Audit UX', 'Stratégie produit', 'Conseil technique', 'Transformation numérique'],
-      cta: 'Réserver une consultation',
-      href: '/services/consulting',
-      image: 'https://picsum.photos/seed/agency-consulting/1200/900'
+      image: graphic
     }
   ];
 
@@ -55,7 +50,7 @@ export default function ServicesPage() {
             src={service}
             alt="Services Hero"
             fill
-            className="object-cover opacity-40 mix-blend-overlay "
+            className="object-cover opacity-40  "
             sizes="100vw"
             referrerPolicy="no-referrer"
             priority
@@ -65,8 +60,8 @@ export default function ServicesPage() {
         
         <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
           <Reveal>
-            <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-serif leading-[1] mb-8 text-balance tracking-tight max-w-5xl">
-              Des services numériques conçus autour de votre <span className="italic font-light">entreprise.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-serif leading-[1] mb-8 text-balance tracking-tight max-w-5xl">
+              Découvrez <br /><span className="italic font-light">nos services </span>
             </h1>
           </Reveal>
        
@@ -120,7 +115,7 @@ export default function ServicesPage() {
                       src={service.image}
                       alt={service.title}
                       fill
-                      className="object-cover transition-transform duration-700 hover:scale-105 grayscale hover:grayscale-0"
+                      className="object-cover transition-transform duration-700 hover:scale-105 "
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       referrerPolicy="no-referrer"
                     />
@@ -137,11 +132,11 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <Reveal>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 text-balance">
-              Vous ne savez pas par où commencer ? Commençons par le problème.
+              Vous ne savez pas par où commencer ? <br />Commençons par le problème.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-lg text-muted-foreground mb-12 leading-relaxed max-w-2xl text-center">
+            <p className="text-lg text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto text-center">
               Nous aidons les entreprises ambitieuses à déterminer exactement ce qui doit être construit, quelles technologies utiliser et comment l&apos;exécuter sans faille.
             </p>
           </Reveal>

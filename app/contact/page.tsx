@@ -1,214 +1,325 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
-import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  AlertCircle,
+  Sparkles,
+  Mail,
+  Phone,
+  Clock,
+  ShieldCheck,
+  Calendar,
+  MessageSquare,
+  Building2,
+  User,
+  Send
+} from 'lucide-react';
+
+const serviceOptions = [
+  'Développement Web',
+  'Mobile iOS & Android',
+  'Plateforme SaaS',
+  'Design & Branding',
+  'IA & Data Analytics',
+  'Conseil & Audit'
+];
+
+const budgetRanges = [
+  '< 10 000 €',
+  '10 000 € - 25 000 €',
+  '25 000 € - 50 000 €',
+  '50 000 € +'
+];
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [selectedService, setSelectedService] = useState<string>('Développement Web');
+  const [selectedBudget, setSelectedBudget] = useState<string>('10 000 € - 25 000 €');
+
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
-    
+
     // Simulate network request
     setTimeout(() => {
-      // In a real app, you would handle the fetch request to your API here
       setFormState('success');
-    }, 1500);
+    }, 1200);
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen">
+    <div className="flex flex-col w-full min-h-screen bg-background text-foreground">
       {/* HERO SECTION */}
-      <section className="pt-48 pb-24 px-6 md:px-12 bg-foreground text-background">
-        <div className="max-w-7xl mx-auto w-full">
-          <Reveal>
-            <div className="mb-0">
-              <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-serif leading-[1] mb-8 text-balance tracking-tight">
-                Parlons de <br /><span className="italic font-light">votre projet.</span>
+      <section className="pt-44 pb-20 px-6 md:px-12 bg-foreground text-background relative overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="max-w-3xl">
+            <Reveal>
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.08] mb-6 text-balance tracking-tight font-light">
+                Parlons de votre <br />
+                <span className="font-semibold italic text-background">prochain projet.</span>
               </h1>
-              <p className="text-lg md:text-xl text-background/80 max-w-2xl leading-relaxed">
-                Nous accompagnons les organisations ambitieuses pour créer des produits digitaux générateurs de résultats. Remplissez le formulaire ci-dessous et nous vous répondrons sous 24 heures.
-              </p>
-            </div>
-          </Reveal>
+            </Reveal>
+
+          </div>
         </div>
       </section>
 
-      {/* FORM SECTION */}
-      <section className="py-24 px-6 md:px-12 bg-background text-foreground">
+      {/* FORM & DETAILS SECTION */}
+      <section className="py-20 md:py-28 px-6 md:px-12 bg-background">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            
-            {/* CONTACT INFO (Left) */}
-            <div className="lg:col-span-4 flex flex-col gap-12">
-            <Reveal delay={0.1}>
-              <div className="flex flex-col gap-8">
-                <div>
-                  <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4">Demande directe</h3>
-                  <a href="mailto:hello@agency.com" className="text-xl md:text-2xl font-serif hover:text-muted-foreground transition-colors">
-                    dunamis@agency.com
-                  </a>
-                </div>
-                
-                <div>
-                  <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4">Téléphone</h3>
-                  <a href="tel:+1234567890" className="text-xl md:text-2xl font-serif hover:text-muted-foreground transition-colors">
-                    +225 01 71 48 36 27
-                  </a>
-                </div>
-                
-                <div>
-                  <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-4"></h3>
-                  <address className="text-xl md:text-2xl font-serif not-italic text-foreground">
-                    <br />
-                    <br />
-                    
-                  </address>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
-          {/* FORM (Right) */}
-          <div className="lg:col-span-8">
-            <Reveal delay={0.2} className="w-full">
-              {formState === 'success' ? (
-                <div className="bg-muted p-12 flex flex-col items-center justify-center text-center h-full min-h-[400px]">
-                  <CheckCircle2 className="w-12 h-12 mb-6 text-foreground" />
-                  <h3 className="text-3xl font-serif mb-4">Demande reçue</h3>
-                  <p className="text-muted-foreground max-w-md">
-                    Merci de nous avoir contactés. Nous avons bien reçu les détails de votre projet et un directeur vous recontactera sous 24 heures pour discuter des prochaines étapes.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-10">
-                  
-                  {formState === 'error' && (
-                    <div className="p-4 bg-red-50 text-red-900 border border-red-200 flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                      <p className="text-sm">Une erreur s&apos;est produite lors de l&apos;envoi. Veuillez réessayer ou nous envoyer un email directement.</p>
-                    </div>
-                  )}
+            {/* CONTACT INFO & TRUST CARD (Left Column) */}
+            <div className="lg:col-span-5 flex flex-col gap-10">
+              <Reveal delay={0.1}>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="name" className="text-sm font-medium">Nom complet *</label>
-                      <input 
-                        type="text" 
-                        id="name" 
-                        required
-                        className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none placeholder:text-muted-foreground/50"
-                        placeholder="Jane Doe"
-                      />
-                    </div>
-                    
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="company" className="text-sm font-medium">Entreprise</label>
-                      <input 
-                        type="text" 
-                        id="company" 
-                        className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none placeholder:text-muted-foreground/50"
-                        placeholder="Organization Name"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="email" className="text-sm font-medium">Adresse email *</label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        required
-                        className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none placeholder:text-muted-foreground/50"
-                        placeholder="jane@company.com"
-                      />
-                    </div>
-                    
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="phone" className="text-sm font-medium">Numéro de téléphone</label>
-                      <input 
-                        type="tel" 
-                        id="phone" 
-                        className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none placeholder:text-muted-foreground/50"
-                        placeholder="+1 (555) 000-0000"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="service" className="text-sm font-medium">Service requis *</label>
-                      <select 
-                        id="service" 
-                        required
-                        className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none text-foreground appearance-none cursor-pointer"
-                        defaultValue=""
-                      >
-                        <option value="" disabled className="text-muted-foreground">Sélectionner un service</option>
-                        <option value="web">Développement Web</option>
-                        <option value="mobile">Développement Mobile</option>
-                        <option value="design">Design & Identité</option>
-                        <option value="consulting">Conseil Digital</option>
-                        <option value="multiple">Multiples / Indécis</option>
-                      </select>
-                    </div>
-                    
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="budget" className="text-sm font-medium">Budget du projet</label>
-                      <select 
-                        id="budget" 
-                        className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none text-foreground appearance-none cursor-pointer"
-                        defaultValue=""
-                      >
-                        <option value="" disabled className="text-muted-foreground">Sélectionner une fourchette</option>
-                        <option value="small">Moins de 10 000 €</option>
-                        <option value="medium">10 000 € - 25 000 €</option>
-                        <option value="large">25 000 € - 50 000 €</option>
-                        <option value="enterprise">50 000 € et plus</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="message" className="text-sm font-medium">Détails du projet *</label>
-                    <textarea 
-                      id="message" 
-                      required
-                      rows={5}
-                      className="bg-transparent border-b border-border focus:border-foreground outline-none py-3 transition-colors rounded-none placeholder:text-muted-foreground/50 resize-y"
-                      placeholder="Parlez-nous de vos objectifs, de vos délais et des défis spécifiques que vous rencontrez."
-                    ></textarea>
-                  </div>
-
-                  <div className="pt-4 flex flex-col sm:flex-row items-center gap-6 justify-between">
-                    <p className="text-xs text-muted-foreground max-w-sm">
-                      En soumettant ce formulaire, vous acceptez notre politique de confidentialité et nos conditions d&apos;utilisation.
-                    </p>
-                    
-                    <button 
-                      type="submit" 
-                      disabled={formState === 'submitting'}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 text-sm font-medium text-background bg-foreground hover:bg-foreground/90 transition-colors uppercase tracking-widest rounded-none disabled:opacity-70 disabled:cursor-not-allowed shrink-0"
+                {/* Direct Contacts */}
+                <div className="flex flex-col gap-6 py-6 border-b border-border">
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground block mb-1">
+                      Email direct
+                    </span>
+                    <a
+                      href="mailto:dunamis@Dunamis.com"
+                      className="text-lg md:text-xl font-medium text-foreground hover:opacity-75 transition-opacity inline-flex items-center gap-2"
                     >
-                      {formState === 'submitting' ? (
-                        'Envoi en cours...'
-                      ) : (
-                        <>
-                          Envoyer la demande <ArrowRight className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
+                      <Mail className="w-4 h-4 text-muted-foreground" />
+                      dunamis@Dunamis.com
+                    </a>
                   </div>
 
-                </form>
-              )}
-            </Reveal>
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground block mb-1">
+                      Téléphone &amp; WhatsApp
+                    </span>
+                    <a
+                      href="tel:+2250171483627"
+                      className="text-lg md:text-xl font-medium text-foreground hover:opacity-75 transition-opacity inline-flex items-center gap-2"
+                    >
+                      <Phone className="w-4 h-4 text-muted-foreground" />
+                      +225 01 71 48 36 27
+                    </a>
+                  </div>
+
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground block mb-1">
+                      Horaires d&apos;échange
+                    </span>
+                    <div className="text-sm text-foreground/90 inline-flex items-center gap-2 font-medium">
+                      <Clock className="w-4 h-4 text-muted-foreground" />
+                      Du Lundi au Vendredi • 09h00 - 18h30 (GMT)
+                    </div>
+                  </div>
+                </div>
+
+              </Reveal>
+            </div>
+
+            {/* INTERACTIVE FORM (Right Column) */}
+            <div className="lg:col-span-7 bg-card border border-border p-8 md:p-12 shadow-sm">
+              <Reveal delay={0.2} className="w-full">
+                {formState === 'success' ? (
+                  <div className="py-16 px-6 flex flex-col items-center justify-center text-center">
+                    <div className="w-16 h-16 bg-muted border border-border rounded-full flex items-center justify-center mb-6 text-foreground">
+                      <CheckCircle2 className="w-8 h-8" />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+                      Message Transmis avec Succès
+                    </span>
+                    <h3 className="text-3xl md:text-4xl font-normal tracking-tight mb-4">
+                      Merci pour votre confiance.
+                    </h3>
+                    <p className="text-muted-foreground max-w-md leading-relaxed mb-10 text-sm md:text-base">
+                      Nous avons bien reçu votre demande concernant le service <span className="font-semibold text-foreground">{selectedService}</span>. Notre équipe prépare un retour sur mesure et vous contactera dans les plus brefs délais.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <button
+                        onClick={() => {
+                          setFormState('idle');
+                          setFormData({ name: '', company: '', email: '', phone: '', message: '' });
+                        }}
+                        className="px-8 py-3.5 text-xs font-semibold uppercase tracking-wider bg-muted text-foreground border border-border hover:bg-muted/80 transition-colors"
+                      >
+                        Envoyer un autre message
+                      </button>
+                      <Link
+                        href="/"
+                        className="px-8 py-3.5 text-xs font-semibold uppercase tracking-wider bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                      >
+                        Retour à l&apos;accueil
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+                    {formState === 'error' && (
+                      <div className="p-4 bg-red-50 text-red-900 border border-red-200 flex items-start gap-3">
+                        <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                        <p className="text-sm">Une erreur s&apos;est produite. Veuillez réessayer ou nous contacter directement par email.</p>
+                      </div>
+                    )}
+
+                    {/* Service Selector */}
+                    <div>
+                      <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-3">
+                        1. Quel est votre besoin principal ? *
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                        {serviceOptions.map((service) => {
+                          const isSelected = selectedService === service;
+                          return (
+                            <button
+                              type="button"
+                              key={service}
+                              onClick={() => setSelectedService(service)}
+                              className={`px-3.5 py-2.5 text-xs font-medium border text-left transition-all cursor-pointer ${isSelected
+                                  ? 'bg-foreground text-background border-foreground shadow-sm'
+                                  : 'bg-background hover:bg-muted text-muted-foreground hover:text-foreground border-border'
+                                }`}
+                            >
+                              {service}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="h-px bg-border my-1" />
+
+                    {/* Contact Fields */}
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-4">
+                        3. Vos coordonnées
+                      </span>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="name" className="text-xs font-medium text-foreground">
+                            Nom et prénom *
+                          </label>
+                          <div className="relative">
+                            <input
+                              type="text"
+                              id="name"
+                              name="name"
+                              required
+                              value={formData.name}
+                              onChange={handleChange}
+                              className="w-full bg-muted/30 border border-border focus:border-foreground outline-none px-3.5 py-2.5 text-sm transition-colors placeholder:text-muted-foreground/40 text-foreground"
+                              placeholder="ex: Jean Dupont"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="company" className="text-xs font-medium text-foreground">
+                            Entreprise / Organisation
+                          </label>
+                          <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            className="w-full bg-muted/30 border border-border focus:border-foreground outline-none px-3.5 py-2.5 text-sm transition-colors placeholder:text-muted-foreground/40 text-foreground"
+                            placeholder="ex: Acme Corp"
+                          />
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="email" className="text-xs font-medium text-foreground">
+                            Adresse email professionnelle *
+                          </label>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full bg-muted/30 border border-border focus:border-foreground outline-none px-3.5 py-2.5 text-sm transition-colors placeholder:text-muted-foreground/40 text-foreground"
+                            placeholder="ex: jean@entreprise.com"
+                          />
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="phone" className="text-xs font-medium text-foreground">
+                            Numéro de téléphone
+                          </label>
+                          <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="w-full bg-muted/30 border border-border focus:border-foreground outline-none px-3.5 py-2.5 text-sm transition-colors placeholder:text-muted-foreground/40 text-foreground"
+                            placeholder="ex: +225 01 00 00 00 00"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Message / Project details */}
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="message" className="text-xs font-medium text-foreground">
+                        Décrivez brièvement votre projet ou vos objectifs *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={4}
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full bg-muted/30 border border-border focus:border-foreground outline-none p-3.5 text-sm transition-colors placeholder:text-muted-foreground/40 text-foreground resize-y"
+                        placeholder="Quels sont les objectifs clés, les fonctionnalités souhaitées ou les délais envisagés ?"
+                      />
+                    </div>
+
+                    {/* Submit Bar */}
+                    <div className="pt-4 flex flex-col sm:flex-row items-center gap-6 justify-between border-t border-border">
+                      <p className="text-[11px] text-muted-foreground leading-relaxed">
+                        En soumettant ce formulaire, vous recevez une réponse sous 24h. Données 100% confidentielles.
+                      </p>
+
+                      <button
+                        type="submit"
+                        disabled={formState === 'submitting'}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 text-xs font-semibold text-background bg-foreground hover:bg-foreground/90 transition-all uppercase tracking-widest rounded-none disabled:opacity-70 disabled:cursor-not-allowed shrink-0 shadow-sm cursor-pointer group"
+                      >
+                        {formState === 'submitting' ? (
+                          <span className="flex items-center gap-2">
+                            <span className="w-3.5 h-3.5 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                            Transmission en cours...
+                          </span>
+                        ) : (
+                          <>
+                            <span>Envoyer la demande</span>
+                            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                  </form>
+                )}
+              </Reveal>
+            </div>
           </div>
         </div>
-      </div>
       </section>
     </div>
   );

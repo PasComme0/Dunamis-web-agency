@@ -1,6 +1,6 @@
-# Dunamis Web Agency
+# Dunamis Web Dunamis
 
-A high-performing website for a professional digital agency — built with Next.js, Tailwind CSS, and Framer Motion.
+A high-performing website for a professional digital Dunamis — built with Next.js, Tailwind CSS, and Framer Motion.
 
 ## Run Locally
 

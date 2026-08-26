@@ -9,9 +9,8 @@ const plans = [
     id: 'site-vitrine',
     name: 'Site Vitrine',
     description: 'Une présence numérique essentielle pour asseoir votre crédibilité et présenter votre activité.',
-    price: 'À partir de 3 000 €',
-    timeline: '4 à 6 semaines',
-    features: [
+    price: 'À partir de 200 000 FCFA ',
+      features: [
       'Design UI/UX sur mesure',
       'Architecture SEO optimisée',
       "Jusqu'à 5 pages principales",
@@ -23,8 +22,7 @@ const plans = [
     id: 'plateforme-web',
     name: 'Plateforme Web',
     description: 'Une solution complète avec des fonctionnalités avancées et une gestion de contenu autonome.',
-    price: 'À partir de 8 000 €',
-    timeline: '8 à 12 semaines',
+    price: 'À partir de 500 000 FCFA ',
     features: [
       "Intégration d'un CMS Headless",
       'Animations et interactions complexes',
@@ -37,8 +35,7 @@ const plans = [
     id: 'e-commerce',
     name: 'E-Commerce',
     description: "Une boutique en ligne performante, conçue pour maximiser vos conversions et votre chiffre d'affaires.",
-    price: 'À partir de 12 000 €',
-    timeline: '10 à 14 semaines',
+    price: 'À partir de 800 000 FCFA ',
     features: [
       "Parcours d'achat optimisé (CRO)",
       'Intégration des paiements sécurisés',
@@ -51,8 +48,7 @@ const plans = [
     id: 'application-mobile',
     name: 'Application Mobile',
     description: "Une application iOS et Android native ou multiplateforme, pensée pour l'usage mobile.",
-    price: 'À partir de 20 000 €',
-    timeline: '14 à 20 semaines',
+    price: 'À partir de 300 000 FCFA ',
     features: [
       'Développement iOS et Android',
       'Design système adapté aux mobiles',
@@ -97,11 +93,8 @@ export default function TarifsPage() {
                       {plan.description}
                     </p>
                     <div className="flex flex-col gap-2 pb-8 border-b border-border">
-                      <p className="text-2xl font-serif text-foreground">
+                      <p className="text-3xl font-serif  text-foreground">
                         {plan.price}
-                      </p>
-                      <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-                        Délais typiques : {plan.timeline}
                       </p>
                     </div>
                   </div>
@@ -178,7 +171,7 @@ export default function TarifsPage() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-             <p className="text-lg text-background/70 mb-12 leading-relaxed max-w-xl text-center">
+             <p className="text-lg text-background/70 mb-12 leading-relaxed max-w-xl text-center mx-auto">
               Chaque entreprise est unique. Si vos besoins dépassent nos offres standards, nous concevons une proposition entièrement personnalisée pour vous.
             </p>
           </Reveal>

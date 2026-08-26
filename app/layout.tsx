@@ -1,8 +1,17 @@
 import type {Metadata} from 'next';
+import { Outfit } from 'next/font/google';
 import './globals.css';
 import SmoothScrolling from '@/components/layout/SmoothScrolling';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+});
+
 export const metadata: Metadata = {
   title: 'Agence Digitale | Solutions Modernes',
   description: 'Solutions digitales pour les entreprises ambitieuses.',
@@ -10,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={outfit.variable}>
       <head>
         <script defer src="https://cloud.umami.is/script.js" data-website-id="a91c69c6-a383-46d3-96c5-8e65ef2bc0f7"></script>
         <script
@@ -26,7 +35,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           }}
         />
       </head>
-      <body suppressHydrationWarning className="min-h-screen flex flex-col selection:bg-foreground selection:text-background">
+      <body suppressHydrationWarning className={`${outfit.className} min-h-screen flex flex-col selection:bg-foreground selection:text-background font-sans`}>
         <SmoothScrolling>
           <Navbar />
           <main className="flex-grow">

@@ -1,8 +1,11 @@
 'use client';
 
+import dunamis from "@/assets/dunamis.png"
+import image1 from "@/assets/download.png";
+import image2 from "@/assets/image2.png";
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, CheckCircle2, ChevronDown, Monitor, Smartphone, PenTool, Lightbulb, ArrowRight, PlayCircle } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ChevronDown, Monitor, Smartphone, PenTool, Lightbulb, ArrowRight, PlayCircle, Star, MessageSquare, HelpCircle, Clock, Sparkles } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -17,73 +20,74 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       {/* SECTION 1 — HERO */}
-      <section className="relative min-h-[90vh] flex flex-col justify-end pb-24 pt-32 px-6 overflow-hidden bg-foreground text-background">
+      <section className="relative min-h-[92vh] flex flex-col justify-center items-center pt-36 pb-20 px-6 overflow-hidden bg-foreground text-background">
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="https://picsum.photos/seed/agency-hero-full/1920/1080"
+          <Image
+            src={dunamis}
             alt="Atmospheric architecture"
             fill
-            className="object-cover opacity-60 mix-blend-overlay"
+            className="object-cover opacity-80 mix-blend-luminosity"
             sizes="100vw"
             referrerPolicy="no-referrer"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/90 to-foreground"></div>
         </div>
-        
-        <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
+
+        <div className="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
           <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-8xl lg:text-[7rem] font-serif leading-[1.05] mb-8 text-balance max-w-5xl mx-auto tracking-tight">
-              Conçu pour faire <span className="italic font-light">avancer votre entreprise.</span>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.08] mb-6 text-balance tracking-tight font-light max-w-4xl mx-auto">
+              Façonner le futur numérique <br className="hidden sm:inline" />
+              <span className="font-semibold italic text-background">de votre entreprise.</span>
             </h1>
           </Reveal>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 w-full max-w-5xl items-end mt-12 text-left">
-            <Reveal delay={0.2} direction="up" className="md:col-span-1">
-              <p className="text-sm font-medium uppercase tracking-widest text-background/60 mb-2">01 / L&apos;Agence</p>
-              <p className="text-base text-background/80 leading-relaxed">
-                Produits et plateformes numériques conçus pour la crédibilité, la performance et une croissance indéniable.
-              </p>
-            </Reveal>
-            
-            <Reveal delay={0.3} direction="up" className="md:col-span-1 md:col-start-3 flex justify-end">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-foreground bg-background hover:bg-muted transition-colors rounded-none"
+
+          <Reveal delay={0.2}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto mb-12">
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-sm font-semibold text-foreground bg-background hover:bg-background/90 transition-all duration-200 uppercase tracking-widest rounded-none shadow-xl group"
               >
-                Démarrer un projet
+                <span>Démarrer un projet</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
-            </Reveal>
-          </div>
+              <Link
+                href="/work"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-background border border-background/30 hover:bg-background/10 transition-colors uppercase tracking-widest"
+              >
+                Voir nos réalisations
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* SECTION 2 — TRUST BAR */}
-      <section className="py-12 border-y border-border bg-background">
+      <section className="py-10 border-b border-border bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <Reveal delay={0.05} direction="up">
+              <div className="flex flex-col gap-1 items-center ">
+                <span className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">30+</span>
+                <span className="text-xs uppercase tracking-wider font-medium text-muted-foreground">Projets Déployés</span>
+              </div>
+            </Reveal>
             <Reveal delay={0.1} direction="up">
-              <div className="flex flex-col gap-2">
-                <span className="text-3xl md:text-4xl font-serif text-foreground">30+</span>
-                <span className="text-sm font-medium text-muted-foreground">Projets Livrés</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">98%</span>
+                <span className="text-xs uppercase tracking-wider font-medium text-muted-foreground">Satisfaction Client</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15} direction="up">
+              <div className="flex flex-col gap-1">
+                <span className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">15+</span>
+                <span className="text-xs uppercase tracking-wider font-medium text-muted-foreground">Secteurs Clés</span>
               </div>
             </Reveal>
             <Reveal delay={0.2} direction="up">
-              <div className="flex flex-col gap-2">
-                <span className="text-3xl md:text-4xl font-serif text-foreground">15+</span>
-                <span className="text-sm font-medium text-muted-foreground">Entreprises Accompagnées</span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.3} direction="up">
-              <div className="flex flex-col gap-2">
-                <span className="text-3xl md:text-4xl font-serif text-foreground">5+</span>
-                <span className="text-sm font-medium text-muted-foreground">Industries</span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.4} direction="up">
-              <div className="flex flex-col gap-2">
-                <span className="text-3xl md:text-4xl font-serif text-foreground">100%</span>
-                <span className="text-sm font-medium text-muted-foreground">Focus Client</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">&lt; 2h</span>
+                <span className="text-xs uppercase tracking-wider font-medium text-muted-foreground">Temps de Réponse</span>
               </div>
             </Reveal>
           </div>
@@ -103,7 +107,7 @@ export default function Home() {
               Une présence en ligne obsolète, une expérience utilisateur confuse et des performances lentes ne font pas que donner une mauvaise image, elles font fuir des clients potentiels. Une présence numérique professionnelle n&apos;est pas une dépense ; c&apos;est la base de la crédibilité moderne.
             </p>
           </Reveal>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
             <Reveal delay={0.2} direction="up" className="bg-muted p-8 md:p-12 text-left h-full">
               <div className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6">L&apos;Approche Générique</div>
@@ -222,7 +226,7 @@ export default function Home() {
                 </p>
               </Reveal>
             </div>
-            
+
             <div className="lg:col-span-6 lg:col-start-7">
               <div className="flex flex-col gap-12">
                 <Reveal delay={0.1}>
@@ -283,8 +287,8 @@ export default function Home() {
               <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-7 order-2 lg:order-1 overflow-hidden bg-muted">
                   <div className="relative aspect-[4/3] w-full transform transition-transform duration-700 group-hover:scale-105">
-                    <Image 
-                      src="https://picsum.photos/seed/agency-proj1/1000/750"
+                    <Image
+                      src={image1}
                       alt="Plateforme E-commerce Retail"
                       fill
                       className="object-cover"
@@ -303,7 +307,7 @@ export default function Home() {
                     D&apos;une présence en ligne obsolète à une plateforme moderne axée sur la conversion qui a augmenté les ventes directes aux consommateurs de 140%.
                   </p>
                   <Link href="/work/aura-botanica" className="inline-flex items-center gap-2 text-sm font-medium">
-                    Voir l&apos;étude de cas <ArrowUpRight className="w-4 h-4" />
+                    Voir le site <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -328,8 +332,8 @@ export default function Home() {
                 </div>
                 <div className="lg:col-span-7 overflow-hidden bg-muted">
                   <div className="relative aspect-[4/3] w-full transform transition-transform duration-700 group-hover:scale-105">
-                    <Image 
-                      src="https://picsum.photos/seed/agency-proj2/1000/750"
+                    <Image
+                      src={image2}
                       alt="Application Web Financière"
                       fill
                       className="object-cover"
@@ -381,47 +385,99 @@ export default function Home() {
       </section>
 
       {/* SECTION 8 — TESTIMONIALS */}
-      <section className="py-24 md:py-32 px-6">
+      <section className="py-28 md:py-36 px-6 bg-muted/30 border-t border-border">
         <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <h2 className="text-4xl md:text-5xl font-serif mb-20 text-balance text-center">
-              Perspectives de nos clients.
-            </h2>
-          </Reveal>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
+            <div>
+              <Reveal>
+                <h2 className="text-3xl md:text-5xl font-normal tracking-tight text-balance">
+                  Ce que disent <br /> nos partenaires.
+                </h2>
+              </Reveal>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <Reveal delay={0.1}>
-              <div className="p-10 bg-muted flex flex-col h-full">
-                <p className="text-xl md:text-2xl font-serif leading-relaxed mb-10 flex-grow">
-                  &quot;Ils n&apos;ont pas seulement créé un site web ; ils ont complètement repensé la façon dont nous présentons nos services en ligne. La clarté de la communication tout au long du projet a été exceptionnelle, et le résultat final a dépassé nos attentes sur tous les plans.&quot;
-                </p>
-                <div>
-                  <p className="font-medium">Sarah Jenkins</p>
-                  <p className="text-sm text-muted-foreground">Directrice Marketing, Aura Botanica</p>
-                </div>
-              </div>
-            </Reveal>
-            
-            <Reveal delay={0.2}>
-              <div className="p-10 bg-muted flex flex-col h-full">
-                <p className="text-xl md:text-2xl font-serif leading-relaxed mb-10 flex-grow">
-                  &quot;Trouver un partenaire technique qui comprend également la logique commerciale est rare. Ils ont livré un portail client complexe dans les temps, et nos utilisateurs ont constamment loué l&apos;interface intuitive. Une équipe vraiment professionnelle.&quot;
-                </p>
-                <div>
-                  <p className="font-medium">Marcus Chen</p>
-                  <p className="text-sm text-muted-foreground">Associé Gérant, Nexus Wealth</p>
-                </div>
-              </div>
-            </Reveal>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "Ils n'ont pas seulement créé un site e-commerce, ils ont complètement repensé notre parcours de vente. La clarté de communication et le respect des délais ont été exemplaires.",
+                author: "Sarah Jenkins",
+                role: "Directrice Marketing",
+                company: "Aura Botanica",
+                category: "E-commerce Retail"
+              },
+              {
+                quote: "Trouver un partenaire technique qui maîtrise autant l'architecture logicielle que les enjeux business est rare. Notre portail sécurisé a été livré sans aucun retard.",
+                author: "Marcus Chen",
+                role: "Associé Gérant",
+                company: "Nexus Wealth",
+                category: "Fintech & SaaS"
+              },
+              {
+                quote: "L'application mobile développée pour nos équipes a transformé nos opérations. L'ergonomie est plébiscitée par nos utilisateurs avec une note moyenne de 4.9/5.",
+                author: "Alexandre Moreau",
+                role: "Chief Operating Officer",
+                company: "Vesper Concierge",
+                category: "Mobile Natif"
+              }
+            ].map((t, idx) => (
+              <Reveal key={idx} delay={idx * 0.1} direction="up">
+                <div className="p-8 md:p-10 bg-background border border-border flex flex-col justify-between h-full hover:border-foreground/40 transition-colors shadow-sm">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+
+                      <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 bg-muted text-muted-foreground border border-border/60">
+                        {t.category}
+                      </span>
+                    </div>
+
+                    <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-8">
+                      &laquo; {t.quote} &raquo;
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-border/80 flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-foreground text-sm">{t.author}</p>
+                      <p className="text-xs text-muted-foreground">{t.role}, <span className="text-foreground/80 font-medium">{t.company}</span></p>
+                    </div>
+
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Quick reassurance strip */}
+          <Reveal delay={0.2}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 mt-12 border-t border-border text-center">
+              <div>
+                <span className="text-2xl md:text-3xl font-bold text-foreground">98%</span>
+                <span className="text-xs text-muted-foreground uppercase tracking-wider block mt-1">Satisfaction Client</span>
+              </div>
+              <div>
+                <span className="text-2xl md:text-3xl font-bold text-foreground">100%</span>
+                <span className="text-xs text-muted-foreground uppercase tracking-wider block mt-1">Délais Respectés</span>
+              </div>
+              <div>
+                <span className="text-2xl md:text-3xl font-bold text-foreground">&lt; 24h</span>
+                <span className="text-xs text-muted-foreground uppercase tracking-wider block mt-1">Temps de Réponse</span>
+              </div>
+              <div>
+                <span className="text-2xl md:text-3xl font-bold text-foreground">0</span>
+                <span className="text-xs text-muted-foreground uppercase tracking-wider block mt-1">Frais Cachés</span>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* SECTION 9 — FAQ */}
-      <section className="py-24 md:py-32 px-6 border-t border-border">
+      <section className="py-24 md:py-32 px-6 border-t border-border bg-background">
         <div className="max-w-3xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-normal mb-12 text-center text-balance tracking-tight">
               Questions Fréquemment Posées
             </h2>
           </Reveal>
@@ -451,12 +507,12 @@ export default function Home() {
             ].map((faq, idx) => (
               <Reveal key={idx} delay={0.1}>
                 <div className="border-b border-border">
-                  <button 
+                  <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full flex items-center justify-between py-6 text-left focus:outline-none"
+                    className="w-full flex items-center justify-between py-6 text-left focus:outline-none cursor-pointer"
                     aria-expanded={activeFaq === idx}
                   >
-                    <span className="text-lg font-medium pr-8">{faq.q}</span>
+                    <span className="text-lg font-medium pr-8 text-foreground">{faq.q}</span>
                     <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${activeFaq === idx ? 'rotate-180' : ''}`} />
                   </button>
                   <AnimatePresence>
@@ -468,7 +524,7 @@ export default function Home() {
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-muted-foreground pb-8 leading-relaxed">
+                        <p className="text-muted-foreground pb-8 leading-relaxed text-base">
                           {faq.a}
                         </p>
                       </motion.div>
@@ -482,32 +538,39 @@ export default function Home() {
       </section>
 
       {/* SECTION 10 — FINAL CTA */}
-      <section className="py-32 md:py-48 px-6 bg-foreground text-background text-center">
-        <div className="max-w-3xl mx-auto flex flex-col items-center">
+      <section className="py-32 md:py-44 px-6 bg-foreground text-background relative overflow-hidden border-t border-border">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
           <Reveal>
-            <h2 className="text-5xl md:text-7xl font-serif mb-8 text-balance">
-              Vous avez un projet en tête ?
+            <h2 className="text-4xl md:text-6xl lg:text-7xl leading-[1.08] mb-8 text-balance font-light">
+              Vous avez un projet <br />
+              <span className="font-semibold italic text-background">en tête ?</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-xl text-muted opacity-80 mb-12 max-w-2xl leading-relaxed text-balance">
-              Dites-nous ce que vous essayez d&apos;accomplir. Nous vous aiderons à déterminer la meilleure façon d&apos;avancer.
+            <p className="text-base md:text-xl text-background/75 mb-10 max-w-2xl leading-relaxed text-balance mx-auto">
+              Dites-nous ce que vous souhaitez accomplir. Nous analysons vos besoins et vous proposons une feuille de route technique claire sous 24 à 48 heures.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-foreground bg-background hover:bg-muted transition-colors"
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-10 mx-auto w-fit  ">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-3 px-9 py-5 text-sm font-semibold text-foreground bg-background hover:bg-background/90 transition-colors uppercase tracking-widest rounded-none shadow-lg group"
               >
-                Démarrer un projet
+                <span>Démarrer un projet</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link 
-                href="/consulting" 
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-background border border-background/30 hover:bg-background/10 transition-colors"
+              <Link
+                href="/tarifs"
+                className="inline-flex items-center justify-center px-9 py-5 text-sm font-medium text-background border border-background/30 hover:bg-background/10 transition-colors uppercase tracking-widest"
               >
-                Réserver une consultation
+                Consulter nos tarifs
               </Link>
+            </div>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-xs uppercase tracking-wider text-background/60 font-medium pt-8 mt-8 border-t border-background/15 w-full max-w-lg mx-auto">
+
             </div>
           </Reveal>
         </div>
