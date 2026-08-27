@@ -327,7 +327,7 @@ export default function Home() {
                     Un portail client sécurisé simplifiant le partage de documents et la visualisation de portefeuille pour les particuliers fortunés.
                   </p>
                   <Link href="/work/nexus-wealth" className="inline-flex items-center gap-2 text-sm font-medium">
-                    Voir l&apos;étude de cas <ArrowUpRight className="w-4 h-4" />
+                    Voir le site <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>
                 <div className="lg:col-span-7 overflow-hidden bg-muted">

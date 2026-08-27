@@ -332,7 +332,7 @@ export default function WorkPage() {
                             className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-foreground hover:opacity-80 transition-opacity group/link"
                           >
                             <span className="pb-1 border-b-2 border-foreground">
-                              Explorer l&apos;étude de cas
+                              Explorer le projet
                             </span>
                             <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                           </Link>

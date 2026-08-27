@@ -1,12 +1,22 @@
 import type {Metadata} from 'next';
-import { Outfit } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import SmoothScrolling from '@/components/layout/SmoothScrolling';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
-const outfit = Outfit({
-  subsets: ['latin'],
+const outfit = localFont({
+  src: [
+    {
+      path: '../public/fonts/Outfit-latin-ext.woff2',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Outfit-latin.woff2',
+      style: 'normal',
+    },
+  ],
+  weight: '100 900',
   display: 'swap',
   variable: '--font-outfit',
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],

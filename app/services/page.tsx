@@ -27,7 +27,7 @@ export default function ServicesPage() {
       description: 'Applications métiers natives et multiplateformes conçues pour les utilisateurs modernes. Transformez des flux de travail complexes en expériences mobiles intuitives et performantes.',
       features: ['Android', 'iOS', 'Multiplateforme', 'Applications métiers', 'MVP'],
       cta: 'Discuter de mon application',
-      href: '/services/mobile',
+      href: '/contact',
       image: mobile
     },
     {
@@ -36,7 +36,7 @@ export default function ServicesPage() {
       description: 'Communication visuelle professionnelle pour vos campagnes et votre entreprise. Des visuels percutants pour les réseaux sociaux aux identités visuelles complètes qui imposent l\'autorité.',
       features: ['Flyers promotionnels', 'Graphismes réseaux sociaux', 'Créations publicitaires', 'Supports de marque'],
       cta: 'Demander un design',
-      href: '/services/design',
+      href: '/contact',
       image: graphic
     }
   ];
@@ -142,7 +142,7 @@ export default function ServicesPage() {
           </Reveal>
           <Reveal delay={0.2}>
             <Link 
-              href="/services/consulting" 
+              href="/contect" 
               className="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-background bg-foreground hover:bg-foreground/90 transition-colors rounded-none"
             >
               Réserver une consultation
