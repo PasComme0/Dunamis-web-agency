@@ -22,11 +22,27 @@ const outfit = localFont({
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
+/**
+ * Métadonnées globales de l'application Next.js.
+ * Configuré avec les titres, descriptions et les icônes favicon de la marque.
+ */
 export const metadata: Metadata = {
   title: 'Agence Digitale | Solutions Modernes',
   description: 'Solutions digitales pour les entreprises ambitieuses.',
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/icon.png',
+  },
 };
 
+/**
+ * Composant de mise en page racine (RootLayout).
+ * Configure le document HTML global, la typographie et la structure générale de l'application.
+ * 
+ * @param props - Les propriétés du composant contenant les enfants React à afficher.
+ * @returns L'arborescence DOM complète de la page.
+ */
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="fr" className={outfit.variable}>
