@@ -1,8 +1,8 @@
 'use client';
 
 import dunamis from "@/assets/Dunamis.png"
-import image1 from "@/assets/download.png";
-import image2 from "@/assets/image2.png";
+import babiCrunchImg from "@/assets/babi-crunch.png";
+import djiniPayImg from "@/assets/djinipay.png";
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, CheckCircle2, ChevronDown, Monitor, Smartphone, PenTool, Lightbulb, ArrowRight, PlayCircle, Star, MessageSquare, HelpCircle, Clock, Sparkles } from 'lucide-react';
@@ -288,8 +288,8 @@ export default function Home() {
                 <div className="lg:col-span-7 order-2 lg:order-1 overflow-hidden bg-muted">
                   <div className="relative aspect-[4/3] w-full transform transition-transform duration-700 group-hover:scale-105">
                     <Image
-                      src={image1}
-                      alt="Plateforme E-commerce Retail"
+                      src={babiCrunchImg}
+                      alt="BABI CRUNCH & DABALI — Plateforme de commande & livraison"
                       fill
                       className="object-cover"
                       referrerPolicy="no-referrer"
@@ -298,15 +298,15 @@ export default function Home() {
                 </div>
                 <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col justify-center">
                   <div className="flex gap-4 mb-6 text-sm font-medium text-muted-foreground uppercase tracking-widest">
-                    <span>Retail</span>
+                    <span>Restauration</span>
                     <span>•</span>
-                    <span>E-commerce</span>
+                    <span>E-commerce &amp; Livraison</span>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-serif mb-6">Aura Botanica</h3>
+                  <h3 className="text-3xl md:text-4xl font-serif mb-6">BABI CRUNCH &amp; DABALI</h3>
                   <p className="text-lg text-muted-foreground mb-8">
-                    D&apos;une présence en ligne obsolète à une plateforme moderne axée sur la conversion qui a augmenté les ventes directes aux consommateurs de 140%.
+                    D&apos;une présence en ligne standard à une plateforme moderne de commande express axée sur la conversion qui a augmenté les commandes directes de 140%.
                   </p>
-                  <Link href="/work/aura-botanica" className="inline-flex items-center gap-2 text-sm font-medium">
+                  <Link href="/babi-crunch-dabali.html" className="inline-flex items-center gap-2 text-sm font-medium hover:text-brand-orange transition-colors">
                     Voir le site <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -318,23 +318,23 @@ export default function Home() {
               <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-5 flex flex-col justify-center">
                   <div className="flex gap-4 mb-6 text-sm font-medium text-muted-foreground uppercase tracking-widest">
-                    <span>Finance</span>
+                    <span>Fintech</span>
                     <span>•</span>
-                    <span>Web App</span>
+                    <span>Néo-Banque</span>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-serif mb-6">Nexus Wealth</h3>
+                  <h3 className="text-3xl md:text-4xl font-serif mb-6">DjiniPay</h3>
                   <p className="text-lg text-muted-foreground mb-8">
-                    Un portail client sécurisé simplifiant le partage de documents et la visualisation de portefeuille pour les particuliers fortunés.
+                    La Néo-Fintech d&apos;Abidjan &amp; d&apos;Afrique de l&apos;Ouest. Une plateforme financière nouvelle génération simplifiant les transferts d&apos;argent et la gestion de compte.
                   </p>
-                  <Link href="/work/nexus-wealth" className="inline-flex items-center gap-2 text-sm font-medium">
+                  <Link href="/djinipay.html" className="inline-flex items-center gap-2 text-sm font-medium hover:text-brand-orange transition-colors">
                     Voir le site <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>
                 <div className="lg:col-span-7 overflow-hidden bg-muted">
                   <div className="relative aspect-[4/3] w-full transform transition-transform duration-700 group-hover:scale-105">
                     <Image
-                      src={image2}
-                      alt="Application Web Financière"
+                      src={djiniPayImg}
+                      alt="DjiniPay — Plateforme Financière Nouvelle Génération"
                       fill
                       className="object-cover"
                       referrerPolicy="no-referrer"
@@ -404,15 +404,15 @@ export default function Home() {
                 quote: "Ils n'ont pas seulement créé un site e-commerce, ils ont complètement repensé notre parcours de vente. La clarté de communication et le respect des délais ont été exemplaires.",
                 author: "Sarah Jenkins",
                 role: "Directrice Marketing",
-                company: "Aura Botanica",
-                category: "E-commerce Retail"
+                company: "BABI CRUNCH & DABALI",
+                category: "Restauration & Fast-Food"
               },
               {
                 quote: "Trouver un partenaire technique qui maîtrise autant l'architecture logicielle que les enjeux business est rare. Notre portail sécurisé a été livré sans aucun retard.",
                 author: "Marcus Chen",
                 role: "Associé Gérant",
-                company: "Nexus Wealth",
-                category: "Fintech & SaaS"
+                company: "DjiniPay",
+                category: "Fintech & Néo-Banque"
               },
               {
                 quote: "L'application mobile développée pour nos équipes a transformé nos opérations. L'ergonomie est plébiscitée par nos utilisateurs avec une note moyenne de 4.9/5.",

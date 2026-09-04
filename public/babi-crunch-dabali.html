@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BABI CRUNCH &amp; DABALI | Enjaille-Toi. Commande. Savoure.</title>
+<!-- Google Fonts: Syne & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Syne:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              maroon: '#2B0C0E',
+              maroonDark: '#1E0709',
+              maroonCard: '#381216',
+              maroonBorder: '#4E1B20',
+              orange: '#FF5500',
+              orangeHover: '#E04B00',
+              cream: '#FFF7EE',
+              yellow: '#FFC837',
+              cyan: '#60D2F4',
+              pink: '#F8A5C2',
+              red: '#FF4757',
+            }
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="typography">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #2B0C0E;
+      color: #FFF7EE;
+      overflow-x: hidden;
+    }
+    .font-headline {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.03em;
+    }
+  </style>
+<style data-purpose="scrollbars-and-utilities">
+    /* Custom subtle horizontal scrollbars for card trays */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .text-glow {
+      text-shadow: 0 0 25px rgba(255, 85, 0, 0.35);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-brand-maroon text-brand-cream selection:bg-brand-orange selection:text-white antialiased">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-brand-maroon/90 backdrop-blur-md border-b border-brand-maroonBorder/40 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Left Navigation Links -->
+<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-8 text-xs font-extrabold uppercase tracking-widest text-brand-cream/80">
+<a class="hover:text-brand-orange transition-colors" href="#menu">Menu</a>
+<a class="hover:text-brand-orange transition-colors" href="#deals">Bons Plans</a>
+<a class="hover:text-brand-orange transition-colors" href="#reviews">Témoignages</a>
+<a class="hover:text-brand-orange transition-colors" href="#find-us">Nos Points de Vente</a>
+</nav>
+<!-- Center Brand Logo -->
+<a aria-label="BABI CRUNCH &amp; DABALI Accueil" class="flex items-center gap-1 group focus:outline-none" href="#">
+<span class="font-headline font-black text-2xl tracking-tighter text-brand-cream group-hover:scale-105 transition-transform duration-200">
+          BABI <span class="bg-brand-orange text-brand-maroonDark px-1.5 py-0.5 rounded-md mx-0.5 inline-block text-xl">CRUNCH</span> &amp; DABALI
+        </span>
+</a>
+<!-- Right Actions: Order Button & Cart -->
+<div class="flex items-center space-x-3">
+<a class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-brand-cream/30 text-xs font-bold uppercase tracking-wider text-brand-cream hover:bg-brand-cream hover:text-brand-maroon transition-all duration-200" href="#menu">
+          COMMANDER
+        </a>
+<!-- Cart button with notification badge -->
+<button aria-label="Voir le Panier" class="relative p-2.5 rounded-full bg-brand-maroonCard border border-brand-maroonBorder hover:border-brand-orange transition-colors" type="button">
+<svg class="w-5 h-5 text-brand-cream" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+<span class="absolute -top-1 -right-1 bg-brand-orange text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</button>
+<!-- Mobile menu toggle button -->
+<button aria-label="Toggle navigation" class="md:hidden p-2 text-brand-cream hover:text-brand-orange focus:outline-none" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden" data-purpose="hero-banner">
+<!-- Atmospheric background gradient glow -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-orange/15 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<!-- Delivery Status Pill -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-maroonCard/80 border border-brand-maroonBorder text-xs font-semibold text-brand-cream/90 shadow-sm mb-6 animate-pulse">
+<span class="text-sm">⚡</span>
+<span>Livraison express en <strong class="text-brand-yellow font-bold">25 - 35 min</strong> à Abidjan (Cocody, Plateau, Marcory, Yopougon)</span>
+</div>
+<!-- Main Catchphrase Title -->
+<h1 class="font-headline font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight text-brand-cream mb-6 leading-[0.95] text-glow">
+        ENJAILLE-TOI.<br/>COMMANDE. SAVOURE.
+      </h1>
+<!-- CTA Buttons Row -->
+<div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+<a class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-brand-orange text-white font-extrabold text-sm uppercase tracking-wider hover:bg-brand-orangeHover shadow-lg shadow-brand-orange/30 transform hover:-translate-y-0.5 transition-all duration-200" href="#menu">
+          COMMANDER MAINTENANT <span class="ml-2 font-black">→</span>
+</a>
+<a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-brand-maroon font-extrabold text-sm uppercase tracking-wider hover:bg-brand-cream/90 shadow-md transform hover:-translate-y-0.5 transition-all duration-200" href="#deals">
+          VOIR LES PROMOS
+        </a>
+</div>
+<!-- Horizontal Cards Tray (Adapted to Ivorian street-food and fast-food cravings) -->
+<div class="relative mt-4">
+<div class="flex items-stretch gap-4 overflow-x-auto pb-4 pt-2 px-2 no-scrollbar scroll-smooth justify-start md:justify-center">
+<!-- Category Card 1: BURGER GARBA -->
+<article class="flex-none w-44 sm:w-48 group cursor-pointer bg-brand-maroonCard border border-brand-maroonBorder rounded-2xl p-2 pb-2 transition-all duration-300 hover:scale-105 hover:border-brand-orange">
+<div class="aspect-square w-full rounded-xl overflow-hidden bg-brand-maroonDark mb-2.5">
+<img alt="Burger Garba" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw0WWzWN4N9QkfVvNvlixkdVlasoZ0MLnb0aHf7LhMCG7wMp2xvk_4gxUEJk59kAJFXUNG1hRrRgbHAj38PmJiHKjt2OhbaBBFmYFzl2Uox1V5uTg_0eEJYAAdTdIWc750jjLAno13zd9MXwhGjNW4k3XKwWYwwMydFC4ZqBeouRruoaK8VvhwAw8BYOXmrv6TdMreb1Ee6-7VPVV7ubR5LcfmjF0QpV8ts9imFrD_lhNUtUWaPC83"/>
+</div>
+<div class="w-full py-1.5 rounded-lg bg-brand-orange text-brand-maroon font-headline font-black text-xs uppercase tracking-wider text-center">
+              BURGER GARBA
+            </div>
+</article>
+<!-- Category Card 2: CHOUKOUYA & GRILLADES -->
+<article class="flex-none w-44 sm:w-48 group cursor-pointer bg-brand-maroonCard border border-brand-maroonBorder rounded-2xl p-2 pb-2 transition-all duration-300 hover:scale-105 hover:border-brand-cyan">
+<div class="aspect-square w-full rounded-xl overflow-hidden bg-brand-maroonDark mb-2.5">
+<img alt="Choukouya &amp; Grillades" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZLAHQiVizO8kbCqT8Mnw8zxwMf2P0ZW4-PDudpddaSnqWDRG5zkV_0vtgQSVrJqjA_8PnQjGiHkNvBxM5FzZWqqfugghRqHCkpEGiR6uFpSn2lqSvg2BlDqHa3_asX8gCZao9nZB_zThWqA9ZYgjzEsAicVMbQw6lejyNxHvfYo4Q_Xu7PabobafBV2aNH7NqW7YiOIA3C-UtQww2p6OuQ7_exzVqDdER3_3esqr0aZpO0KhWv_SC"/>
+</div>
+<div class="w-full py-1.5 rounded-lg bg-brand-cyan text-brand-maroon font-headline font-black text-xs uppercase tracking-wider text-center">
+              CHOUKOUYA
+            </div>
+</article>
+<!-- Category Card 3: POULET BRAISÉ & CRISPY -->
+<article class="flex-none w-44 sm:w-48 group cursor-pointer bg-brand-maroonCard border border-brand-maroonBorder rounded-2xl p-2 pb-2 transition-all duration-300 hover:scale-105 hover:border-brand-red">
+<div class="aspect-square w-full rounded-xl overflow-hidden bg-brand-maroonDark mb-2.5">
+<img alt="Poulet Braisé &amp; Crispy" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA05_IQPTLysVTdRh2Xs2tqJ1ufSoIYuBATQWUh6EKA8OEujih5K89sUx7scqNMpBZqz5Pt3_RrVjxsouOCb6vLPLPesp7T_MKQH1ebuHp5iruvNpsPu_0MRwFeMU-W5c1mNczCBFDiSv6hgjuajWb1zUyovpwnst5XaGZ22ZSdc1raxuMJTN2E3emCi5_5SPLvGQh0-9MLUwXb49h8jQa6OdO6IJqn2c-SibboNvZlI857TmpJRrde"/>
+</div>
+<div class="w-full py-1.5 rounded-lg bg-brand-red text-white font-headline font-black text-xs uppercase tracking-wider text-center">
+              POULET BRAISÉ
+            </div>
+</article>
+<!-- Category Card 4: ALLOC’O & TAPAS -->
+<article class="flex-none w-44 sm:w-48 group cursor-pointer bg-brand-maroonCard border border-brand-maroonBorder rounded-2xl p-2 pb-2 transition-all duration-300 hover:scale-105 hover:border-brand-yellow">
+<div class="aspect-square w-full rounded-xl overflow-hidden bg-brand-maroonDark mb-2.5">
+<img alt="Alloc'o &amp; Tapas" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPz5EBjofCZ3YRuW_YQ4GdlPWtQKlY2zt5vMYMES7BotM6SSM9hF_486542W8kTjpXZPjUJUgZ0qRqOi2Qd6u0VLS-hEQZRnRuWenmG_ntP3HWzXMWO22lsv1YglETwxN13x8bEiAc9Pwzzxt1tvJ2gTSH0bN__R4GhX8uxzIrZ89dIQh6yCih92OPR3rPnsBztT1pP9WhAP5ywSD361vBLLYbSH3okxyF72UDa6tKGLmT8yHw02S"/>
+</div>
+<div class="w-full py-1.5 rounded-lg bg-brand-yellow text-brand-maroon font-headline font-black text-xs uppercase tracking-wider text-center">
+              ALLOC’O &amp; TAPAS
+            </div>
+</article>
+<!-- Category Card 5: PASTELS & SNACKS -->
+<article class="flex-none w-44 sm:w-48 group cursor-pointer bg-brand-maroonCard border border-brand-maroonBorder rounded-2xl p-2 pb-2 transition-all duration-300 hover:scale-105 hover:border-brand-pink">
+<div class="aspect-square w-full rounded-xl overflow-hidden bg-brand-maroonDark mb-2.5">
+<img alt="Pastels &amp; Snacks" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeBD2Xtg1AgQLEu9Xgb-FReA6ABu40Aoeo0UAaPBzKyYXAfEz6JiyK7e7KZi8fxTvvheFFIv28812VhUsiIK0we9GS2vFFMq1GWuDJJtTHWCg-nCUzsWvSabgbRyFbA6Ic1cEyi5hE8PoudJuEYMB1TmK38u0y3PDE6-k7uO7TyMB8qfLq7JKQvUcW3mThK7D4Lat_u2Q5giTT1eAYlWJ9g75r-b3-o8Ms1TqXGvIQIKCfpuTr2j89"/>
+</div>
+<div class="w-full py-1.5 rounded-lg bg-brand-pink text-brand-maroon font-headline font-black text-xs uppercase tracking-wider text-center">
+              PASTELS &amp; SNACKS
+            </div>
+</article>
+<!-- Category Card 6: BURGER SUCCULENT -->
+<article class="flex-none w-44 sm:w-48 group cursor-pointer bg-brand-maroonCard border border-brand-maroonBorder rounded-2xl p-2 pb-2 transition-all duration-300 hover:scale-105 hover:border-brand-orange">
+<div class="aspect-square w-full rounded-xl overflow-hidden bg-brand-maroonDark mb-2.5">
+<img alt="Burger Succulent" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA25UTbp1zAR4R4AFDldbOGyfMeJiax_0grabPFl9uCe4zfB-WuNpgr37y-6L1MoH8enRvZaUndzeLB_Z4cpuzVXOdJtvlsGd4ZyEZAeCozsqwd6MoXooYwTnOg8lPkDw0lA4EbhGk71F2UXenKuuPKUO93Wbkglt8X5S2yIHMGGcM_N94qCt95iCbIRKygqbIvjUwNciUoE91xvcUNtaR9JELWVSPRtHQ1fZFLkWnkFt8XviBaoxnP"/>
+</div>
+<div class="w-full py-1.5 rounded-lg bg-brand-orange text-brand-maroon font-headline font-black text-xs uppercase tracking-wider text-center">
+              BURGER SUCCULENT
+            </div>
+</article>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: PopularDropsSection -->
+<section class="py-20 bg-brand-maroonDark/60 border-t border-brand-maroonBorder" data-purpose="popular-drops" id="menu">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Title Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<span class="text-brand-orange font-bold text-xs uppercase tracking-widest block mb-2">CHAUD DEVANT LE GRIL</span>
+<h2 class="font-headline font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-brand-cream">
+            Les Coups de Cœur Abidjanais
+          </h2>
+</div>
+<p class="text-brand-cream/70 text-sm max-w-md mt-3 md:mt-0">
+          Poulet mariné 24h façon braisé, alloco doré minute, sauces secrètes au piment doux et mayonnaise pimentée maison.
+        </p>
+</div>
+<!-- Menu Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Menu Item 1 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder rounded-3xl overflow-hidden p-5 flex flex-col justify-between hover:border-brand-orange/60 transition-all duration-300 group">
+<div>
+<div class="relative h-56 rounded-2xl overflow-hidden mb-5 bg-brand-maroonDark">
+<img alt="Le Monster Burger Babi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPYI4jYgPP9zsXdzVp0upe4TYVStrLvLCn2OWMUYsOgPt5oNElVkfFYYrb6QTqGFBh-Ynb5DlOUbHBF2EqzvNK8OKom68gpmjfo3qKpagXZiIjh_Aa-CB9irV1cOW910zixGfdkC_-SfO9AqYO9X9zzb5HgeMQoL2N60q23MitOoFdcIGA50zszEQdarqNm32zVdIVTws0LmqDJ1HAIE5-oxj4F27HEPjc6UudLL3EORmInqpXdYOJ"/>
+<span class="absolute top-3 left-3 bg-brand-orange text-white text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                Best-seller
+              </span>
+<span class="absolute top-3 right-3 bg-brand-maroonDark/80 backdrop-blur-md text-brand-cream text-xs font-bold px-2.5 py-1 rounded-full">
+                🔥 920 Cal
+              </span>
+</div>
+<div class="flex items-baseline justify-between mb-2">
+<h3 class="font-headline font-extrabold text-xl text-brand-cream group-hover:text-brand-orange transition-colors">Le Monster Burger Babi</h3>
+<span class="font-headline font-black text-2xl text-brand-yellow">4 500 FCFA</span>
+</div>
+<p class="text-xs text-brand-cream/70 leading-relaxed mb-6">
+              Double smash steak bœuf wagyu façon choukouya, fromage fondu, oignons braisés, sauce secrète kankankan &amp; alloco fries.
+            </p>
+</div>
+<button class="w-full py-3 rounded-full bg-brand-maroon border border-brand-maroonBorder font-extrabold text-xs uppercase tracking-wider text-brand-cream hover:bg-brand-orange hover:border-brand-orange transition-all flex items-center justify-center gap-2" type="button">
+<span>+ AJOUTER AU PANIER</span>
+</button>
+</div>
+<!-- Menu Item 2 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder rounded-3xl overflow-hidden p-5 flex flex-col justify-between hover:border-brand-yellow/60 transition-all duration-300 group">
+<div>
+<div class="relative h-56 rounded-2xl overflow-hidden mb-5 bg-brand-maroonDark">
+<img alt="Box Poulet Crispy Braisé" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB5wGsBEKc5_QdqdC2E3XPgXVmTs7q2ayco-uxqla5ueRjnUDSinX_eScLTALaDERYzPPJC-cnKWVGOXlC3roMaTCiueMOgYKLSeP4xx2cfNbOHflcWXrYm5ScxWOYHKfYzbj6CmCjOpO0nNo5V0GS8Zg7uIiVP73dvnEWWOSZn3UEooSE-pNt2UXrWDRNerpyTncjFYqww1Vi3pUq1m0hLk2tVGDtmwysC0WV6TTwvxA5VyAx9Xc1"/>
+<span class="absolute top-3 left-3 bg-brand-yellow text-brand-maroon text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                Épicé
+              </span>
+<span class="absolute top-3 right-3 bg-brand-maroonDark/80 backdrop-blur-md text-brand-cream text-xs font-bold px-2.5 py-1 rounded-full">
+                🌶️ Piment Doux
+              </span>
+</div>
+<div class="flex items-baseline justify-between mb-2">
+<h3 class="font-headline font-extrabold text-xl text-brand-cream group-hover:text-brand-yellow transition-colors">Box Poulet Crispy Braisé</h3>
+<span class="font-headline font-black text-2xl text-brand-yellow">3 800 FCFA</span>
+</div>
+<p class="text-xs text-brand-cream/70 leading-relaxed mb-6">
+              Morceaux de poulet croustillant mariné au gingembre et épices d'Abidjan, frites d'alloco et sauce verte piquante.
+            </p>
+</div>
+<button class="w-full py-3 rounded-full bg-brand-maroon border border-brand-maroonBorder font-extrabold text-xs uppercase tracking-wider text-brand-cream hover:bg-brand-orange hover:border-brand-orange transition-all flex items-center justify-center gap-2" type="button">
+<span>+ AJOUTER AU PANIER</span>
+</button>
+</div>
+<!-- Menu Item 3 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder rounded-3xl overflow-hidden p-5 flex flex-col justify-between hover:border-brand-pink/60 transition-all duration-300 group">
+<div>
+<div class="relative h-56 rounded-2xl overflow-hidden mb-5 bg-brand-maroonDark">
+<img alt="Attiéké Thon Braisé Deluxe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStCjBCfWDsRZ6U9tYYE1gl1qVitc9BGzT2xbueui4rxX-Pd4SER_HlG7h_Y9_jm0KPaQCx3a5OK5JQcUTIBfEkwgdjiv6b6dD0jTDxUqmxrvC5K62VwbLaV3JwgZHfUWdkt_uxxNNON3oFEIIlb4_N_T5hy-3ceFj7eE0cX093Lm6VjX9mNZ8w_vYciGiQDOKDP7Ua0fDpzU5mJ4pkFLjPL6mzaH5EntIpSa_ig_su2s9OUctZcWi"/>
+<span class="absolute top-3 left-3 bg-brand-pink text-brand-maroon text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                Spécialité du Chef
+              </span>
+<span class="absolute top-3 right-3 bg-brand-maroonDark/80 backdrop-blur-md text-brand-cream text-xs font-bold px-2.5 py-1 rounded-full">
+                ✨ Dabali Royal
+              </span>
+</div>
+<div class="flex items-baseline justify-between mb-2">
+<h3 class="font-headline font-extrabold text-xl text-brand-cream group-hover:text-brand-pink transition-colors">Attiéké Thon Braisé Deluxe</h3>
+<span class="font-headline font-black text-2xl text-brand-yellow">5 000 FCFA</span>
+</div>
+<p class="text-xs text-brand-cream/70 leading-relaxed mb-6">
+              Darse de thon braisé aux braises de bois, attiéké frais de Dabou aux oignons, piment frais écrasé et bananes pesées.
+            </p>
+</div>
+<button class="w-full py-3 rounded-full bg-brand-maroon border border-brand-maroonBorder font-extrabold text-xs uppercase tracking-wider text-brand-cream hover:bg-brand-orange hover:border-brand-orange transition-all flex items-center justify-center gap-2" type="button">
+<span>+ AJOUTER AU PANIER</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PopularDropsSection -->
+<!-- BEGIN: DealsBannerSection -->
+<section class="py-16 bg-brand-orange text-brand-maroon overflow-hidden relative" data-purpose="deals-banner" id="deals">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-8 bg-brand-maroonDark rounded-3xl p-8 sm:p-12 border border-brand-maroonBorder text-brand-cream shadow-2xl">
+<div class="max-w-xl">
+<span class="inline-block px-3 py-1 bg-brand-orange text-white text-xs font-extrabold uppercase rounded-md tracking-wider mb-3">
+            VALABLE TOUTES LES NUITS DÈS 22H
+          </span>
+<h2 class="font-headline font-black text-3xl sm:text-5xl uppercase tracking-tight mb-4 leading-tight">
+            OFFRE ENJAILLEMENT DE NUIT -30%
+          </h2>
+<p class="text-brand-cream/80 text-sm sm:text-base leading-relaxed mb-6">
+            Le pack Babi Night : 1 Burger Signature + 1 portion généreuse d'Alloco croustillant + 4 wings croustillantes épicées + 1 Bissap glacé maison ou Cocktail de fruits pressés.
+          </p>
+<div class="flex items-center gap-3">
+<span class="font-mono bg-brand-maroon border border-brand-maroonBorder text-brand-yellow px-4 py-2 rounded-xl text-sm font-bold tracking-widest select-all">
+              BABINIGHT
+            </span>
+<button class="px-6 py-2.5 rounded-xl bg-brand-orange text-white font-extrabold text-xs uppercase tracking-wider hover:bg-brand-orangeHover transition-colors" type="button">
+              PROFITER DU DEAL
+            </button>
+</div>
+</div>
+<div class="w-full lg:w-96 flex-none">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-orange/40 shadow-xl rotate-1 hover:rotate-0 transition-transform duration-300">
+<img alt="Pack Babi Night Combo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCUmgvpmC7XcKNhH05H_giW2CCCXV4JOIAiDQaluYxjSsUnji75tRyBNRaCJyvA4fkhFPVjxFMVdRaXDoscX_v_0SVqSZQ2t8JhErCKc1Jd7TkkT01nppsgXatb9RGo0n1jrQ_6_iawzYO0nxASPhXjipnVSg5b_7XyJScLUpxxR56dV84oGG0Exwa3S5dcq6Sm-W7LTbi49hwVPrl7alB53mJh8du5GtS9h-1YlSijBdyVn0TlPJY"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DealsBannerSection -->
+<!-- BEGIN: PerksSection -->
+<section class="py-20 bg-brand-maroon" data-purpose="perks-highlights">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="text-brand-yellow font-bold text-xs uppercase tracking-widest block mb-2">ENGAGEMENT QUALITÉ</span>
+<h2 class="font-headline font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-brand-cream">
+          Pourquoi Nous Ne Faisons Aucun Compromis
+        </h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Perk 1 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-2xl text-left hover:-translate-y-1 transition-transform duration-200">
+<div class="w-12 h-12 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center text-2xl mb-5">
+            🥩
+          </div>
+<h3 class="font-headline font-bold text-lg text-brand-cream mb-2">100% Volaille &amp; Bœuf Local</h3>
+<p class="text-xs text-brand-cream/70 leading-relaxed">
+            Viandes fraîches de nos éleveurs ivoiriens, marinées chaque matin selon nos recettes secrètes.
+          </p>
+</div>
+<!-- Perk 2 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-2xl text-left hover:-translate-y-1 transition-transform duration-200">
+<div class="w-12 h-12 rounded-xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center text-2xl mb-5">
+            🌶️
+          </div>
+<h3 class="font-headline font-bold text-lg text-brand-cream mb-2">Nos 6 Sauces Signatures</h3>
+<p class="text-xs text-brand-cream/70 leading-relaxed">
+            De la sauce piment vert relevée à la mayo fumée au kankankan, fabriquées chaque jour.
+          </p>
+</div>
+<!-- Perk 3 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-2xl text-left hover:-translate-y-1 transition-transform duration-200">
+<div class="w-12 h-12 rounded-xl bg-brand-cyan/20 text-brand-cyan flex items-center justify-center text-2xl mb-5">
+            ⚡
+          </div>
+<h3 class="font-headline font-bold text-lg text-brand-cream mb-2">Livraison Moins de 35 Min</h3>
+<p class="text-xs text-brand-cream/70 leading-relaxed">
+            Emballages isothermes haute technologie pour un alloco chaud et des frites bien croustillantes.
+          </p>
+</div>
+<!-- Perk 4 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-2xl text-left hover:-translate-y-1 transition-transform duration-200">
+<div class="w-12 h-12 rounded-xl bg-brand-pink/20 text-brand-pink flex items-center justify-center text-2xl mb-5">
+            🌙
+          </div>
+<h3 class="font-headline font-bold text-lg text-brand-cream mb-2">Ouvert Jusqu'à 4h du Matin</h3>
+<p class="text-xs text-brand-cream/70 leading-relaxed">
+            Parce qu'à Abidjan la faim n'attend pas, nos fourneaux restent allumés toute la nuit.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PerksSection -->
+<!-- BEGIN: ReviewsSection -->
+<section class="py-20 bg-brand-maroonDark/80 border-t border-brand-maroonBorder" data-purpose="customer-reviews" id="reviews">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+<div>
+<span class="text-brand-pink font-bold text-xs uppercase tracking-widest block mb-2">LE MUR DU DABALI</span>
+<h2 class="font-headline font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-brand-cream">
+            Ce Que Disent Nos Mordus
+          </h2>
+</div>
+<div class="flex items-center gap-2 mt-4 md:mt-0 text-sm font-semibold text-brand-cream/80 bg-brand-maroonCard px-4 py-2 rounded-full border border-brand-maroonBorder">
+<span class="text-brand-yellow font-bold">★ 4.9/5</span>
+<span class="text-brand-cream/40">|</span>
+<span>15 000+ Gourmands servis</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-3xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1 text-brand-yellow mb-4 text-sm">
+              ★★★★★
+            </div>
+<p class="text-brand-cream/90 text-sm leading-relaxed mb-6 italic">
+              "Le burger avec le twist épicé ivoirien est juste incroyable. Les allocos étaient encore brûlants à la livraison !"
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-orange/30 border border-brand-orange text-brand-cream font-bold flex items-center justify-center text-xs">
+              KA
+            </div>
+<div>
+<h4 class="font-headline font-bold text-xs text-brand-cream">Koffi Amani</h4>
+<p class="text-[11px] text-brand-cream/50">Marcory • Client Fidèle (28 commandes)</p>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-3xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1 text-brand-yellow mb-4 text-sm">
+              ★★★★★
+            </div>
+<p class="text-brand-cream/90 text-sm leading-relaxed mb-6 italic">
+              "Livré en 24 minutes chrono à Angré. La sauce verte et le poulet crispy sont un vrai régal."
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-cyan/30 border border-brand-cyan text-brand-cream font-bold flex items-center justify-center text-xs">
+              FD
+            </div>
+<div>
+<h4 class="font-headline font-bold text-xs text-brand-cream">Fatou Diop</h4>
+<p class="text-[11px] text-brand-cream/50">Cocody Riviera • 42 commandes</p>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-6 rounded-3xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1 text-brand-yellow mb-4 text-sm">
+              ★★★★★
+            </div>
+<p class="text-brand-cream/90 text-sm leading-relaxed mb-6 italic">
+              "Le meilleur plan pour les faims de minuit après une soirée. Propre, rapide et super copieux."
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-brand-pink/30 border border-brand-pink text-brand-cream font-bold flex items-center justify-center text-xs">
+              YB
+            </div>
+<div>
+<h4 class="font-headline font-bold text-xs text-brand-cream">Yannick B.</h4>
+<p class="text-[11px] text-brand-cream/50">Zone 4 • Noctambule (31 commandes)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ReviewsSection -->
+<!-- BEGIN: FindUsSection -->
+<section class="py-20 bg-brand-maroon border-t border-brand-maroonBorder" data-purpose="locations" id="find-us">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-brand-maroonCard border border-brand-maroonBorder rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+<div>
+<span class="text-brand-orange font-bold text-xs uppercase tracking-widest block mb-2">SUR PLACE OU À EMPORTER</span>
+<h2 class="font-headline font-black text-3xl sm:text-4xl uppercase tracking-tight text-brand-cream mb-4">
+              Nos Spots à Abidjan
+            </h2>
+<p class="text-brand-cream/70 text-sm mb-8">
+              Passe commande au comptoir express, installe-toi dans nos espaces climatisés ou fais-toi livrer directement chez toi.
+            </p>
+<div class="space-y-4">
+<div class="p-4 rounded-2xl bg-brand-maroonDark border border-brand-maroonBorder/80 flex items-start justify-between">
+<div>
+<h4 class="font-bold text-sm text-brand-cream">Babi Flagship Zone 4</h4>
+<p class="text-xs text-brand-cream/60">Rue du 7 Décembre, Marcory</p>
+<span class="inline-block mt-2 text-[11px] font-bold text-brand-yellow bg-brand-yellow/10 px-2 py-0.5 rounded">Ouvert 7j/7 jusqu'à 04h00</span>
+</div>
+<button class="text-xs font-bold uppercase text-brand-orange hover:underline" type="button">VOIR L'ITINÉRAIRE →</button>
+</div>
+<div class="p-4 rounded-2xl bg-brand-maroonDark border border-brand-maroonBorder/80 flex items-start justify-between">
+<div>
+<h4 class="font-bold text-sm text-brand-cream">Comptoir Riviera Bonoumin</h4>
+<p class="text-xs text-brand-cream/60">Face Abidjan Mall, Cocody</p>
+<span class="inline-block mt-2 text-[11px] font-bold text-brand-cyan bg-brand-cyan/10 px-2 py-0.5 rounded">Service à emporter &amp; Livraison</span>
+</div>
+<button class="text-xs font-bold uppercase text-brand-orange hover:underline" type="button">VOIR L'ITINÉRAIRE →</button>
+</div>
+</div>
+</div>
+<!-- Store Visual / Delivery Partners -->
+<div class="bg-brand-maroonDark rounded-2xl p-6 border border-brand-maroonBorder text-center">
+<h3 class="font-headline font-bold text-lg text-brand-cream mb-2">Commander direct ou via nos livreurs partenaires</h3>
+<p class="text-xs text-brand-cream/60 mb-6">Livraison offerte sur l'application dès 10 000 FCFA</p>
+<div class="grid grid-cols-3 gap-3 mb-6">
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-3 rounded-xl text-center">
+<span class="block text-xl mb-1">🛵</span>
+<span class="text-[11px] font-bold text-brand-cream">Yango Deli</span>
+</div>
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-3 rounded-xl text-center">
+<span class="block text-xl mb-1">🍔</span>
+<span class="text-[11px] font-bold text-brand-cream">Glovo</span>
+</div>
+<div class="bg-brand-maroonCard border border-brand-maroonBorder p-3 rounded-xl text-center">
+<span class="block text-xl mb-1">🥡</span>
+<span class="text-[11px] font-bold text-brand-cream">Heetch Food</span>
+</div>
+</div>
+<button class="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider transition-colors shadow-lg" type="button">
+              COMMENCER MA COMMANDE
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FindUsSection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-maroonDark border-t border-brand-maroonBorder py-16" data-purpose="footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+<!-- Brand Column -->
+<div class="lg:col-span-2">
+<a class="inline-block font-headline font-black text-2xl tracking-tighter text-brand-cream mb-4" href="#">
+            BABI <span class="bg-brand-orange text-brand-maroonDark px-1.5 py-0.5 rounded-md text-xl">CRUNCH</span> &amp; DABALI
+          </a>
+<p class="text-xs text-brand-cream/60 max-w-sm leading-relaxed mb-6">
+            Saveurs intenses, fast-food moderne et street-food ivoirienne de qualité supérieure. Fait avec passion à Abidjan.
+          </p>
+<div class="flex items-center gap-3">
+<a aria-label="Instagram" class="w-9 h-9 rounded-full bg-brand-maroonCard border border-brand-maroonBorder flex items-center justify-center text-brand-cream/80 hover:text-brand-orange transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a aria-label="TikTok" class="w-9 h-9 rounded-full bg-brand-maroonCard border border-brand-maroonBorder flex items-center justify-center text-brand-cream/80 hover:text-brand-orange transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg>
+</a>
+<a aria-label="Twitter" class="w-9 h-9 rounded-full bg-brand-maroonCard border border-brand-maroonBorder flex items-center justify-center text-brand-cream/80 hover:text-brand-orange transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="font-headline font-bold text-xs uppercase tracking-wider text-brand-cream mb-4">Notre Carte</h4>
+<ul class="space-y-2 text-xs text-brand-cream/60 font-medium">
+<li><a class="hover:text-brand-orange transition-colors" href="#menu">Burgers Choukouya</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#menu">Poulet Braisé &amp; Wings</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#menu">Alloco &amp; Pastels</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#menu">Attiéké Thon Braisé</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#menu">Bissap Glacé &amp; Cocktails</a></li>
+</ul>
+</div>
+<!-- Help & Info -->
+<div>
+<h4 class="font-headline font-bold text-xs uppercase tracking-wider text-brand-cream mb-4">Bon À Savoir</h4>
+<ul class="space-y-2 text-xs text-brand-cream/60 font-medium">
+<li><a class="hover:text-brand-orange transition-colors" href="#">Certifié Halal</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#">Guide des Allergènes</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#">Devenir Franchisé</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#">Menu Secret VIP</a></li>
+<li><a class="hover:text-brand-orange transition-colors" href="#">Service Client</a></li>
+</ul>
+</div>
+<!-- VIP Drops Club -->
+<div>
+<h4 class="font-headline font-bold text-xs uppercase tracking-wider text-brand-cream mb-4">Club VIP Babi Crunch</h4>
+<p class="text-xs text-brand-cream/60 mb-3">Reçois nos codes promos exclusifs et nos nouveaux plats chaque vendredi.</p>
+<form class="space-y-2" onsubmit="event.preventDefault();">
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-brand-maroon border border-brand-maroonBorder text-xs text-brand-cream placeholder:text-brand-cream/40 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange focus:outline-none" placeholder="Ton adresse e-mail" type="email"/>
+<button class="w-full py-2.5 rounded-xl bg-brand-orange text-white font-extrabold text-xs uppercase tracking-wider hover:bg-brand-orangeHover transition-colors" type="submit">
+              S'INSCRIRE
+            </button>
+</form>
+</div>
+</div>
+<!-- Copyright & Bottom Bar -->
+<div class="pt-8 border-t border-brand-maroonBorder/40 flex flex-col sm:flex-row items-center justify-between text-[11px] text-brand-cream/50 gap-4">
+<p>© 2025 BABI CRUNCH &amp; DABALI. Tous droits réservés.</p>
+<div class="flex items-center space-x-6">
+<a class="hover:text-brand-orange transition-colors" href="#">Mentions Légales</a>
+<a class="hover:text-brand-orange transition-colors" href="#">Conditions Générales</a>
+<a class="hover:text-brand-orange transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

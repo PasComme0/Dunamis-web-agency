@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DjiniPay CI | Plateforme Financière Nouvelle Génération à Abidjan</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#070B19',
+              deep: '#0D142A',
+              navy: '#131D3B',
+              card: '#162044',
+              accent: '#38ef7d',
+              cyan: '#11998e',
+              neon: '#00F5D4',
+              orange: '#FF8A00'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Core Layout Styles -->
+<style data-purpose="custom-typography">
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #070B19;
+      color: #E2E8F0;
+      overflow-x: hidden;
+    }
+  </style>
+<!-- Visual Effects & Glow Styles -->
+<style data-purpose="visual-effects">
+    .glass-pill {
+      background: rgba(19, 29, 59, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    .glass-card {
+      background: rgba(19, 29, 59, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hero-glow-bg {
+      background: radial-gradient(circle at 50% 20%, rgba(30, 58, 138, 0.35) 0%, rgba(13, 20, 42, 0.85) 55%, #070B19 100%);
+    }
+    .dune-wave {
+      background: linear-gradient(180deg, transparent 0%, rgba(11, 20, 48, 0.6) 50%, rgba(7, 11, 25, 1) 100%);
+    }
+    .holo-card-gradient {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 60%, #00F5D4 100%);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-slate-100 antialiased selection:bg-teal-400 selection:text-brand-dark">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-5 left-0 right-0 z-50 flex justify-center px-4" data-purpose="floating-header">
+<nav class="glass-pill rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4 md:gap-8 max-w-4xl w-full transition-all duration-300 hover:border-white/20">
+<!-- Menu Button / Left -->
+<div class="flex items-center gap-2">
+<button aria-label="Ouvrir le menu" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition border border-white/10" type="button">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="4" x2="20" y1="6" y2="6"></line>
+<line x1="4" x2="20" y1="12" y2="12"></line>
+<line x1="4" x2="20" y1="18" y2="18"></line>
+</svg>
+<span>Menu</span>
+</button>
+<span class="hidden md:inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          🇨🇮 Abidjan • XOF
+        </span>
+</div>
+<!-- Logo Center -->
+<a class="flex items-center gap-2 group" data-purpose="brand-logo" href="#">
+<div class="w-7 h-7 rounded-xl holo-card-gradient flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition transform">
+<span class="text-brand-dark font-extrabold text-sm tracking-tighter">✦</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white flex items-center">
+          Djini<span class="text-teal-400">Pay</span>
+</span>
+</a>
+<!-- Right Actions: Sign In & CTA -->
+<div class="flex items-center gap-2.5">
+<a class="text-xs sm:text-sm font-medium text-slate-300 hover:text-white px-3 py-1.5 transition" href="#login">
+          Connexion
+        </a>
+<a class="hidden sm:inline-flex items-center justify-center text-xs sm:text-sm font-semibold text-brand-dark bg-white hover:bg-slate-100 px-4 py-1.5 rounded-full transition shadow-md hover:shadow-white/20" href="#telecharger">
+          Ouvrir un compte
+        </a>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-32 sm:pt-40 pb-20 md:pb-32 hero-glow-bg min-h-screen flex flex-col justify-center items-center overflow-hidden" data-purpose="hero-presentation">
+<!-- Ambient glowing shapes -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-teal-500/10 blur-[90px] rounded-full pointer-events-none"></div>
+<div class="container mx-auto px-4 relative z-10 max-w-6xl">
+<!-- Top Tag Badge -->
+<div class="flex justify-center mb-5">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-teal-500/30 text-teal-300 text-xs sm:text-sm font-medium">
+<span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+          La Néo-Fintech d'Abidjan &amp; d'Afrique de l'Ouest
+        </div>
+</div>
+<!-- Main Monumental Heading -->
+<div class="text-center max-w-4xl mx-auto mb-6">
+<h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.12]">
+          Plateforme Financière <br class="hidden sm:block"/>
+<span class="bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-emerald-300 to-white">Nouvelle Génération</span>
+</h1>
+</div>
+<!-- Primary Action CTA -->
+<div class="flex justify-center mb-10">
+<a class="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white text-brand-dark font-semibold text-sm sm:text-base hover:bg-slate-100 hover:shadow-lg hover:shadow-white/10 transition-all transform active:scale-95" href="#carte">
+<span>Transférer de l'argent</span>
+<span class="w-6 h-6 rounded-full bg-brand-dark text-white flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">
+            →
+          </span>
+</a>
+</div>
+<!-- Hero Visual Core: Stylized Portrait + Interactive Holographic Card Mockup -->
+<div class="relative max-w-4xl mx-auto flex flex-col items-center">
+<!-- Center Character Card Frame -->
+<div class="relative w-full max-w-md sm:max-w-lg aspect-[4/4.8] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gradient-to-b from-blue-950/60 to-brand-dark flex items-end justify-center group">
+<!-- Silhouette & Person Representation -->
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent z-10"></div>
+<!-- Avatar Stylisé / Illustration Abidjanaise Moderne -->
+<div class="relative z-0 w-full h-full flex flex-col items-center justify-end pb-4">
+<div class="w-64 sm:w-80 h-72 sm:h-96 rounded-t-full bg-gradient-to-b from-slate-200/90 to-slate-400/80 relative flex items-center justify-center shadow-inner overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-teal-900/30 to-blue-900/40 mix-blend-overlay"></div>
+<!-- Character graphic illustration -->
+<div class="w-full h-full flex flex-col items-center justify-center text-center p-6">
+<div class="w-28 h-28 rounded-full bg-slate-800/20 border-2 border-white/40 mb-3 flex items-center justify-center shadow-md">
+<span class="text-5xl">🧑🏾‍💻</span>
+</div>
+<div class="bg-brand-dark/80 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-xs font-semibold text-white">
+                  Kouamé N. • Creative Lead à Cocody
+                </div>
+</div>
+</div>
+</div>
+<!-- Floating Holographic DjiniPay Card held in foreground -->
+<div class="absolute z-20 bottom-14 -translate-y-4 transform rotate-6 hover:rotate-0 transition-transform duration-500 cursor-pointer">
+<div class="w-56 sm:w-64 h-36 rounded-2xl holo-card-gradient p-4 text-brand-dark shadow-2xl shadow-teal-500/30 flex flex-col justify-between border border-white/40 backdrop-blur-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-white/20 blur-lg pointer-events-none"></div>
+<!-- Card Top -->
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-80">DjiniPay Platinum</p>
+<p class="text-xs font-black tracking-wider text-slate-900">PREMIUM CI</p>
+</div>
+<div class="w-7 h-5 rounded bg-yellow-300/80 border border-yellow-500/50 flex items-center justify-center">
+<div class="w-3.5 h-2.5 border border-yellow-700/60 rounded-sm"></div>
+</div>
+</div>
+<!-- Card Bottom -->
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[9px] font-mono opacity-70">4820 •••• •••• 9241</p>
+<p class="text-xs font-bold tracking-wide">KOUAME N'GUESSAN</p>
+</div>
+<div class="text-right">
+<span class="text-sm font-black italic tracking-tighter">VISA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Subtle bottom overlay glow -->
+<div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-brand-dark to-transparent z-15 pointer-events-none"></div>
+</div>
+<!-- Left Hero Floating Badge: Social Proof -->
+<div class="mt-6 md:mt-0 md:absolute md:bottom-6 md:left-2 glass-card rounded-2xl p-3.5 sm:p-4 max-w-xs border border-white/10 shadow-xl" data-purpose="social-proof-badge">
+<div class="flex items-center -space-x-2.5 mb-2">
+<div class="w-8 h-8 rounded-full border-2 border-brand-dark bg-emerald-500 flex items-center justify-center text-xs font-bold text-brand-dark">YA</div>
+<div class="w-8 h-8 rounded-full border-2 border-brand-dark bg-blue-500 flex items-center justify-center text-xs font-bold text-white">SK</div>
+<div class="w-8 h-8 rounded-full border-2 border-brand-dark bg-amber-400 flex items-center justify-center text-xs font-bold text-brand-dark">MT</div>
+<div class="w-8 h-8 rounded-full border-2 border-brand-dark bg-purple-500 flex items-center justify-center text-xs font-bold text-white">AD</div>
+<div class="w-8 h-8 rounded-full border-2 border-brand-dark bg-brand-navy flex items-center justify-center text-[10px] font-bold text-teal-300">+45k</div>
+</div>
+<p class="text-xs font-medium text-slate-300 leading-snug">
+            Approuvé par plus de <span class="text-white font-semibold">45 000 créateurs</span>, pros et freelances à Abidjan et Grand-Bassam.
+          </p>
+</div>
+<!-- Right Hero Floating Card: Feature Spotlight (From Mockup) -->
+<div class="mt-4 md:mt-0 md:absolute md:bottom-6 md:right-2 glass-card rounded-2xl p-4 max-w-xs border border-white/10 shadow-xl" data-purpose="hero-feature-card">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-7 h-7 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs">
+              🌍
+            </div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider">Dépenses Mondiales Sans Frais</h4>
+</div>
+<p class="text-xs text-slate-300 leading-relaxed mb-3">
+            Maîtrisez vos finances à l'international. Transferts instantanés, smart insights et contrôle total depuis votre smartphone ou navigateur.
+          </p>
+<div class="flex justify-end">
+<a aria-label="Découvrir plus bas" class="w-8 h-8 rounded-full border border-white/20 hover:border-teal-400 hover:bg-teal-400/10 flex items-center justify-center text-slate-300 hover:text-teal-300 transition" href="#features">
+              ↓
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: IntegrationPartners -->
+<section class="py-12 bg-brand-deep border-y border-white/5" data-purpose="local-integrations-bar">
+<div class="container mx-auto px-4 max-w-6xl">
+<div class="text-center mb-6">
+<p class="text-xs uppercase tracking-widest text-slate-400 font-semibold">
+          Interconnexion directe avec l'écosystème financier ivoirien &amp; mondial
+        </p>
+</div>
+<!-- Partner Badges Grid -->
+<div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+<span class="w-3 h-3 rounded-full bg-sky-400"></span>
+<span class="font-bold tracking-tight text-sm text-white">Wave CI</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+<span class="w-3 h-3 rounded-full bg-orange-500"></span>
+<span class="font-bold tracking-tight text-sm text-white">Orange Money</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+<span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+<span class="font-bold tracking-tight text-sm text-white">MTN MoMo</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+<span class="w-3 h-3 rounded-full bg-blue-600"></span>
+<span class="font-bold tracking-tight text-sm text-white">Moov Money</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+<span class="font-black text-sm tracking-widest text-emerald-400">GIM-UEMOA</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+<span class="font-bold text-sm text-white">VISA &amp; Mastercard</span>
+</div>
+</div>
+<p class="text-center text-xs text-slate-400 mt-4">
+        Rechargez et retirez instantanément en FCFA vers tous vos comptes mobiles et bancaires en Côte d'Ivoire.
+      </p>
+</div>
+</section>
+<!-- END: IntegrationPartners -->
+<!-- BEGIN: KeyFeatures -->
+<section class="py-24 relative" data-purpose="features-grid" id="features">
+<div class="container mx-auto px-4 max-w-6xl">
+<!-- Section Title -->
+<div class="max-w-2xl mx-auto text-center mb-16">
+<span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Innovation Financière</span>
+<h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+          Conçu pour le dynamisme d'Abidjan
+        </h2>
+<p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+          Toutes les fonctionnalités dont vous avez besoin pour recevoir vos revenus mondiaux, épargner intelligemment et dépenser librement.
+        </p>
+</div>
+<!-- Grid Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-teal-500/40 transition duration-300 relative group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-300 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              💳
+            </div>
+<h3 class="text-xl font-bold text-white mb-2">Cartes Virtuelles &amp; Physiques</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Payez vos abonnements (Netflix, Spotify), vos campagnes Google Ads, Meta Ads et vos commandes Amazon sans rejet ni tracas.
+            </p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+<span>Plafonds ajustables en FCFA</span>
+<span class="text-emerald-400 font-semibold">Instantané</span>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-teal-500/40 transition duration-300 relative group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-300 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              ⚡
+            </div>
+<h3 class="text-xl font-bold text-white mb-2">Transferts Sans Frais Cachés</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Transférez de l'argent vers le Sénégal, le Mali, le Burkina, la France ou entre amis Djini en quelques secondes avec des taux transparents.
+            </p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+<span>UEMOA &amp; Diaspora</span>
+<span class="text-teal-400 font-semibold">0% entre Djini</span>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-teal-500/40 transition duration-300 relative group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-300 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              💱
+            </div>
+<h3 class="text-xl font-bold text-white mb-2">Comptes Multi-Devises</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Recevez vos paiements freelances internationaux directement en Euros (EUR), Dollars (USD) ou FCFA (XOF) avec des coordonnées bancaires dédiées.
+            </p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+<span>IBAN &amp; Coordonnées US</span>
+<span class="text-purple-400 font-semibold">Sans paperasse</span>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-teal-500/40 transition duration-300 relative group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-300 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🏺
+            </div>
+<h3 class="text-xl font-bold text-white mb-2">Coffres &amp; Tontines Digitales</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Automatisez vos économies pour vos projets : achat de terrain, rentrée scolaire ou voyages. Créez des tontines sécurisées entre proches de confiance.
+            </p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+<span>Jusqu'à 7.5% annuel</span>
+<span class="text-amber-400 font-semibold">Capital garanti</span>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-teal-500/40 transition duration-300 relative group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              💼
+            </div>
+<h3 class="text-xl font-bold text-white mb-2">Djini Business Pro</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Pour les PME, commerçants du Plateau et startups ivoiriennes : facturation automatique, encaissement par QR code et gestion des salaires en un clic.
+            </p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+<span>API Développeurs dispo</span>
+<span class="text-emerald-400 font-semibold">Compatible e-commerce</span>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="glass-card rounded-3xl p-7 border border-white/10 hover:border-teal-500/40 transition duration-300 relative group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🛡️
+            </div>
+<h3 class="text-xl font-bold text-white mb-2">Sécurité Bancaire Maximale</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Blocage et déblocage de carte en direct depuis l'application, authentification FaceID/Empreinte et cryptage militaire conforme aux normes régionales.
+            </p>
+</div>
+<div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+<span>Conforme BCEAO</span>
+<span class="text-rose-400 font-semibold">Protection 24/7</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: KeyFeatures -->
+<!-- BEGIN: HowItWorks -->
+<section class="py-20 bg-brand-deep/60 border-t border-white/5" data-purpose="onboarding-steps">
+<div class="container mx-auto px-4 max-w-5xl">
+<div class="text-center mb-14">
+<span class="text-teal-400 text-xs font-bold uppercase tracking-wider">Simplicité Absolue</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+          Votre compte actif en 3 étapes
+        </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl border border-white/5">
+<div class="w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg mb-4">
+            1
+          </div>
+<h4 class="text-base font-bold text-white mb-2">Téléchargez l'application</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Disponible gratuitement sur iOS et Android. Entrez votre numéro de téléphone ivoirien.
+          </p>
+</div>
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl border border-white/5">
+<div class="w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg mb-4">
+            2
+          </div>
+<h4 class="text-base font-bold text-white mb-2">Vérifiez votre identité</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Une simple photo de votre CNI ivoirienne ou Passeport valide avec un selfie biométrique sécurisé.
+          </p>
+</div>
+<div class="flex flex-col items-center text-center p-6 glass-card rounded-2xl border border-white/5">
+<div class="w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold text-lg mb-4">
+            3
+          </div>
+<h4 class="text-base font-bold text-white mb-2">Dépensez &amp; Transférez</h4>
+<p class="text-xs text-slate-300 leading-relaxed">
+            Générez immédiatement votre carte virtuelle et commencez à effectuer vos transactions sans attente.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HowItWorks -->
+<!-- BEGIN: Testimonials -->
+<section class="py-24 relative overflow-hidden" data-purpose="customer-testimonials">
+<div class="container mx-auto px-4 max-w-6xl">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<div class="inline-flex items-center gap-1 text-amber-400 text-sm mb-2">
+          ★★★★★ <span class="text-white font-semibold ml-1">4.9 / 5</span>
+</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Ce que disent nos utilisateurs à Abidjan
+        </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+<p class="text-sm text-slate-300 italic mb-6 leading-relaxed">
+            « Pour payer mes abonnements SaaS et hébergements web aux USA, les cartes des banques traditionnelles bloquaient tout le temps. Avec DjiniPay, ça passe instantanément en FCFA sans frais cachés ! »
+          </p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-sm">
+              AS
+            </div>
+<div>
+<h5 class="text-sm font-bold text-white">Armel Séka</h5>
+<p class="text-xs text-slate-400">Freelance Développeur • Marcory Zone 4</p>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+<p class="text-sm text-slate-300 italic mb-6 leading-relaxed">
+            « La recharge directe via Wave et Orange Money change complètement la donne. Je reçois les fonds de mes collaborations internationales et je les retire en cash en 30 secondes. »
+          </p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-sm">
+              FK
+            </div>
+<div>
+<h5 class="text-sm font-bold text-white">Fatou Koné</h5>
+<p class="text-xs text-slate-400">Créatrice Digitale • Cocody Angré</p>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+<p class="text-sm text-slate-300 italic mb-6 leading-relaxed">
+            « Notre agence gère les budgets publicitaires de 12 clients avec des cartes virtuelles distinctes plafonnées. C'est l'outil fintech qui manquait cruellement au business ivoirien. »
+          </p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
+              JB
+            </div>
+<div>
+<h5 class="text-sm font-bold text-white">Jean-Marc Bado</h5>
+<p class="text-xs text-slate-400">CEO Nova Media • Le Plateau</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Testimonials -->
+<!-- BEGIN: CTASection -->
+<section class="py-20 relative" data-purpose="final-call-to-action" id="telecharger">
+<div class="container mx-auto px-4 max-w-5xl">
+<div class="glass-pill rounded-3xl p-8 sm:p-14 border border-teal-500/30 text-center relative overflow-hidden bg-gradient-to-b from-brand-card to-brand-deep shadow-2xl">
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-500/10 blur-[90px] rounded-full pointer-events-none"></div>
+<span class="text-xs font-bold text-teal-300 uppercase tracking-widest bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
+          Rejoignez la Révolution Financière
+        </span>
+<h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 mb-4 leading-tight">
+          Prenez le contrôle de vos finances dès aujourd'hui
+        </h2>
+<p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
+          Téléchargez l'application DjiniPay, ouvrez votre compte en 2 minutes avec votre CNI et recevez votre carte virtuelle internationale.
+        </p>
+<div class="flex flex-wrap items-center justify-center gap-4">
+<!-- App Store -->
+<a class="flex items-center gap-3 bg-white text-brand-dark px-5 py-3 rounded-2xl font-bold text-sm hover:bg-slate-200 transition shadow-lg" href="#">
+<span class="text-xl"></span>
+<div class="text-left">
+<div class="text-[9px] uppercase font-semibold leading-none text-slate-600">Télécharger sur</div>
+<div class="text-xs font-extrabold leading-none mt-1">App Store</div>
+</div>
+</a>
+<!-- Google Play -->
+<a class="flex items-center gap-3 bg-white/10 hover:bg-white/15 border border-white/20 text-white px-5 py-3 rounded-2xl font-bold text-sm transition shadow-lg" href="#">
+<span class="text-xl">▶</span>
+<div class="text-left">
+<div class="text-[9px] uppercase font-semibold leading-none text-slate-300">Disponible sur</div>
+<div class="text-xs font-extrabold leading-none mt-1">Google Play</div>
+</div>
+</a>
+</div>
+<p class="text-xs text-slate-400 mt-6">
+          Zéro frais de tenue de compte • Résiliation possible à tout moment
+        </p>
+</div>
+</div>
+</section>
+<!-- END: CTASection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-dark border-t border-white/10 pt-16 pb-12" data-purpose="page-footer">
+<div class="container mx-auto px-4 max-w-6xl">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+<!-- Col 1: Brand Info -->
+<div class="col-span-2">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-6 h-6 rounded-lg holo-card-gradient flex items-center justify-center">
+<span class="text-brand-dark font-extrabold text-xs">✦</span>
+</div>
+<span class="text-lg font-bold text-white">Djini<span class="text-teal-400">Pay</span> CI</span>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed mb-4 max-w-sm">
+            DjiniPay Côte d'Ivoire SAS est une société de technologie financière enregistrée à Abidjan. Les services bancaires et cartes sont émis en partenariat avec des institutions financières agréées par la BCEAO.
+          </p>
+<p class="text-xs text-slate-500">
+            📍 Siège : Rue des Jardins, Cocody Deux-Plateaux, Abidjan.
+          </p>
+</div>
+<!-- Col 2: Produits -->
+<div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Produits</h4>
+<ul class="space-y-2 text-xs text-slate-400">
+<li><a class="hover:text-white transition" href="#">Carte Virtuelle</a></li>
+<li><a class="hover:text-white transition" href="#">Carte Physique</a></li>
+<li><a class="hover:text-white transition" href="#">Compte Multi-devises</a></li>
+<li><a class="hover:text-white transition" href="#">Djini Business Pro</a></li>
+<li><a class="hover:text-white transition" href="#">Tontines Digitales</a></li>
+</ul>
+</div>
+<!-- Col 3: Entreprise -->
+<div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Société</h4>
+<ul class="space-y-2 text-xs text-slate-400">
+<li><a class="hover:text-white transition" href="#">À Propos</a></li>
+<li><a class="hover:text-white transition" href="#">Carrières (Recrutement)</a></li>
+<li><a class="hover:text-white transition" href="#">Presse &amp; Médias</a></li>
+<li><a class="hover:text-white transition" href="#">Grille Tarifaire</a></li>
+<li><a class="hover:text-white transition" href="#">Sécurité &amp; Conformité</a></li>
+</ul>
+</div>
+<!-- Col 4: Support -->
+<div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Assistance</h4>
+<ul class="space-y-2 text-xs text-slate-400">
+<li><a class="hover:text-white transition" href="#">Centre d'Aide Abidjan</a></li>
+<li><a class="hover:text-white transition" href="#">Statut des Services</a></li>
+<li><a class="hover:text-white transition" href="#">Documentation API</a></li>
+<li><a class="hover:text-white transition" href="#">Nous Contacter</a></li>
+<li><a class="hover:text-white transition" href="#">WhatsApp Support 24/7</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Credits & Compliance -->
+<div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+<p>© 2025 DjiniPay Côte d'Ivoire SAS. Tous droits réservés.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-slate-400 transition" href="#">Mentions Légales</a>
+<a class="hover:text-slate-400 transition" href="#">Politique de Confidentialité</a>
+<a class="hover:text-slate-400 transition" href="#">Conditions Générales d'Utilisation</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>
