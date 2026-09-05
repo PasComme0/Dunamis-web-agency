@@ -7,6 +7,7 @@
 - **Objectif 4 :** Mettre à jour les démos **Aether Systems**, **Nexus Wealth**, **Orbit Logistics** et **Kroma Atelier** à partir des fichiers HTML fournis.
 - **Objectif 6 :** Mettre à jour la section **CHRONOS Horlogerie** avec le nouveau template HTML fourni dans `code.html`.
 - **Objectif 7 :** Intégrer la vitrine interactive multi-écrans et le système d'agrandissement "Voir plus" pour l'application mobile **VESPER Concierge** à partir des 4 dossiers d'écrans fournis.
+- **Objectif 8 :** Mettre à jour l'adresse email officielle de contact de l'agence sur tout le site vers `info@dunamis-web-agency.com`.
 
 ## 2. Synthèse des Réalisations & Évolutions Majeures
 - **En-tête (`Navbar.tsx`) :**
@@ -14,8 +15,11 @@
 - **Pied de page (`Footer.tsx`) :**
   - Masquage du bloc "Ressources" (Blog, Guides, Articles) et réajustement de la grille à 5 colonnes (`lg:grid-cols-5`).
   - Redirection de tous les liens de la colonne "Services" vers la page de prise de contact (`/contact`).
+  - Remplacement de l'adresse email de contact par `info@dunamis-web-agency.com`.
 - **Page d'accueil (`app/page.tsx`) :**
   - Modification des 4 boutons "En savoir plus" dans la section Services pour rediriger vers `/contact`.
+- **Page Contact (`app/contact/page.tsx`) :**
+  - Remplacement de l'adresse email de contact direct par `info@dunamis-web-agency.com`.
 - **Page Réalisations (`app/work/page.tsx`) :**
   - Remplacement de Nova Studio (id 06) par Babi Crunch & Dabali.
   - Remplacement de Solis Energy (id 08) par DjiniPay.
@@ -30,7 +34,8 @@
 | Fichier | Statut | Description de la modification |
 | :--- | :--- | :--- |
 | `components/layout/Navbar.tsx` | Modifié | Mise à jour des imports des logos (`logoWhite` et `logoBlack`). |
-| `components/layout/Footer.tsx` | Modifié | Masquage de "Ressources", réajustement de grille (5 cols) et redirection des Services vers `/contact`. |
+| `components/layout/Footer.tsx` | Modifié | Remplacement de l'adresse email par `info@dunamis-web-agency.com`, masquage de "Ressources" et redirection des Services vers `/contact`. |
+| `app/contact/page.tsx` | Modifié | Remplacement de l'email direct par `info@dunamis-web-agency.com`. |
 | `app/page.tsx` | Modifié | Redirection des 4 boutons "En savoir plus" (Services) vers `/contact`. |
 | `app/work/page.tsx` | Modifié | Remplacement de Nova Studio/Solis Energy, mise à jour de l'image Vesper (`/vesper_images/accueil.png`). |
 | `public/vesper_images/*` | Créé | Dossier contenant les 4 captures d'écran HD VESPER (`accueil.png`, `experiences.png`, `messagerie.png`, `pass.png`). |
@@ -43,11 +48,11 @@
 
 ## 4. Bilan des Tests et Validation du Build
 - **Validation du build Next.js :** Compilation exécutée avec succès (`next build`).
-- **Démo Vesper Concierge :** Test du simulateur iPhone multi-écrans, du commutateur d'onglets et de l'agrandissement lightbox HD "Voir plus".
+- **Changement d'email :** Confirmation de l'affichage de `info@dunamis-web-agency.com` et des liens `mailto:` fonctionnels.
 
 ## 5. Recommandations Git
 ```bash
-git add components/layout/Navbar.tsx components/layout/Footer.tsx app/page.tsx app/work/page.tsx public/djinipay.html public/babi-crunch-dabali.html public/aether.html public/nexus.html public/orbit.html public/kroma.html public/chronos.html public/vesper.html public/vesper_images/ public/vesper_screens/ app/work/aether/page.tsx app/work/nexus/page.tsx app/work/orbit/page.tsx app/work/kroma/page.tsx app/work/chronos/page.tsx app/work/vesper/page.tsx artefacts_sessions/sauvegarde_session_2026_09_05.md
-git commit -m "feat(vesper): intégration de la vitrine interactive VESPER avec simulateur mobile et mode voir plus HD"
+git add components/layout/Navbar.tsx components/layout/Footer.tsx app/page.tsx app/contact/page.tsx app/work/page.tsx public/djinipay.html public/babi-crunch-dabali.html public/aether.html public/nexus.html public/orbit.html public/kroma.html public/chronos.html public/vesper.html public/vesper_images/ public/vesper_screens/ app/work/aether/page.tsx app/work/nexus/page.tsx app/work/orbit/page.tsx app/work/kroma/page.tsx app/work/chronos/page.tsx app/work/vesper/page.tsx artefacts_sessions/sauvegarde_session_2026_09_05.md
+git commit -m "style(email): mise à jour globale de l'adresse email de contact vers info@dunamis-web-agency.com"
 git push origin main
 ```

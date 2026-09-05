@@ -58,7 +58,7 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-6 text-sm">Contact</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
-              <li><a href="mailto:dunamis@Dunamis.com" className="hover:text-background transition-colors">dunamis@Dunamis.com</a></li>
+              <li><a href="mailto:info@dunamis-web-agency.com" className="hover:text-background transition-colors">info@dunamis-web-agency.com</a></li>
               <li><a href="tel:+2250171483627" className="hover:text-background transition-colors">+225 0584583936</a></li>
             </ul>
           </div>

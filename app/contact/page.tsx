@@ -95,11 +95,11 @@ export default function ContactPage() {
                       Email direct
                     </span>
                     <a
-                      href="mailto:dunamis@Dunamis.com"
+                      href="mailto:info@dunamis-web-agency.com"
                       className="text-lg md:text-xl font-medium text-foreground hover:opacity-75 transition-opacity inline-flex items-center gap-2"
                     >
                       <Mail className="w-4 h-4 text-muted-foreground" />
-                      dunamis@Dunamis.com
+                      info@dunamis-web-agency.com
                     </a>
                   </div>
 
