@@ -158,7 +158,7 @@ export default function Home() {
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Sites d&apos;entreprise, landing pages de performance, e-commerce évolutif et applications web sur mesure conçues pour la vitesse et la fiabilité.
                 </p>
-                <Link href="/services/web" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
                   En savoir plus <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -173,7 +173,7 @@ export default function Home() {
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Applications métiers natives et multiplateformes conçues pour les utilisateurs modernes. Nous transformons des flux de travail complexes en expériences mobiles intuitives.
                 </p>
-                <Link href="/services/mobile" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
                   En savoir plus <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -188,7 +188,7 @@ export default function Home() {
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Communication visuelle professionnelle pour vos campagnes et votre entreprise. Des créations percutantes pour les réseaux sociaux aux identités visuelles complètes.
                 </p>
-                <Link href="/services/design" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
                   En savoir plus <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -203,7 +203,7 @@ export default function Home() {
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Stratégie, audits UX, transformation numérique et accompagnement technique pour garantir que vos investissements sont alignés avec vos objectifs commerciaux.
                 </p>
-                <Link href="/services/consulting" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium mt-auto group-hover:text-muted-foreground transition-colors">
                   En savoir plus <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

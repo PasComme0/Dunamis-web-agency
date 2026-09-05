@@ -1,11 +1,9 @@
-'use client';
-
 import Link from 'next/link';
 
 /**
  * Page 404 Not Found pour l'application Next.js.
  * 
- * @returns Composant 404
+ * @returns Composant 404 (Server Component)
  */
 export default function NotFound() {
   return (

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-[#E5E9F0]" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orbit Logistics (2024) - Optimisation de fret et chaîne logistique en temps réel</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#FFF1F3',
+              100: '#FFE4E8',
+              400: '#FF7590',
+              500: '#FF5E7E',
+              600: '#E64667',
+              700: '#CC3252'
+            },
+            canvas: '#F2F5FA',
+            sidebar: '#FFFFFF',
+            cardBg: '#FFFFFF',
+            statusGreen: '#10B981',
+            statusOrange: '#F59E0B',
+            textMain: '#1E293B',
+            textMuted: '#64748B'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+          },
+          boxShadow: {
+            subtle: '0 2px 10px rgba(0, 0, 0, 0.03)',
+            cardHover: '0 10px 25px -5px rgba(0, 0, 0, 0.05)',
+            glowCoral: '0 4px 14px 0 rgba(255, 94, 126, 0.35)'
+          }
+        }
+      }
+    };
+  </script>
+<!-- Custom Styles for Scrollbars and Canvas Simulation -->
+<style data-purpose="custom-scrollbars">
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+<style data-purpose="map-visuals">
+    .map-grid-pattern {
+      background-color: #f1f5f9;
+      background-image: 
+        linear-gradient(to right, rgba(203, 213, 225, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(203, 213, 225, 0.5) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+
+<!-- BEGIN: Floating Return Button -->
+<a href="javascript:void(0)" onclick="if (document.referrer &amp;&amp; document.referrer.indexOf(window.location.host) !== -1) { window.history.back(); } else { window.location.href='/work'; }" aria-label="Retourner au site" class="fixed top-4 left-4 sm:left-8 z-[60] bg-[#FF5370] text-white px-4 py-2 rounded-full font-bold text-xs hover:bg-[#E0435E] transition-all duration-300 shadow-lg flex items-center gap-2 group">
+  <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  <span>Retour au site</span>
+</a>
+<!-- END: Floating Return Button -->
+<body class="h-full font-sans text-slate-800 antialiased p-3 lg:p-5 flex flex-col justify-center items-center">
+<!-- BEGIN: ApplicationOuterFrame -->
+<main class="w-full max-w-[1600px] h-[92vh] min-h-[820px] bg-white rounded-[28px] shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col">
+<!-- BEGIN: TopGlobalSystemBar -->
+<!-- Bandeau technique affichant la stack : Next.js, Mapbox, Redis, Docker, GraphQL -->
+<header class="h-10 bg-slate-900 text-slate-300 px-6 flex items-center justify-between text-xs font-medium border-b border-slate-800 shrink-0">
+<div class="flex items-center space-x-3">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="font-semibold tracking-wide text-white">Orbit Logistics © 2024</span>
+<span class="text-slate-500">|</span>
+<span class="hidden md:inline text-slate-400">Plateforme logistique automatisée connectant 1 500+ transporteurs avec traçabilité GPS et calcul d'itinéraires par IA</span>
+</div>
+<div class="flex items-center space-x-4">
+<div class="flex items-center space-x-2 text-[11px]">
+<span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-slate-300">Next.js v14</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-emerald-400">Mapbox GL v3.1</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-cyan-400 hidden sm:inline">Redis (12ms)</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-indigo-400 hidden lg:inline">Docker Swarm</span>
+<span class="px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono hidden xl:inline">GraphQL API v2</span>
+</div>
+</div>
+</header>
+<!-- END: TopGlobalSystemBar -->
+<!-- BEGIN: MainDashboardLayout -->
+<div class="flex-1 flex overflow-hidden bg-canvas">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-64 bg-white flex flex-col border-r border-slate-200/80 shrink-0 select-none">
+<!-- User Profile Card -->
+<div class="p-5 border-b border-slate-100 flex items-center space-x-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-slate-200 ring-2 ring-brand-500/40 overflow-hidden flex items-center justify-center font-bold text-slate-600">
+<svg class="w-6 h-6 text-slate-500" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+</div>
+<div class="truncate">
+<h2 class="text-sm font-bold text-slate-900 leading-snug truncate">George Davidson</h2>
+<p class="text-[11px] text-slate-400 truncate">george.davidson@orbit.com</p>
+</div>
+</div>
+<!-- Sidebar Navigation Menu -->
+<nav class="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto text-xs font-semibold">
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+</svg>
+            Tableau de bord
+          </a>
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+            Partenaires
+          </a>
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center">
+<svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+</svg>
+              Chats &amp; Messagerie
+            </div>
+<span class="bg-brand-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">2</span>
+</a>
+<!-- Active Menu Item -->
+<a class="flex items-center px-3.5 py-2.5 rounded-xl bg-brand-500 text-white font-bold shadow-glowCoral transition-all" href="#">
+<svg class="w-4 h-4 mr-3 text-white" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+            Suivi en direct
+          </a>
+<!-- Accordion / Submenu Section -->
+<div class="pt-2">
+<div class="flex items-center justify-between px-3.5 py-2 text-slate-700 font-bold">
+<span class="flex items-center">
+<svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+<path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+</svg>
+                Demandes
+              </span>
+<svg class="w-3.5 h-3.5 text-slate-400 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</div>
+<div class="ml-7 pl-3 border-l-2 border-slate-100 space-y-1 mt-1 text-[11px]">
+<a class="flex items-center py-1.5 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300 mr-2"></span>
+                Camions
+              </a>
+<a class="flex items-center justify-between py-1.5 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-500 mr-2"></span>
+                  Cargaisons
+                </span>
+<span class="text-[9px] bg-slate-100 text-slate-600 px-1 rounded">3</span>
+</a>
+<a class="flex items-center py-1.5 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300 mr-2"></span>
+                Entretien
+              </a>
+<a class="flex items-center py-1.5 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300 mr-2"></span>
+                Chauffeurs
+              </a>
+<a class="flex items-center justify-between py-1.5 text-slate-500 hover:text-slate-900 transition-colors" href="#">
+<span class="flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300 mr-2"></span>
+                  Rapports
+                </span>
+<span class="text-[9px] bg-slate-100 text-slate-600 px-1 rounded">2</span>
+</a>
+</div>
+</div>
+<div class="pt-2">
+<a class="flex items-center justify-between px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<span class="flex items-center">
+<svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<line x1="18" x2="18" y1="20" y2="10"></line>
+<line x1="12" x2="12" y1="20" y2="4"></line>
+<line x1="6" x2="6" y1="20" y2="14"></line>
+</svg>
+                Analyses IA
+              </span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</a>
+</div>
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+            Historique
+          </a>
+</nav>
+<!-- Bottom Action CTA Button -->
+<div class="p-4 border-t border-slate-100">
+<button class="w-full py-3 px-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-glowCoral transition-all flex items-center justify-center space-x-2 text-xs">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span>Créer une nouvelle demande</span>
+</button>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MiddleVehicleListPanel -->
+<section class="w-80 xl:w-96 bg-canvas border-r border-slate-200 flex flex-col shrink-0">
+<!-- Search and Title Header -->
+<div class="p-4 pb-2 bg-canvas">
+<div class="flex items-center justify-between mb-3">
+<h1 class="text-xl font-extrabold text-slate-900 tracking-tight">Suivi de la flotte</h1>
+<button aria-label="Recherche" class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 shadow-sm transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+</svg>
+</button>
+</div>
+<!-- Filter by Partners -->
+<div class="mb-3">
+<div class="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-2">Filtrer par partenaires</div>
+<div class="flex flex-wrap gap-1.5 max-h-20 overflow-y-auto pr-1">
+<button class="px-2.5 py-1 rounded-full text-[10px] font-semibold border border-brand-400 bg-brand-50 text-brand-600 flex items-center space-x-1 shadow-sm">
+<span>ShipHike</span>
+<span class="w-3.5 h-3.5 rounded-full bg-brand-500 text-white flex items-center justify-center text-[8px]">09</span>
+</button>
+<button class="px-2 py-1 rounded-full text-[10px] font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex items-center space-x-1">
+<span>Roambee</span>
+<span class="w-3.5 h-3.5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[8px]">12</span>
+</button>
+<button class="px-2 py-1 rounded-full text-[10px] font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex items-center space-x-1">
+<span>Post Hawk</span>
+<span class="w-3.5 h-3.5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[8px]">22</span>
+</button>
+<button class="px-2 py-1 rounded-full text-[10px] font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex items-center space-x-1">
+<span>Loginext</span>
+<span class="w-3.5 h-3.5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[8px]">03</span>
+</button>
+<button class="px-2 py-1 rounded-full text-[10px] font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 flex items-center space-x-1">
+<span>Forwardo</span>
+<span class="w-3.5 h-3.5 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[8px]">08</span>
+</button>
+</div>
+</div>
+<!-- Status Filters -->
+<div>
+<div class="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1.5">Afficher l'état</div>
+<div class="flex items-center space-x-2">
+<button class="px-3 py-1 bg-brand-500 text-white font-bold rounded-full text-[11px] shadow-sm flex items-center space-x-1.5">
+<span>Actif</span>
+<span class="bg-white/20 px-1.5 py-0.2 rounded-full text-[9px]">45</span>
+</button>
+<button class="px-3 py-1 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-medium rounded-full text-[11px] flex items-center space-x-1.5">
+<span>Inactif</span>
+<span class="bg-slate-100 text-slate-500 px-1.5 py-0.2 rounded-full text-[9px]">28</span>
+</button>
+<button class="px-3 py-1 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-medium rounded-full text-[11px] flex items-center space-x-1.5">
+<span>Tous</span>
+<span class="bg-slate-100 text-slate-500 px-1.5 py-0.2 rounded-full text-[9px]">73</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Vehicle Cards Scrollable Container -->
+<div class="flex-1 overflow-y-auto px-4 py-2 space-y-3">
+<!-- Card 1 (Inactive selection) -->
+<div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-subtle hover:shadow-cardHover transition cursor-pointer">
+<div class="flex items-center justify-between text-xs mb-2">
+<span class="font-bold text-slate-800 tracking-wide">RE-74ER453TR5</span>
+<span class="inline-flex items-center text-[10px] font-bold text-emerald-600">
+<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5 animate-pulse"></span>
+                En Route
+              </span>
+</div>
+<div class="flex items-center justify-between text-slate-500 text-[11px] mb-3">
+<div>
+<span class="font-mono font-semibold text-slate-700">02:47:24</span>
+<p class="text-[10px] text-slate-400">56 min restantes</p>
+</div>
+<!-- Timeline stops -->
+<div class="flex flex-col text-[9px] text-slate-500 text-right">
+<span>• 210 Emerson</span>
+<span>• 127 Greenwood</span>
+<span>• 711 Gateway</span>
+</div>
+</div>
+<!-- Truck SVG Illustration -->
+<div class="h-16 bg-slate-50 rounded-xl flex items-center justify-center p-1 border border-slate-100">
+<svg class="h-12 w-auto text-slate-400" fill="none" viewbox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#CBD5E1" height="35" rx="3" width="95" x="5" y="10"></rect>
+<path d="M102 20H135L145 35V45H102V20Z" fill="#94A3B8"></path>
+<rect fill="#E2E8F0" height="12" rx="2" width="18" x="108" y="24"></rect>
+<circle cx="30" cy="46" fill="#334155" r="8" stroke="#E2E8F0" stroke-width="3"></circle>
+<circle cx="75" cy="46" fill="#334155" r="8" stroke="#E2E8F0" stroke-width="3"></circle>
+<circle cx="125" cy="46" fill="#334155" r="8" stroke="#E2E8F0" stroke-width="3"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 2 (ACTIVE SELECTED VEHICLE) -->
+<div class="bg-white rounded-2xl p-3.5 border-2 border-brand-500 shadow-md transition cursor-pointer relative ring-2 ring-brand-100">
+<div class="flex items-center justify-between text-xs mb-2">
+<span class="font-bold text-slate-900 tracking-wide">YR-34DFR734W2</span>
+<span class="inline-flex items-center text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5 animate-ping"></span>
+                En Route
+              </span>
+</div>
+<div class="flex items-center justify-between text-slate-500 text-[11px] mb-3">
+<div>
+<span class="font-mono font-bold text-brand-600 text-xs">01:38:47</span>
+<p class="text-[10px] text-slate-400">57 min restant</p>
+</div>
+<div class="flex flex-col text-[9px] text-slate-500 text-right">
+<span class="text-brand-600 font-medium">• 112 Miles City</span>
+<span>• 654 Sheffield</span>
+<span>• 357 Hathaway</span>
+</div>
+</div>
+<!-- Heavy Truck Graphic -->
+<div class="h-20 bg-rose-50/50 rounded-xl flex items-center justify-center p-2 border border-brand-100">
+<svg class="h-16 w-full text-slate-400" fill="none" viewbox="0 0 240 70" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#E2E8F0" height="42" rx="3" stroke="#CBD5E1" stroke-width="2" width="145" x="5" y="10"></rect>
+<rect fill="#FF5E7E" fill-opacity="0.85" height="32" rx="2" width="125" x="15" y="15"></rect>
+<text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="900" text-anchor="middle" x="77" y="36">82%</text>
+<path d="M152 24H195L215 42V54H152V24Z" fill="#CBD5E1"></path>
+<rect fill="#FFFFFF" height="15" rx="2" width="28" x="165" y="28"></rect>
+<circle cx="35" cy="54" fill="#1E293B" r="8" stroke="#94A3B8" stroke-width="2"></circle>
+<circle cx="58" cy="54" fill="#1E293B" r="8" stroke="#94A3B8" stroke-width="2"></circle>
+<circle cx="81" cy="54" fill="#1E293B" r="8" stroke="#94A3B8" stroke-width="2"></circle>
+<circle cx="175" cy="54" fill="#1E293B" r="8" stroke="#94A3B8" stroke-width="2"></circle>
+<circle cx="198" cy="54" fill="#1E293B" r="8" stroke="#94A3B8" stroke-width="2"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 3 (Delivery Van) -->
+<div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-subtle hover:shadow-cardHover transition cursor-pointer">
+<div class="flex items-center justify-between text-xs mb-2">
+<span class="font-bold text-slate-800 tracking-wide">DW-847DE74E4R</span>
+<span class="inline-flex items-center text-[10px] font-bold text-emerald-600">
+<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5"></span>
+                En Route
+              </span>
+</div>
+<div class="flex items-center justify-between text-slate-500 text-[11px] mb-2">
+<div>
+<span class="font-mono font-semibold text-slate-700">01:38:47</span>
+<p class="text-[10px] text-slate-400">78 min restant</p>
+</div>
+<div class="flex flex-col text-[9px] text-slate-500 text-right">
+<span>• 215 Clermont</span>
+<span>• 412 Grand</span>
+</div>
+</div>
+<!-- Van Graphic -->
+<div class="h-16 bg-slate-50 rounded-xl flex items-center justify-center p-1 border border-slate-100">
+<svg class="h-12 w-auto" fill="none" viewbox="0 0 160 60">
+<path d="M10 20C10 16.6863 12.6863 14 16 14H100L135 24V46H10V20Z" fill="#CBD5E1"></path>
+<rect fill="#F8FAFC" height="14" rx="2" width="25" x="95" y="20"></rect>
+<circle cx="35" cy="46" fill="#334155" r="8" stroke="#E2E8F0" stroke-width="3"></circle>
+<circle cx="115" cy="46" fill="#334155" r="8" stroke="#E2E8F0" stroke-width="3"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 4 (Waiting / Standby) -->
+<div class="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-subtle hover:shadow-cardHover transition cursor-pointer opacity-90">
+<div class="flex items-center justify-between text-xs mb-2">
+<span class="font-bold text-slate-800 tracking-wide">AQ-2570RE141E</span>
+<span class="inline-flex items-center text-[10px] font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-1.5"></span>
+                En Attente
+              </span>
+</div>
+<div class="flex items-center justify-between text-slate-500 text-[11px] mb-2">
+<div>
+<span class="font-mono font-semibold text-slate-700">03:29:56</span>
+<p class="text-[10px] text-slate-400">29 min restant</p>
+</div>
+<div class="flex flex-col text-[9px] text-slate-500 text-right">
+<span>• 123 Kinsey</span>
+<span>• 908 Sylvan</span>
+</div>
+</div>
+<!-- Small Utility Van Graphic -->
+<div class="h-16 bg-slate-50 rounded-xl flex items-center justify-center p-1 border border-slate-100">
+<svg class="h-11 w-auto" fill="none" viewbox="0 0 150 55">
+<path d="M15 18C15 15 17 13 20 13H90L125 22V43H15V18Z" fill="#CBD5E1"></path>
+<rect fill="#F8FAFC" height="12" rx="2" width="22" x="85" y="18"></rect>
+<circle cx="35" cy="43" fill="#334155" r="7" stroke="#E2E8F0" stroke-width="2.5"></circle>
+<circle cx="108" cy="43" fill="#334155" r="7" stroke="#E2E8F0" stroke-width="2.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: MiddleVehicleListPanel -->
+<!-- BEGIN: RightDetailsTelemetryPanel -->
+<section class="flex-1 flex flex-col overflow-y-auto bg-white">
+<!-- Header: Vehicle Code & Driver Actions -->
+<div class="p-6 pb-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center space-x-3">
+<h2 class="text-2xl font-black text-slate-900 tracking-tight">YR-34DFR734W2</h2>
+<span class="inline-flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+<span class="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
+              En Route
+            </span>
+</div>
+<div class="flex items-center space-x-3">
+<button class="px-4 py-2 rounded-xl border border-brand-200 text-brand-600 hover:bg-brand-50 text-xs font-bold transition flex items-center space-x-2">
+<svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+</svg>
+<span>Appeler chauffeur</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold shadow-glowCoral transition flex items-center space-x-2">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+</svg>
+<span>Chat avec chauffeur</span>
+</button>
+</div>
+</div>
+<!-- Navigation Tabs for Trip Details -->
+<div class="px-6 border-b border-slate-100 flex space-x-8 text-xs font-semibold text-slate-500">
+<button class="py-3 text-brand-600 border-b-2 border-brand-500 font-bold">Informations expédition</button>
+<button class="py-3 hover:text-slate-800 transition">Infos véhicule</button>
+<button class="py-3 hover:text-slate-800 transition">Documents</button>
+<button class="py-3 hover:text-slate-800 transition">Entreprise</button>
+<button class="py-3 hover:text-slate-800 transition">Facturation</button>
+</div>
+<!-- Main Body Content: Capacity + Map + Cargo Photos -->
+<div class="p-6 space-y-6 flex-1">
+<!-- Section: Current Truck Capacity -->
+<section>
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-sm font-bold text-slate-800 tracking-tight">Capacité actuelle du camion</h3>
+<span class="text-xs text-slate-500">Volume total : <strong class="text-slate-700 font-semibold">90 m³</strong> / Charge utile : <strong class="text-slate-700 font-semibold">24.5 T</strong></span>
+</div>
+<!-- Visual Capacity Truck Display -->
+<div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 flex items-center justify-center">
+<div class="w-full max-w-2xl">
+<svg class="w-full h-auto drop-shadow-sm" fill="none" viewbox="0 0 540 120" xmlns="http://www.w3.org/2000/svg">
+<!-- Trailer Outline -->
+<rect fill="#FFFFFF" height="70" rx="6" stroke="#CBD5E1" stroke-width="2.5" width="340" x="10" y="15"></rect>
+<!-- Empty Volume Background -->
+<rect fill="#F1F5F9" height="56" rx="4" width="320" x="20" y="22"></rect>
+<!-- 82% Capacity Fill (Coral Gradient) -->
+<rect fill="url(#coralGradient)" height="56" rx="4" width="270" x="70" y="22"></rect>
+<defs>
+<lineargradient id="coralGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#FF7590"></stop>
+<stop offset="100%" stop-color="#FF5E7E"></stop>
+</lineargradient>
+</defs>
+<!-- 82% text tag inside capacity -->
+<text fill="#FFFFFF" font-family="sans-serif" font-size="24" font-weight="900" letter-spacing="1" text-anchor="middle" x="205" y="58">82%</text>
+<!-- Trailer Bottom chassis & Wheels -->
+<rect fill="#64748B" height="8" rx="2" width="310" x="25" y="85"></rect>
+<circle cx="65" cy="94" fill="#1E293B" r="14" stroke="#94A3B8" stroke-width="3"></circle>
+<circle cx="100" cy="94" fill="#1E293B" r="14" stroke="#94A3B8" stroke-width="3"></circle>
+<circle cx="135" cy="94" fill="#1E293B" r="14" stroke="#94A3B8" stroke-width="3"></circle>
+<!-- Truck Cabin -->
+<path d="M360 30H450L485 58V92H360V30Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2.5"></path>
+<rect fill="#E2E8F0" height="24" rx="3" stroke="#CBD5E1" width="55" x="385" y="38"></rect>
+<rect fill="#64748B" height="8" rx="2" width="125" x="360" y="85"></rect>
+<!-- Cabin Wheels -->
+<circle cx="395" cy="94" fill="#1E293B" r="14" stroke="#94A3B8" stroke-width="3"></circle>
+<circle cx="455" cy="94" fill="#1E293B" r="14" stroke="#94A3B8" stroke-width="3"></circle>
+<!-- Coupling element -->
+<rect fill="#475569" height="10" rx="2" width="20" x="345" y="65"></rect>
+</svg>
+</div>
+</div>
+</section>
+<!-- Section: Route Map with Mapbox Style -->
+<section>
+<div class="flex items-center justify-between mb-3">
+<div>
+<h3 class="text-sm font-bold text-slate-800 tracking-tight">Itinéraire &amp; GPS Mapbox GL</h3>
+<p class="text-xs text-slate-400">Suivi en direct du tracé via balises IoT &amp; recalcul dynamique</p>
+</div>
+<div class="flex items-center space-x-3">
+<span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg">01:38:47</span>
+<span class="text-xs text-slate-500 font-medium">57 min restantes</span>
+<button class="px-3 py-1 bg-white border border-brand-300 text-brand-600 hover:bg-brand-50 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 shadow-sm">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+</svg>
+<span>Modifier l'itinéraire</span>
+</button>
+</div>
+</div>
+<!-- Simulated Mapbox Interactive Container -->
+<div class="relative h-64 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm map-grid-pattern flex items-center justify-center">
+<!-- Street Network SVG Vector Layer -->
+<svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<!-- Roads network -->
+<path d="M-20 40 Q 120 70 280 40 T 600 80" fill="none" stroke="#E2E8F0" stroke-width="12"></path>
+<path d="M-20 40 Q 120 70 280 40 T 600 80" fill="none" stroke="#FFFFFF" stroke-width="8"></path>
+<path d="M180 -10 L 160 280" fill="none" stroke="#E2E8F0" stroke-width="10"></path>
+<path d="M180 -10 L 160 280" fill="none" stroke="#FFFFFF" stroke-width="6"></path>
+<path d="M380 -20 Q 360 140 460 280" fill="none" stroke="#E2E8F0" stroke-width="10"></path>
+<path d="M380 -20 Q 360 140 460 280" fill="none" stroke="#FFFFFF" stroke-width="6"></path>
+<path d="M50 240 Q 240 180 520 220" fill="none" stroke="#E2E8F0" stroke-width="8"></path>
+<path d="M50 240 Q 240 180 520 220" fill="none" stroke="#FFFFFF" stroke-width="5"></path>
+<!-- Active Coral Delivery Path -->
+<path d="M 80 210 Q 160 190 220 140 T 320 110 T 440 70" fill="none" stroke="#FF5E7E" stroke-dasharray="8 4" stroke-width="4.5"></path>
+<!-- Completed Delivery Segment Solid Line -->
+<path d="M 80 210 Q 160 190 220 140" fill="none" stroke="#FF5E7E" stroke-width="4.5"></path>
+<!-- Route Waypoints (Dots) -->
+<circle cx="80" cy="210" fill="#FFFFFF" r="7" stroke="#FF5E7E" stroke-width="3.5"></circle>
+<circle cx="220" cy="140" fill="#FFFFFF" r="7" stroke="#FF5E7E" stroke-width="3.5"></circle>
+<circle cx="320" cy="110" fill="#FFFFFF" r="6" stroke="#94A3B8" stroke-width="3"></circle>
+<circle cx="440" cy="70" fill="#FFFFFF" r="7" stroke="#10B981" stroke-width="3.5"></circle>
+</svg>
+<!-- Mapbox Truck Current Position Marker -->
+<div class="absolute top-[125px] left-[208px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
+<div class="relative flex items-center justify-center">
+<span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-brand-400 opacity-60"></span>
+<div class="w-9 h-9 rounded-full bg-brand-500 shadow-xl border-2 border-white flex items-center justify-center text-white">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="13" width="15" x="1" y="3"></rect>
+<polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+<circle cx="5.5" cy="18.5" r="2.5"></circle>
+<circle cx="18.5" cy="18.5" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<span class="mt-1 bg-slate-900/90 text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow">YR-34DFR (48 km/h)</span>
+</div>
+<!-- Map Controls (Top-Right / Bottom-Right) -->
+<div class="absolute right-4 top-4 flex flex-col space-y-1.5">
+<button aria-label="Agrandir la carte" class="w-8 h-8 bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center text-slate-600 hover:text-brand-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 3h6v6"></path>
+<path d="M9 21H3v-6"></path>
+<path d="M21 3l-7 7"></path>
+<path d="M3 21l7-7"></path>
+</svg>
+</button>
+<button aria-label="Calques cartographiques" class="w-8 h-8 bg-white rounded-lg shadow-md border border-slate-200 flex items-center justify-center text-slate-600 hover:text-brand-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+<polyline points="2 17 12 22 22 17"></polyline>
+<polyline points="2 12 12 17 22 12"></polyline>
+</svg>
+</button>
+</div>
+<div class="absolute right-4 bottom-4 flex flex-col space-y-1 bg-white rounded-lg shadow-md border border-slate-200 p-1">
+<button aria-label="Zoom avant" class="w-6 h-6 flex items-center justify-center text-slate-600 font-bold hover:bg-slate-100 rounded">+</button>
+<div class="w-full h-px bg-slate-200"></div>
+<button aria-label="Zoom arrière" class="w-6 h-6 flex items-center justify-center text-slate-600 font-bold hover:bg-slate-100 rounded">-</button>
+</div>
+<div class="absolute left-4 bottom-3 bg-white/95 backdrop-blur-sm border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm text-[10px] text-slate-600 flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-brand-500"></span>
+<span>Prochaine étape : <strong>Point #2 (Sheffield)</strong> à 18.4 km</span>
+</div>
+</div>
+</section>
+<!-- Section: Cargo Photo Reports -->
+<section class="pt-1">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-sm font-bold text-slate-800 tracking-tight">Rapports photo de la cargaison</h3>
+<span class="text-xs text-slate-400">3 étapes certifiées par scellé numérique</span>
+</div>
+<!-- Photos Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+<!-- Photo 1 -->
+<div class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex flex-col">
+<div class="h-24 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+<!-- Warehouse Cargo Imagery Simulation -->
+<svg class="w-full h-full object-cover opacity-80" fill="none" viewbox="0 0 140 90">
+<rect fill="#475569" height="90" width="140"></rect>
+<rect fill="#D97706" height="40" width="30" x="15" y="30"></rect>
+<rect fill="#B45309" height="50" width="35" x="50" y="20"></rect>
+<rect fill="#92400E" height="35" width="35" x="90" y="35"></rect>
+<line stroke="#334155" stroke-width="2" x1="0" x2="140" y1="70" y2="70"></line>
+</svg>
+<span class="absolute top-2 right-2 bg-emerald-500 text-white p-0.5 rounded-full">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</span>
+</div>
+<div class="p-2 bg-white">
+<p class="text-[10px] font-bold text-slate-800 truncate">• Point #1 Cargo Photo</p>
+<p class="text-[9px] text-slate-400">112 Miles City • 01:35 PM</p>
+</div>
+</div>
+<!-- Photo 2 -->
+<div class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex flex-col">
+<div class="h-24 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+<!-- Stacking Pallets Simulation -->
+<svg class="w-full h-full object-cover opacity-80" fill="none" viewbox="0 0 140 90">
+<rect fill="#334155" height="90" width="140"></rect>
+<rect fill="#CA8A04" height="30" width="40" x="10" y="40"></rect>
+<rect fill="#EAB308" height="18" width="40" x="10" y="20"></rect>
+<rect fill="#A16207" height="45" width="55" x="60" y="25"></rect>
+<line stroke="#1E293B" stroke-width="2" x1="0" x2="140" y1="70" y2="70"></line>
+</svg>
+<span class="absolute top-2 right-2 bg-emerald-500 text-white p-0.5 rounded-full">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</span>
+</div>
+<div class="p-2 bg-white">
+<p class="text-[10px] font-bold text-slate-800 truncate">• Point #2 Cargo Photo</p>
+<p class="text-[9px] text-slate-400">654 Sheffield • 02:15 PM</p>
+</div>
+</div>
+<!-- Photo 3 -->
+<div class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex flex-col">
+<div class="h-24 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+<!-- Boxes Delivery Simulation -->
+<svg class="w-full h-full object-cover opacity-80" fill="none" viewbox="0 0 140 90">
+<rect fill="#1E293B" height="90" width="140"></rect>
+<rect fill="#B45309" height="40" width="30" x="25" y="30"></rect>
+<rect fill="#D97706" height="40" width="30" x="60" y="30"></rect>
+<rect fill="#F59E0B" height="30" width="25" x="95" y="40"></rect>
+<line stroke="#0F172A" stroke-width="2" x1="0" x2="140" y1="70" y2="70"></line>
+</svg>
+<span class="absolute top-2 right-2 bg-brand-500 text-white p-0.5 rounded-full">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>
+</span>
+</div>
+<div class="p-2 bg-white">
+<p class="text-[10px] font-bold text-slate-800 truncate">• Point #3 Cargo Photo</p>
+<p class="text-[9px] text-slate-400">357 Hathaway • 02:40 PM</p>
+</div>
+</div>
+<!-- Add Photo Upload Button -->
+<button class="h-auto min-h-[110px] rounded-xl border-2 border-dashed border-brand-300 hover:border-brand-500 bg-brand-50/30 hover:bg-brand-50 flex flex-col items-center justify-center p-3 text-center transition group">
+<div class="w-9 h-9 rounded-full bg-brand-100 group-hover:bg-brand-500 text-brand-600 group-hover:text-white flex items-center justify-center mb-1.5 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+<circle cx="12" cy="13" r="4"></circle>
+</svg>
+</div>
+<span class="text-xs font-bold text-brand-600">Ajouter Photo</span>
+<span class="text-[9px] text-slate-400 mt-0.5">JPG, PNG (max 10MB)</span>
+</button>
+</div>
+</section>
+</div>
+</section>
+<!-- END: RightDetailsTelemetryPanel -->
+</div>
+<!-- END: MainDashboardLayout -->
+</main>
+<!-- END: ApplicationOuterFrame -->
+</body></html>

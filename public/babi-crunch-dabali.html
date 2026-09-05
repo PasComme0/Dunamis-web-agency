@@ -70,12 +70,20 @@
 <header class="sticky top-0 z-50 bg-brand-maroon/90 backdrop-blur-md border-b border-brand-maroonBorder/40 transition-all duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 <!-- Left Navigation Links -->
-<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-8 text-xs font-extrabold uppercase tracking-widest text-brand-cream/80">
+<div class="flex items-center space-x-4">
+<a href="javascript:void(0)" onclick="if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) { window.history.back(); } else { window.location.href='/work'; }" aria-label="Retourner au site" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-brand-maroonCard border border-brand-maroonBorder hover:border-brand-orange text-xs font-extrabold uppercase tracking-wider text-brand-cream hover:bg-brand-orange hover:text-white transition-all duration-200 shadow-md group">
+  <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  <span>Retour au site</span>
+</a>
+<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-6 text-xs font-extrabold uppercase tracking-widest text-brand-cream/80">
 <a class="hover:text-brand-orange transition-colors" href="#menu">Menu</a>
 <a class="hover:text-brand-orange transition-colors" href="#deals">Bons Plans</a>
 <a class="hover:text-brand-orange transition-colors" href="#reviews">Témoignages</a>
 <a class="hover:text-brand-orange transition-colors" href="#find-us">Nos Points de Vente</a>
 </nav>
+</div>
 <!-- Center Brand Logo -->
 <a aria-label="BABI CRUNCH &amp; DABALI Accueil" class="flex items-center gap-1 group focus:outline-none" href="#">
 <span class="font-headline font-black text-2xl tracking-tighter text-brand-cream group-hover:scale-105 transition-transform duration-200">

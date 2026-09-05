@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
-import logo from '@/images/DunamisDlogo.png';
+import logoWhite from '@/images/DunamisLogoV2 - Resized.png';
+import logoBlack from '@/images/DunamisLogoV1 - Resized.png';
 
 /**
  * Composant Navbar (Barre de navigation principale).
@@ -45,12 +46,12 @@ export default function Navbar() {
           {/* Bloc 1 : Logo de la marque */}
           <Link href="/" className="flex items-center gap-2 group">
             <Image
-              src={logo}
+              src={scrolled ? logoBlack : logoWhite}
               alt="Dunamis Logo"
               width={160}
               height={45}
               priority
-              className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-9 w-auto object-contain transition-all duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -99,7 +100,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-12">
               <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                 <Image
-                  src={logo}
+                  src={logoBlack}
                   alt="Dunamis Logo"
                   width={160}
                   height={45}

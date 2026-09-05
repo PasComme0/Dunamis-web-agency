@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "secondary-container": "#dee2ef",
+        "secondary": "#5a5e69",
+        "on-background": "#121c28",
+        "on-tertiary": "#ffffff",
+        "surface-container": "#f1f5fd",
+        "primary-fixed": "#ffdad4",
+        "on-tertiary-container": "#f5fff7",
+        "tertiary-fixed-dim": "#3fdfa5",
+        "primary-container": "#ea3323",
+        "on-tertiary-fixed": "#002114",
+        "inverse-surface": "#27313e",
+        "primary-fixed-dim": "#ffb4a8",
+        "on-error": "#ffffff",
+        "on-error-container": "#93000a",
+        "on-tertiary-fixed-variant": "#005138",
+        "inverse-primary": "#ffb4a8",
+        "secondary-fixed": "#dee2ef",
+        "surface-container-high": "#e8eef8",
+        "error-container": "#ffdad6",
+        "secondary-fixed-dim": "#c2c6d2",
+        "on-surface": "#121c28",
+        "on-secondary-container": "#60646f",
+        "on-primary-container": "#fffbff",
+        "background": "#f8f9ff",
+        "surface": "#f8f9ff",
+        "on-primary-fixed-variant": "#930000",
+        "on-secondary-fixed-variant": "#424751",
+        "surface-variant": "#e4ecf7",
+        "surface-container-highest": "#dce5f2",
+        "surface-container-low": "#f4f7fd",
+        "tertiary": "#006949",
+        "outline": "#8a92a0",
+        "surface-dim": "#d1dbec",
+        "surface-bright": "#f8f9ff",
+        "primary": "#ea3323",
+        "on-surface-variant": "#64748b",
+        "on-primary-fixed": "#410000",
+        "on-secondary": "#ffffff",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#00855e",
+        "outline-variant": "#e2e8f0",
+        "inverse-on-surface": "#eaf1ff",
+        "on-secondary-fixed": "#171c24",
+        "surface-container-lowest": "#ffffff",
+        "error": "#ba1a1a",
+        "surface-tint": "#ea3323",
+        "tertiary-fixed": "#63fcc0"
+      },
+      "borderRadius": {
+        "DEFAULT": "1rem",
+        "lg": "1.25rem",
+        "xl": "1.5rem",
+        "2xl": "1.75rem",
+        "3xl": "2.25rem",
+        "full": "9999px"
+      },
+      "fontFamily": {
+        "body-sm": ["Plus Jakarta Sans"],
+        "label-lg": ["Plus Jakarta Sans"],
+        "headline-lg": ["Plus Jakarta Sans"],
+        "label-sm": ["Plus Jakarta Sans"],
+        "label-md": ["Plus Jakarta Sans"],
+        "headline-sm": ["Plus Jakarta Sans"],
+        "body-md": ["Plus Jakarta Sans"],
+        "headline-md": ["Plus Jakarta Sans"],
+        "body-lg": ["Plus Jakarta Sans"]
+      }
+    }
+  }
+}</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head><body class="bg-background text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+  <a href="/vesper.html" style="position: fixed; top: 12px; left: 12px; z-index: 9999; background: rgba(18,28,40,0.85); color: #ffffff; padding: 6px 14px; border-radius: 9999px; text-decoration: none; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); backdrop-filter: blur(8px); display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.15);">
+    ← Retour aux écrans
+  </a>
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl border-b border-outline-variant/60"><div class="h-16 px-5 flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold"><img alt="Vesper Emblem" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS50tbhuFujouDPDQd7GAoYUK8O54S2uJAZiItMIXK_mToFMCu9muCfKY2m-oyRAHVRpeINb0mu4mLF0pMcvUEJtL4zewwkQT6m53ln5yWcvLcOmFmWL3Yb-HeZE-O_pmHX5t3_zBet5Xsd3GXnp2TDL7-QUUfXfX7inwOSyHZw3qDdlMJiAUbOo2DX1aYxLM_SNHCMPOSBxxzhYnS4IQCpNnuAplAAdGmqN-w9GF604bSgzhgmWU5"/></div><span class="font-bold text-lg text-on-surface tracking-tight">VESPER</span></div><div class="flex items-center gap-1.5 bg-primary/10 px-3 py-1 rounded-full"><span class="material-symbols-outlined text-primary text-sm leading-none">lock</span><span class="text-[11px] font-bold tracking-wider uppercase text-primary">CHIFFRÉ 4096</span></div><div class="flex items-center gap-2"><div class="text-right hidden xs:block"><span class="block text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider leading-none">Concierge</span><span class="text-xs font-bold text-on-surface leading-none">Pass VIP</span></div><div class="relative flex items-center justify-center"><img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_eVEQNHE4BxoaHv_j5WXl0Bdj4bP6mQCcHr6B5fynvh5iBGBZiMBCzD_hWempTiGteGl__jbz2VDlEXT1fDBfEkwLxoloXQOPAaVW_6oefZp1s9pGG5f4dRQmYbtq9IaC7MDg7kxUHKNptMIlSCJRIkDNJGwcFi3TxrC4uXOKkI4WoMH0PjANfL6m31F0ayUGqOY6tVGKhw7JuTJafcsQQhfEy97W2_HatQvW6-Cc1aOO4Bfv1Ky7"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 pb-28 bg-background"><div class="flex flex-col w-full px-5 pb-8 space-y-5 max-w-md mx-auto">
+<div class="flex flex-col space-y-1 mt-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold tracking-wider uppercase text-primary flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+        Sceau Souverain Actif
+      </span>
+<span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider bg-white px-2.5 py-0.5 rounded-full shadow-sm border border-outline-variant/60">Échelon Privilège</span>
+</div>
+<h2 class="text-2xl font-extrabold text-on-surface tracking-tight pt-1">Pass Sécurisé &amp; Itinéraire</h2>
+</div>
+<!-- Crimson Red Sovereign Pass Card (Inspired by reference Image 2) -->
+<div class="relative w-full rounded-3xl bg-gradient-to-br from-[#ea3323] via-[#e02b1d] to-[#c91d10] p-6 text-white shadow-[0_18px_38px_-10px_rgba(234,51,35,0.45)] overflow-hidden">
+<!-- Subtle ambient glow / decorative rings -->
+<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+<div class="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-black/15 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col space-y-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-sm">
+<span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-white/80">Membre Fondateur</p>
+<p class="text-xs font-extrabold text-white tracking-wider">VESPER BLACK SOVEREIGN</p>
+</div>
+</div>
+<div class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md flex items-center gap-1.5 border border-white/20">
+<span class="material-symbols-outlined text-xs text-white animate-spin" style="animation-duration: 6s;">lock_reset</span>
+<span class="text-[11px] font-bold text-white tracking-wider" id="pass-timer">Expire 04:58</span>
+</div>
+</div>
+<div class="pt-1">
+<p class="text-[10px] font-bold text-white/70 uppercase tracking-widest">Titulaire Accrédité</p>
+<p class="text-xl font-extrabold text-white tracking-tight mt-0.5">M. Alexandre de Saint-Germain</p>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="text-[11px] font-mono font-bold text-white/95 tracking-wider bg-white/15 px-2 py-0.5 rounded-md">ID: VSP-7749-LUX</span>
+<span class="w-1 h-1 rounded-full bg-white/40"></span>
+<span class="text-[10px] text-white/80 uppercase font-semibold tracking-wider">Bio-Authentifié</span>
+</div>
+</div>
+<!-- QR and token section inside card -->
+<div class="flex items-center justify-between pt-3 mt-1 bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/15">
+<div class="flex items-center gap-3">
+<div class="relative p-2 bg-white rounded-xl shadow-md flex items-center justify-center">
+<svg class="w-12 h-12 text-[#ea3323]" fill="currentColor" viewbox="0 0 100 100">
+<rect fill="currentColor" height="26" rx="2" width="26" x="5" y="5"></rect>
+<rect fill="#ffffff" height="18" rx="1" width="18" x="9" y="9"></rect>
+<rect fill="currentColor" height="10" width="10" x="13" y="13"></rect>
+<rect fill="currentColor" height="26" rx="2" width="26" x="69" y="5"></rect>
+<rect fill="#ffffff" height="18" rx="1" width="18" x="73" y="9"></rect>
+<rect fill="currentColor" height="10" width="10" x="77" y="13"></rect>
+<rect fill="currentColor" height="26" rx="2" width="26" x="5" y="69"></rect>
+<rect fill="#ffffff" height="18" rx="1" width="18" x="9" y="73"></rect>
+<rect fill="currentColor" height="10" width="10" x="13" y="77"></rect>
+<rect fill="currentColor" height="6" width="16" x="42" y="12"></rect>
+<rect fill="currentColor" height="14" width="8" x="42" y="24"></rect>
+<rect fill="currentColor" height="18" width="6" x="54" y="22"></rect>
+<rect fill="currentColor" height="6" width="14" x="15" y="44"></rect>
+<rect fill="currentColor" height="8" width="28" x="36" y="46"></rect>
+<rect fill="currentColor" height="12" width="12" x="72" y="42"></rect>
+<rect fill="currentColor" height="18" width="12" x="44" y="68"></rect>
+<rect fill="currentColor" height="6" width="18" x="64" y="70"></rect>
+<rect fill="currentColor" height="10" width="14" x="74" y="82"></rect>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase tracking-wider text-white">Jeton Tournant</span>
+<span class="text-xs text-white/85">Chiffrement AES-4096</span>
+<span class="text-[10px] text-white/70 font-mono mt-0.5 font-bold">9A82-FF3C-09D1</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center">
+<div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<span class="text-[9px] text-white/80 font-bold uppercase tracking-widest mt-1">Niveau 5</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking Details Section (Clean White Cards) -->
+<div class="flex flex-col space-y-3">
+<div class="flex items-center justify-between px-1">
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Séjour Confirmé</span>
+<span class="text-xs font-bold text-primary tracking-wider uppercase bg-primary/10 px-2.5 py-0.5 rounded-full">Réf. GST-8820</span>
+</div>
+<div class="rounded-3xl bg-white p-4 shadow-[0_4px_24px_rgba(18,28,40,0.06)] border border-outline-variant/60 flex flex-col space-y-4">
+<!-- Destination Hero Image Card -->
+<div class="relative w-full h-44 rounded-2xl overflow-hidden shadow-sm">
+<div class="bg-cover bg-center w-full h-full" data-alt="Chalet d'architecte ultra-luxueux niché dans la neige immaculée des Alpes suisses à Gstaad au crépuscule. Éclairages intérieurs chaleureux ambrés et dorés, baies vitrées panoramiques révélant un salon feutré, cimes enneigées en toile de fond sous un ciel bleu nuit et brume alpine mystérieuse." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUfm4SCGsj-1wbu1PcwILu0AAH1j-zWK9E_klGCW_NxeO9RSfx-wL6OSFPhzHcXtTiDJ9j0HiisvLWYK85vrm1Wh3-of3GocXCX491bdn0Kg2UzVkKMThtR_UHmaaV1AY73eZRUnloKpxpnpB3HANMRuJ0vIS2AuD3eE1LdHaekTwpWm_RsgCkabm4Ry4v5RCOdVVqj01BOzguNZNTgU_WulVKcimzD7TdZUOEke9zGN7cbXaCP6jJ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+<div class="absolute bottom-3.5 left-3.5 right-3.5 flex items-end justify-between">
+<div>
+<span class="text-[10px] font-extrabold uppercase tracking-widest text-primary px-2.5 py-0.5 rounded-full bg-white shadow-sm inline-block">Privatisation Totale</span>
+<p class="text-lg font-extrabold text-white mt-1 leading-tight drop-shadow-sm">Chalet Alpin Royal</p>
+<p class="text-xs text-white/80 font-medium">Gstaad, Oberland Bernois — Suisse</p>
+</div>
+<div class="text-right bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/25">
+<span class="text-[9px] text-white/80 uppercase font-bold tracking-wider block">Durée</span>
+<span class="text-xs font-extrabold text-white">3 Nuits</span>
+</div>
+</div>
+</div>
+<!-- Arrival & Departure Chips -->
+<div class="grid grid-cols-2 gap-2.5">
+<div class="bg-surface-container-low rounded-2xl p-3.5 border border-outline-variant/50 flex flex-col space-y-1">
+<div class="flex items-center space-x-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary">flight_land</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Arrivée Prévue</span>
+</div>
+<p class="text-sm font-bold text-on-surface">Ven. 24 Janvier</p>
+<span class="text-[11px] font-bold text-primary">16:00 (Protocole VIP)</span>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-3.5 border border-outline-variant/50 flex flex-col space-y-1">
+<div class="flex items-center space-x-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary">flight_takeoff</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Départ Privé</span>
+</div>
+<p class="text-sm font-bold text-on-surface">Lun. 27 Janvier</p>
+<span class="text-[11px] font-medium text-on-surface-variant">12:00 (Late Checkout)</span>
+</div>
+</div>
+<!-- Checklist Services -->
+<div class="flex flex-col space-y-2 pt-1">
+<span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Prestations Protocolaires Validées</span>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low/70 border border-outline-variant/40">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-lg">directions_car</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface leading-tight">Range Rover Sentinel Blindé</span>
+<span class="text-[11px] text-on-surface-variant">Transfert piste Genève-Cointrin &amp; Chauffeur dédié</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-xl flex-shrink-0 ml-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low/70 border border-outline-variant/40">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-lg">skillet</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface leading-tight">Chef Étoilé &amp; Maître d'Hôtel</span>
+<span class="text-[11px] text-on-surface-variant">Menus d'exception gastronomiques sur-mesure</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-xl flex-shrink-0 ml-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low/70 border border-outline-variant/40">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-lg">downhill_skiing</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface leading-tight">Héli-Skiing &amp; Guide Privé</span>
+<span class="text-[11px] text-on-surface-variant">Accès glaciers exclusifs &amp; dépose sommet</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-xl flex-shrink-0 ml-2" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Emergency Hotline Card -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container border border-outline-variant/50 mt-1">
+<div class="flex items-center space-x-2.5">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100"></div>
+<div>
+<p class="text-xs text-on-surface font-bold">Ligne Rouge Conciergerie 24/7</p>
+<p class="text-[11px] text-on-surface-variant">Agent assigné : C. de Montmirail</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">call</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary & Secondary CTA Buttons -->
+<div class="flex flex-col space-y-2.5 pt-1">
+<button class="w-full py-4 px-6 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_12px_24px_rgba(234,51,35,0.3)] active:scale-[0.98] transition-transform" id="present-pass-btn" type="button">
+<span class="material-symbols-outlined text-lg">contactless</span>
+<span>Présenter le Pass au Salon VIP</span>
+</button>
+<button class="w-full py-3.5 px-6 rounded-full bg-white text-on-surface border border-outline-variant text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-surface-container-low active:scale-[0.98] transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg text-primary">share</span>
+<span>Partager l'Accès Chiffré avec les Invités</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    let timeLeft = 298;
+    const timerElem = document.getElementById('pass-timer');
+    if (timerElem) {
+      setInterval(() => {
+        if (timeLeft <= 0) {
+          timeLeft = 300;
+        }
+        timeLeft--;
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        timerElem.textContent = `Expire ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    const presentBtn = document.getElementById('present-pass-btn');
+    if (presentBtn) {
+      presentBtn.addEventListener('click', () => {
+        const originalText = presentBtn.innerHTML;
+        presentBtn.innerHTML = `
+          <span class="material-symbols-outlined text-lg animate-spin">sync</span>
+          <span>Transmission NFC Sécurisée...</span>
+        `;
+        setTimeout(() => {
+          presentBtn.innerHTML = `
+            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            <span>Salon VIP Accrédité</span>
+          `;
+          setTimeout(() => {
+            presentBtn.innerHTML = originalText;
+          }, 3000);
+        }, 1200);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-white/95 backdrop-blur-xl border-t border-outline-variant/60 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]" data-active-classes="text-primary"><div class="h-20 px-4 max-w-md mx-auto flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant hover:text-primary transition-colors duration-200" data-path="accueil" href="#"><span class="material-symbols-outlined text-2xl">diamond</span><span class="text-[10px] font-bold tracking-wider uppercase mt-1">Accueil</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 relative text-on-surface-variant hover:text-primary transition-colors duration-200" data-path="concierge" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-2xl">support_agent</span><span class="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-primary ring-2 ring-white"></span></div><span class="text-[10px] font-bold tracking-wider uppercase mt-1">Concierge</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant hover:text-primary transition-colors duration-200" data-path="reservations" href="#"><span class="material-symbols-outlined text-2xl">event_seat</span><span class="text-[10px] font-bold tracking-wider uppercase mt-1">Réservations</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 transition-colors duration-200 text-primary" data-path="pass" href="#"><span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">vpn_key</span><span class="text-[10px] font-bold tracking-wider uppercase mt-1">Pass</span></a></div></nav></body></html>

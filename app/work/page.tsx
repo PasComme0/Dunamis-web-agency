@@ -49,7 +49,7 @@ const allProjects: Project[] = [
     title: 'Le concierge personnel nouvelle génération dans votre poche.',
     description: 'Application mobile native haut de gamme offrant des réservations instantanées et un service client par messagerie chiffrée.',
     technologies: ['Swift', 'iOS Native', 'SwiftUI', 'Node.js API'],
-    image: 'https://picsum.photos/seed/Dunamis-work-3/1600/1000',
+    image: '/vesper_images/accueil.png',
     href: '/work/vesper'
   },
   {
@@ -76,14 +76,14 @@ const allProjects: Project[] = [
   },
   {
     id: '06',
-    client: 'Nova Studio',
-    year: '2024',
-    category: 'Web & Identité',
-    title: 'Identité de marque et présence digitale cinématographique.',
-    description: 'Création d\'un univers visuel complet et d\'un site interactif fluide avec micro-interactions et animations 60 FPS.',
-    technologies: ['WebGL', 'Motion', 'Tailwind CSS', 'Next.js'],
+    client: 'Babi Crunch & Dabali',
+    year: '2025',
+    category: 'E-commerce',
+    title: 'Enjaille-Toi. Commande. Savoure.',
+    description: 'Plateforme moderne de commande express et livraison de fast-food ivoirien axée sur la conversion.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Responsive UI'],
     image: 'https://picsum.photos/seed/Dunamis-work-6/1600/1000',
-    href: '/work/nova'
+    href: '/work/babi-crunch-dabali'
   },
   {
     id: '07',
@@ -98,14 +98,14 @@ const allProjects: Project[] = [
   },
   {
     id: '08',
-    client: 'Solis Energy',
-    year: '2024',
-    category: 'IA & Data',
-    title: 'Gestion intelligente des parcs solaires et prévision énergétique.',
-    description: 'Supervision énergétique connectée via capteurs IoT et algorithmes d\'ajustement de production électrique en temps réel.',
-    technologies: ['IoT Gateway', 'TimescaleDB', 'React', 'Tailwind CSS'],
-    image: 'https://picsum.photos/seed/Dunamis-work-8/1600/1000',
-    href: '/work/solis'
+    client: 'DjiniPay',
+    year: '2025',
+    category: 'Plateforme SaaS',
+    title: 'Plateforme Financière Nouvelle Génération à Abidjan',
+    description: 'La Néo-Fintech d\'Abidjan & d\'Afrique de l\'Ouest. Plateforme financière simplifiant les transferts d\'argent et cartes virtuelles.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Fintech Cloud'],
+    image: '/djinipay.png',
+    href: '/work/djinipay'
   },
   {
     id: '09',

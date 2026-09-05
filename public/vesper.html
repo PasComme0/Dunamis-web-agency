@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VESPER Concierge • Vitrine Mobile Native VIP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            vesper: {
+              red: '#ea3323',
+              dark: '#0a0d12',
+              card: '#121721',
+              border: 'rgba(255, 255, 255, 0.08)',
+              crimson: '#93000a'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #0a0d12;
+      color: #f0f3f8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .glass-panel {
+      background: rgba(18, 23, 33, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-pill {
+      background: rgba(234, 51, 35, 0.12);
+      border: 1px solid rgba(234, 51, 35, 0.3);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0d12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e2634;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ea3323;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-vesper-red selection:text-white">
+
+  <!-- Floating Back Button -->
+  <a href="/work" class="fixed top-5 left-5 z-50 bg-vesper-dark/90 hover:bg-vesper-red text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-2xl backdrop-blur-md border border-white/10 transition-all duration-300 flex items-center gap-2 group">
+    <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+    <span>Retour au site</span>
+  </a>
+
+  <!-- Header Banner -->
+  <header class="w-full pt-16 pb-8 px-4 sm:px-6 lg:px-8 border-b border-white/5 bg-gradient-to-b from-vesper-dark via-[#0d121b] to-vesper-dark">
+    <div class="max-w-7xl mx-auto text-center flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-vesper-red text-xs font-bold tracking-wider uppercase mb-4">
+        <span class="w-2 h-2 rounded-full bg-vesper-red animate-ping"></span>
+        <span>APPLICATION MOBILE NATIVE VIP • iOS & SWIFT</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-serif mb-4">
+        VESPER <span class="text-vesper-red italic font-normal">Concierge Souverain</span>
+      </h1>
+      <p class="max-w-2xl text-gray-400 text-sm sm:text-base leading-relaxed">
+        Une suite logicielle mobile ultra-exclusive conçue pour les membres VIP. Explorez les 4 modules clés en direct ci-dessous ou cliquez sur <strong class="text-white font-semibold">"Voir plus"</strong> pour zoomer sur chaque écran.
+      </p>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+    <!-- Interactive iPhone Simulator Section -->
+    <section class="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-center gap-10">
+        
+        <!-- Left Controls / Tab Selector -->
+        <div class="flex-1 space-y-6 w-full">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-vesper-red block mb-1">SIMULATEUR INTERACTIF</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Navigation en Direct dans l'Application</h2>
+            <p class="text-sm text-gray-400 mt-2">Cliquez sur les différents onglets pour charger la maquette interactive correspondante à l'intérieur du smartphone.</p>
+          </div>
+
+          <!-- Tab Navigation Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="sim-tabs">
+            <button onclick="switchScreen('accueil')" id="tab-accueil" class="tab-btn active p-4 rounded-2xl border transition-all duration-300 text-left flex items-start gap-3 bg-vesper-red/10 border-vesper-red text-white">
+              <span class="material-symbols-outlined text-vesper-red mt-0.5">home</span>
+              <div>
+                <span class="block text-sm font-bold">1. Accueil Membre</span>
+                <span class="text-xs text-gray-400">Tableau de bord souverain & privilèges</span>
+              </div>
+            </button>
+
+            <button onclick="switchScreen('experiences')" id="tab-experiences" class="tab-btn p-4 rounded-2xl border transition-all duration-300 text-left flex items-start gap-3 bg-white/5 border-white/10 text-gray-300 hover:bg-white/10">
+              <span class="material-symbols-outlined text-gray-400 mt-0.5">stars</span>
+              <div>
+                <span class="block text-sm font-bold">2. Expériences & Réservations</span>
+                <span class="text-xs text-gray-400">Réservation en 1-Tap & Vesper Pay</span>
+              </div>
+            </button>
+
+            <button onclick="switchScreen('messagerie')" id="tab-messagerie" class="tab-btn p-4 rounded-2xl border transition-all duration-300 text-left flex items-start gap-3 bg-white/5 border-white/10 text-gray-300 hover:bg-white/10">
+              <span class="material-symbols-outlined text-gray-400 mt-0.5">chat_bubble</span>
+              <div>
+                <span class="block text-sm font-bold">3. Messagerie Concierge</span>
+                <span class="text-xs text-gray-400">Chat sécurisé & Chiffrement 4096</span>
+              </div>
+            </button>
+
+            <button onclick="switchScreen('pass')" id="tab-pass" class="tab-btn p-4 rounded-2xl border transition-all duration-300 text-left flex items-start gap-3 bg-white/5 border-white/10 text-gray-300 hover:bg-white/10">
+              <span class="material-symbols-outlined text-gray-400 mt-0.5">qr_code_2</span>
+              <div>
+                <span class="block text-sm font-bold">4. Pass Membre & Itinéraire</span>
+                <span class="text-xs text-gray-400">Pass VIP QR & Suivi de vol/yacht</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Active Screen Action Info -->
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <span id="current-screen-info" class="text-xs font-semibold text-gray-400">Écran actif : Accueil Membre</span>
+            <a id="open-standalone-btn" href="/vesper_screens/accueil.html" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-vesper-red hover:underline">
+              <span>Plein écran dans un nouvel onglet</span>
+              <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right iPhone Mockup Frame -->
+        <div class="relative flex justify-center w-full lg:w-auto">
+          <!-- Outer Phone Body -->
+          <div class="w-[340px] sm:w-[380px] h-[720px] bg-[#1a1f2c] rounded-[50px] p-4 shadow-2xl border-4 border-gray-700/60 relative ring-1 ring-white/10 flex flex-col">
+            <!-- Dynamic Island Notch -->
+            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-30 flex items-center justify-end px-2 gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-900/60 border border-blue-400/40"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <!-- Screen Area with iframe -->
+            <div class="w-full h-full bg-black rounded-[38px] overflow-hidden relative border border-white/5 shadow-inner">
+              <iframe id="vesper-frame" src="/vesper_screens/accueil.html" class="w-full h-full border-0" title="VESPER Screen Preview"></iframe>
+            </div>
+            <!-- Home Bar Indicator -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/40 rounded-full z-30"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Grid of Screens with "Voir plus" Modal trigger -->
+    <section class="space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-vesper-red block mb-1">GALERIE DE MAQUETTES</span>
+          <h2 class="text-3xl font-bold text-white tracking-tight">Explorez les 4 Écrans & Voir plus</h2>
+        </div>
+        <p class="text-sm text-gray-400">Cliquez sur <strong class="text-white">"Voir plus"</strong> pour zoomer l'image HD de chaque écran et lire sa fiche détaillée.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1: Accueil -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-vesper-red/50 transition-all duration-300 flex flex-col group">
+          <div class="relative h-72 overflow-hidden bg-gray-950 flex items-center justify-center p-3">
+            <img src="/vesper_images/accueil.png" alt="Accueil Membre Vesper" class="h-full object-contain group-hover:scale-105 transition-transform duration-500 shadow-md rounded-lg"/>
+            <button onclick="openModal('accueil')" class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-bold text-sm">
+              <span class="material-symbols-outlined text-xl">zoom_in</span>
+              <span>Agrandir / Voir plus</span>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[11px] font-extrabold text-vesper-red uppercase tracking-wider block mb-1">ÉCRAN 01</span>
+              <h3 class="text-lg font-bold text-white">Accueil Membre</h3>
+              <p class="text-xs text-gray-400 mt-1 line-clamp-2">Tableau de bord personnalisé avec privilèges réservés du soir et statut souverain.</p>
+            </div>
+            <button onclick="openModal('accueil')" class="w-full py-2.5 px-4 rounded-xl bg-vesper-red/20 hover:bg-vesper-red text-white text-xs font-bold border border-vesper-red/40 transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">visibility</span>
+              <span>Voir plus & Détailler</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Expériences -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-vesper-red/50 transition-all duration-300 flex flex-col group">
+          <div class="relative h-72 overflow-hidden bg-gray-950 flex items-center justify-center p-3">
+            <img src="/vesper_images/experiences.png" alt="Expériences Vesper" class="h-full object-contain group-hover:scale-105 transition-transform duration-500 shadow-md rounded-lg"/>
+            <button onclick="openModal('experiences')" class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-bold text-sm">
+              <span class="material-symbols-outlined text-xl">zoom_in</span>
+              <span>Agrandir / Voir plus</span>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[11px] font-extrabold text-vesper-red uppercase tracking-wider block mb-1">ÉCRAN 02</span>
+              <h3 class="text-lg font-bold text-white">Expériences & Réservations</h3>
+              <p class="text-xs text-gray-400 mt-1 line-clamp-2">Accès exclusif aux événements mondiaux, yachts et dining avec Vesper Pay.</p>
+            </div>
+            <button onclick="openModal('experiences')" class="w-full py-2.5 px-4 rounded-xl bg-vesper-red/20 hover:bg-vesper-red text-white text-xs font-bold border border-vesper-red/40 transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">visibility</span>
+              <span>Voir plus & Détailler</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Messagerie -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-vesper-red/50 transition-all duration-300 flex flex-col group">
+          <div class="relative h-72 overflow-hidden bg-gray-950 flex items-center justify-center p-3">
+            <img src="/vesper_images/messagerie.png" alt="Messagerie Concierge Vesper" class="h-full object-contain group-hover:scale-105 transition-transform duration-500 shadow-md rounded-lg"/>
+            <button onclick="openModal('messagerie')" class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-bold text-sm">
+              <span class="material-symbols-outlined text-xl">zoom_in</span>
+              <span>Agrandir / Voir plus</span>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[11px] font-extrabold text-vesper-red uppercase tracking-wider block mb-1">ÉCRAN 03</span>
+              <h3 class="text-lg font-bold text-white">Messagerie Concierge</h3>
+              <p class="text-xs text-gray-400 mt-1 line-clamp-2">Communication directe 24/7 avec l'Officier dédié sous chiffrement 4096-bit.</p>
+            </div>
+            <button onclick="openModal('messagerie')" class="w-full py-2.5 px-4 rounded-xl bg-vesper-red/20 hover:bg-vesper-red text-white text-xs font-bold border border-vesper-red/40 transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">visibility</span>
+              <span>Voir plus & Détailler</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4: Pass & Itinéraire -->
+        <div class="glass-panel rounded-2xl overflow-hidden hover:border-vesper-red/50 transition-all duration-300 flex flex-col group">
+          <div class="relative h-72 overflow-hidden bg-gray-950 flex items-center justify-center p-3">
+            <img src="/vesper_images/pass.png" alt="Pass Membre Vesper" class="h-full object-contain group-hover:scale-105 transition-transform duration-500 shadow-md rounded-lg"/>
+            <button onclick="openModal('pass')" class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-bold text-sm">
+              <span class="material-symbols-outlined text-xl">zoom_in</span>
+              <span>Agrandir / Voir plus</span>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[11px] font-extrabold text-vesper-red uppercase tracking-wider block mb-1">ÉCRAN 04</span>
+              <h3 class="text-lg font-bold text-white">Pass Membre & Itinéraire</h3>
+              <p class="text-xs text-gray-400 mt-1 line-clamp-2">Pass VIP dynamique QR, accès lounge et suivi temps réel des vols et transferts.</p>
+            </div>
+            <button onclick="openModal('pass')" class="w-full py-2.5 px-4 rounded-xl bg-vesper-red/20 hover:bg-vesper-red text-white text-xs font-bold border border-vesper-red/40 transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">visibility</span>
+              <span>Voir plus & Détailler</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal for "Voir plus" / Agrandir HD -->
+  <div id="modal-lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl hidden flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="relative max-w-4xl w-full glass-panel rounded-3xl p-6 sm:p-8 space-y-6 my-auto border border-white/20">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-vesper-red text-white flex items-center justify-center transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="space-y-1">
+        <span id="modal-badge" class="text-xs font-bold text-vesper-red uppercase tracking-widest block">ÉCRAN MAQUETTE HD</span>
+        <h3 id="modal-title" class="text-2xl font-bold text-white">Titre de l'écran</h3>
+        <p id="modal-desc" class="text-sm text-gray-300">Description détaillée de l'écran sélectionné.</p>
+      </div>
+
+      <!-- Image Preview & Prototype Button -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="h-[480px] bg-gray-950 rounded-2xl overflow-hidden flex items-center justify-center p-4 border border-white/10 shadow-2xl">
+          <img id="modal-img" src="" alt="Agrandissement Maquette VESPER" class="h-full object-contain rounded-lg"/>
+        </div>
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-xs font-extrabold uppercase text-gray-400 tracking-wider mb-2">Technologies & Spécifications</h4>
+            <ul id="modal-features" class="space-y-2 text-sm text-gray-300">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <a id="modal-live-link" href="#" target="_blank" class="w-full py-3 px-6 rounded-xl bg-vesper-red hover:bg-red-600 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2 shadow-lg shadow-vesper-red/30">
+              <span class="material-symbols-outlined">smartphone</span>
+              <span>Lancer la maquette interactive complète</span>
+            </a>
+            <button onclick="closeModal()" class="w-full py-2.5 px-6 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-colors">
+              Fermer la vue agrandie
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const screenData = {
+      accueil: {
+        title: '1. Accueil Membre Souverain',
+        desc: 'Tableau de bord d\'accueil de luxe synchronisant le statut du membre, le chiffrement 4096-bit, les deux privilèges d\'exception réservés pour la soirée et l\'accès rapide à l\'officier dédié.',
+        img: '/vesper_images/accueil.png',
+        html: '/vesper_screens/accueil.html',
+        features: [
+          '• En-tête personnalisé avec badge Membre Fondateur No. 048',
+          '• Bannière Crimson Hero avec carte de membre intégrée',
+          '• Privilèges du soir avec décompte d\'accès prioritaire',
+          '• Notifications et alertes sécurisées en temps réel',
+          '• Architecture native SwiftUI & animations 60 FPS'
+        ]
+      },
+      experiences: {
+        title: '2. Expériences & Réservations Exclusives',
+        desc: 'Module de réservation en un toucher permettant aux membres d\'accéder au Paddock F1 de Monaco, à des yachts de réception privés ou à des dîners secrets par des chefs 3 étoiles Michelin.',
+        img: '/vesper_images/experiences.png',
+        html: '/vesper_screens/experiences.html',
+        features: [
+          '• Réservation instantanée "One-Tap Experience"',
+          '• Paiement sécurisé via Vesper Pay Intégré',
+          '• Garantie de discrétion absolue Vesper',
+          '• Service de conciergerie mobile pour soirée de gala',
+          '• Accès à l\'Officier Vesper disponible en 15 min'
+        ]
+      },
+      messagerie: {
+        title: '3. Messagerie Concierge Chiffrée 4096-bit',
+        desc: 'Canal de discussion directe 24/7 avec M. de Saint-Germain et les officiers Vesper. Support audio, partage de documents d\'itinéraires et réponses sous 2 minutes.',
+        img: '/vesper_images/messagerie.png',
+        html: '/vesper_screens/messagerie.html',
+        features: [
+          '• Chiffrement militaire de bout en bout (4096 bits)',
+          '• Historique auto-destructible sur demande',
+          '• Envoi de confirmations de vols et réservations',
+          '• Assistant IA & Concierge Humain interconnectés',
+          '• Indicateur de présence et statut de réponse immédiate'
+        ]
+      },
+      pass: {
+        title: '4. Pass Membre & Itinéraire VIP',
+        desc: 'Portefeuille souverain réunissant la carte de membre VIP dynamique (Black Sovereign Card), l\'itinéraire complet du voyage en cours et les billets de transfert en hélicoptère.',
+        img: '/vesper_images/pass.png',
+        html: '/vesper_screens/pass.html',
+        features: [
+          '• Pass QR Code dynamique sécurisé pour lounges et yachts',
+          '• Chronologie temps réel de l\'itinéraire de voyage',
+          '• Suivi de vols privés et yachts amarrés',
+          '• Intégration Apple Wallet & NFC VIP',
+          '• Mode hors-ligne chiffré'
+        ]
+      }
+    };
+
+    function switchScreen(key) {
+      const data = screenData[key];
+      if (!data) return;
+
+      // Update iframe source
+      document.getElementById('vesper-frame').src = data.html;
+      document.getElementById('open-standalone-btn').href = data.html;
+      document.getElementById('current-screen-info').textContent = `Écran actif : ${data.title}`;
+
+      // Update active tab button styles
+      document.querySelectorAll('#sim-tabs .tab-btn').forEach(btn => {
+        btn.classList.remove('bg-vesper-red/10', 'border-vesper-red', 'text-white', 'active');
+        btn.classList.add('bg-white/5', 'border-white/10', 'text-gray-300');
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) icon.className = 'material-symbols-outlined text-gray-400 mt-0.5';
+      });
+
+      const activeBtn = document.getElementById(`tab-${key}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white/5', 'border-white/10', 'text-gray-300');
+        activeBtn.classList.add('bg-vesper-red/10', 'border-vesper-red', 'text-white', 'active');
+        const activeIcon = activeBtn.querySelector('.material-symbols-outlined');
+        if (activeIcon) activeIcon.className = 'material-symbols-outlined text-vesper-red mt-0.5';
+      }
+    }
+
+    function openModal(key) {
+      const data = screenData[key];
+      if (!data) return;
+
+      document.getElementById('modal-badge').textContent = `ÉCRAN MAQUETTE HD • ÉCRAN 0${['accueil', 'experiences', 'messagerie', 'pass'].indexOf(key) + 1}`;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-desc').textContent = data.desc;
+      document.getElementById('modal-img').src = data.img;
+      document.getElementById('modal-live-link').href = data.html;
+
+      const featuresUl = document.getElementById('modal-features');
+      featuresUl.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+
+      const modal = document.getElementById('modal-lightbox');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-lightbox');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
