@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import standard from "@/images/Two-Tone Corporate Collaboration.png"
+import AboutHeroImg from "@/images/About.png"
 import { Reveal } from '@/components/ui/Reveal';
 import {
   ArrowRight,
@@ -87,6 +89,18 @@ export default function AboutPage() {
     <div className="flex flex-col w-full bg-background text-foreground">
       {/* HERO SECTION - Streamlined & Impactful */}
       <section className="pt-44 pb-20 px-6 md:px-12 bg-foreground text-background relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src={standard}
+            alt="About Hero"
+            fill
+            className="object-cover opacity-40 "
+            sizes="100vw"
+            referrerPolicy="no-referrer"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-transparent "></div>
+        </div>
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="max-w-4xl">
             <Reveal>
@@ -95,37 +109,8 @@ export default function AboutPage() {
                 <span className="font-semibold italic text-background">Numérique.</span>
               </h1>
             </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-lg md:text-xl text-background/75 max-w-2xl leading-relaxed mb-10">
-                Nous accompagnons les organisations ambitieuses avec une ingénierie logicielle robuste et un design exigeant conçus pour créer un avantage concurrentiel durable.
-              </p>
-            </Reveal>
+           
           </div>
-        </div>
-      </section>
-
-      {/* ATMOSPHERIC IMAGE / STUDIO BANNER */}
-      <section className="py-12 md:py-16 px-6 md:px-12 bg-muted/30 border-b border-border">
-        <div className="max-w-7xl mx-auto">
-          <Reveal delay={0.1} className="w-full">
-            <div className="relative aspect-[16/9] md:aspect-[21/8] w-full bg-muted overflow-hidden border border-border">
-              <Image
-                src="https://picsum.photos/seed/Dunamis-about-office/1920/800"
-                alt="Notre espace d'ingénierie et de design"
-                fill
-                className="object-cover grayscale opacity-90 transition-transform duration-700 hover:scale-102"
-                sizes="100vw"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white max-w-xl">
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-2">Notre Standard</p>
-                <p className="text-xl md:text-2xl font-light leading-snug">
-                  « La véritable sophistication réside dans la clarté et la solidité de l&apos;exécution. »
-                </p>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -135,7 +120,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
             <div className="max-w-2xl">
               <Reveal>
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Notre Raison d&apos;Être</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Notre Raison d&apos;Être</p>
                 <h2 className="text-3xl md:text-5xl font-normal tracking-tight text-balance">
                   Combler le fossé entre stratégie métier et excellence technique.
                 </h2>
@@ -160,7 +145,7 @@ export default function AboutPage() {
                         <div className="p-3 bg-muted border border-border/60">
                           <Icon className="w-5 h-5 text-foreground" />
                         </div>
-                        <span className="text-sm font-semibold tracking-widest text-muted-foreground">{pillar.number}</span>
+                        <span className="text-sm font-semibold tracking-widest text-accent">{pillar.number}</span>
                       </div>
                       <h3 className="text-xl md:text-2xl font-medium tracking-tight mb-4">{pillar.title}</h3>
                       <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
@@ -180,7 +165,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mb-16 md:mb-20">
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Méthodologie</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Méthodologie</p>
               <h2 className="text-3xl md:text-5xl font-normal tracking-tight text-balance">
                 Un processus éprouvé de l&apos;idée à la production.
               </h2>
@@ -192,7 +177,7 @@ export default function AboutPage() {
               <Reveal key={step.step} delay={idx * 0.1} direction="up">
                 <div className="p-6 md:p-8 bg-background border border-border h-full flex flex-col justify-between">
                   <div>
-                    <span className="text-3xl font-bold text-foreground/20 block mb-4">{step.step}</span>
+                    <span className="text-3xl font-bold text-accent/20 block mb-4">{step.step}</span>
                     <h3 className="text-lg font-semibold tracking-tight mb-3 text-foreground">{step.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       {step.desc}
@@ -254,7 +239,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <Reveal>
             <div className="p-3 bg-muted border border-border inline-flex items-center justify-center mb-6">
-              <Users className="w-6 h-6 text-foreground" />
+              <Users className="w-6 h-6 text-accent" />
             </div>
             <h2 className="text-3xl md:text-5xl font-normal mb-6 text-balance tracking-tight">
               Une équipe d&apos;experts dédiée, sans intermédiaire.
@@ -284,7 +269,7 @@ export default function AboutPage() {
           <Reveal delay={0.3}>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest pb-1 border-b-2 border-foreground hover:text-muted-foreground hover:border-muted-foreground transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest pb-1 border-b-2 border-accent hover:text-muted-foreground hover:border-muted-foreground transition-colors"
             >
               Échanger avec notre équipe <ArrowRight className="w-4 h-4" />
             </Link>
@@ -297,8 +282,8 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto flex flex-col items-center">
           <Reveal>
             <h2 className="text-4xl md:text-5xl lg:text-7xl leading-tight mb-8 text-balance font-light">
-              Construisons quelque chose <br />
-              <span className="font-semibold italic text-background">de durable.</span>
+              Construisons quelque <br />
+              <span className="text-background">chose de</span> <span className='font-semibold italic text-accent'>durable</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

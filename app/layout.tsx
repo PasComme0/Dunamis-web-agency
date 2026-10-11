@@ -61,7 +61,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           }}
         />
       </head>
-      <body suppressHydrationWarning className={`${outfit.className} min-h-screen flex flex-col selection:bg-foreground selection:text-background font-sans`}>
+      <body suppressHydrationWarning className={`${outfit.className} min-h-screen flex flex-col selection:bg-accent-soft selection:text-foreground font-sans`}>
         <SmoothScrolling>
           <Navbar />
           <main className="flex-grow">

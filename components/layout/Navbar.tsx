@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
-import logoWhite from '@/images/DunamisLogoV2 - Resized.png';
-import logoBlack from '@/images/DunamisLogoV1 - Resized.png';
+import logoWhite from '@/images/logo.png';
+import logomobile from '@/images/logomobile.png';
 
 /**
  * Composant Navbar (Barre de navigation principale).
@@ -46,36 +46,37 @@ export default function Navbar() {
           {/* Bloc 1 : Logo de la marque */}
           <Link href="/" className="flex items-center gap-2 group">
             <Image
-              src={scrolled ? logoBlack : logoWhite}
+              src={logoWhite}
               alt="Dunamis Logo"
               width={160}
               height={45}
               priority
-              className="h-9 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+             className={`h-9 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+      scrolled ? "brightness-0" : ""
+    }`}
             />
           </Link>
 
           {/* Bloc 2 : Navigation Desktop */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-background/80 hover:text-background'}`}>Accueil</Link>
-            <Link href="/services" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-background/80 hover:text-background'}`}>Services</Link>
-            <Link href="/tarifs" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-background/80 hover:text-background'}`}>Tarifs</Link>
-            <Link href="/work" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-background/80 hover:text-background'}`}>Réalisations</Link>
-            <Link href="/about" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-background/80 hover:text-background'}`}>À Propos</Link>
-            {/*  <Link href="/resources" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-foreground' : 'text-background/80 hover:text-background'}`}>Ressources</Link> */}
+            <Link href="/" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-accent' : 'text-background/80 hover:text-background'}`}>Accueil</Link>
+            <Link href="/services" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-accent' : 'text-background/80 hover:text-background'}`}>Services</Link>
+{/*            <Link href="/tarifs" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-accent' : 'text-background/80 hover:text-background'}`}>Tarifs</Link>
+*/}            <Link href="/work" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-accent' : 'text-background/80 hover:text-background'}`}>Réalisations</Link>
+            <Link href="/about" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-accent' : 'text-background/80 hover:text-background'}`}>À Propos</Link>
+            {/*  <Link href="/resources" className={`text-sm font-medium transition-colors ${scrolled ? 'text-muted-foreground hover:text-accent' : 'text-background/80 hover:text-background'}`}>Ressources</Link> */}
           </nav>
 
           {/* Bloc 3 : Bouton d'action principal */}
           <div className="hidden md:block">
-            <Link href="/contact" className={`inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium transition-colors rounded-none ${scrolled ? 'bg-foreground text-background hover:bg-foreground/90' : 'bg-background text-foreground hover:bg-background/90'
-              }`}>
+            <Link href="/contact" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium transition-colors rounded-none bg-accent text-white hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring">
               Démarrer un projet
             </Link>
           </div>
 
           {/* Bloc 4 : Déclencheur du menu Mobile */}
           <button
-            className="md:hidden p-2 -mr-2"
+            className="md:hidden p-2 -mr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring"
             onClick={() => {
               console.debug('[Navbar] Ouverture du menu mobile.');
               setMobileMenuOpen(true);
@@ -100,11 +101,11 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-12">
               <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                 <Image
-                  src={logoBlack}
+                  src={logomobile}
                   alt="Dunamis Logo"
                   width={160}
                   height={45}
-                  className="h-9 w-auto object-contain"
+                  className={`h-9 w-auto object-contain ${scrolled ? "brightness-0" : ""}`}
                 />
               </Link>
               <button
@@ -120,19 +121,19 @@ export default function Navbar() {
             </div>
 
             <nav className="flex flex-col gap-6 text-2xl font-serif">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">Accueil</Link>
-              <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">Services</Link>
-              <Link href="/tarifs" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">Tarifs</Link>
-              <Link href="/work" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">Réalisations</Link>
-              <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">À Propos</Link>
-              <Link href="/resources" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">Ressources</Link>
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-accent transition-colors">Accueil</Link>
+              <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-accent transition-colors">Services</Link>
+              <Link href="/tarifs" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-accent transition-colors">Tarifs</Link>
+              <Link href="/work" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-accent transition-colors">Réalisations</Link>
+              <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-accent transition-colors">À Propos</Link>
+              <Link href="/resources" onClick={() => setMobileMenuOpen(false)} className="text-muted-foreground hover:text-accent transition-colors">Ressources</Link>
             </nav>
 
             <div className="mt-auto pb-12 pt-8 border-t border-border mt-8">
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex w-full items-center justify-center px-6 py-4 text-base font-medium text-background bg-foreground rounded-none"
+                className="inline-flex w-full items-center justify-center px-6 py-4 text-base font-medium text-white bg-accent hover:bg-accent-hover rounded-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring"
               >
                 Démarrer un projet
               </Link>

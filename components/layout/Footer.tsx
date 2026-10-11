@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '@/images/DunamisLogoV2 - Resized.png';
-
+import logoWhite from '@/images/logomobile.png'
 /**
  * Composant Footer (Pied de page global).
  * Affiche la présentation de la marque avec le logo, les navigation secondaires, les liens de contact et le copyright.
@@ -19,7 +18,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6 group">
               <Image
-                src={logo}
+                src={logoWhite}
                 alt="Dunamis Logo"
                 width={180}
                 height={50}
@@ -35,10 +34,10 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-6 text-sm">Services</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
-              <li><Link href="/contact" className="hover:text-background transition-colors">Développement Web</Link></li>
-              <li><Link href="/contact" className="hover:text-background transition-colors">Développement Mobile</Link></li>
-              <li><Link href="/contact" className="hover:text-background transition-colors">Design</Link></li>
-              <li><Link href="/contact" className="hover:text-background transition-colors">Conseil</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Développement Web</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Développement Mobile</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Design</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Conseil</Link></li>
             </ul>
           </div>
 
@@ -46,11 +45,11 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-6 text-sm">L&apos;Agence</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
-              <li><Link href="/about" className="hover:text-background transition-colors">À Propos</Link></li>
-              <li><Link href="/work" className="hover:text-background transition-colors">Réalisations</Link></li>
-              <li><Link href="/process" className="hover:text-background transition-colors">Processus</Link></li>
-              <li><Link href="/faq" className="hover:text-background transition-colors">FAQ</Link></li>
-              <li><Link href="/contact" className="hover:text-background transition-colors">Contact</Link></li>
+              <li><Link href="/about" className="hover:text-accent transition-colors">À Propos</Link></li>
+              <li><Link href="/work" className="hover:text-accent transition-colors">Réalisations</Link></li>
+              <li><Link href="/process" className="hover:text-accent transition-colors">Processus</Link></li>
+              <li><Link href="/faq" className="hover:text-accent transition-colors">FAQ</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -58,15 +57,15 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-6 text-sm">Contact</h4>
             <ul className="flex flex-col gap-4 text-sm text-muted">
-              <li><a href="mailto:info@dunamis-web-agency.com" className="hover:text-background transition-colors">info@dunamis-web-agency.com</a></li>
-              <li><a href="tel:+2250171483627" className="hover:text-background transition-colors">+225 0584583936</a></li>
+              <li><a href="mailto:info@dunamis-web-agency.com" className="hover:text-accent transition-colors">info@dunamis-web-agency.com</a></li>
+              <li><a href="tel:+2250171483627" className="hover:text-accent transition-colors">+225 0584583936</a></li>
             </ul>
           </div>
         </div>
 
         {/* Bloc 6 : Mentions de bas de page & Copyright */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted">&copy; {new Date().getFullYear()} Dunamis. Tous droits réservés.</p>
+          <p className="text-sm text-muted"><span className='text-accent font-bold'>&copy;  </span> {new Date().getFullYear()} Dunamis. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

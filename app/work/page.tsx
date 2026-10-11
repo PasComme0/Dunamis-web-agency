@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles, Layers } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import HeroWork from "@/images/DunamisLogoV2.png"
 
 interface Project {
   id: string;
@@ -217,7 +218,7 @@ export default function WorkPage() {
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
                   className={`inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${isActive
-                      ? 'bg-foreground text-background shadow-sm'
+                      ? 'bg-accent text-background shadow-sm'
                       : 'bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground border border-transparent'
                     }`}
                 >
@@ -301,7 +302,7 @@ export default function WorkPage() {
                     >
                       <Reveal delay={0.1}>
                         <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">
-                          <span className="text-foreground">{project.client}</span>
+                          <span className="text-accent">{project.client}</span>
                           <span className="w-1.5 h-1.5 bg-foreground/30 rounded-full" />
                           <span>{project.year}</span>
                         </div>
@@ -331,7 +332,7 @@ export default function WorkPage() {
                             href={project.href}
                             className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-foreground hover:opacity-80 transition-opacity group/link"
                           >
-                            <span className="pb-1 border-b-2 border-foreground">
+                            <span className="pb-1 border-b-2 border-accent">
                               Explorer le projet
                             </span>
                             <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
@@ -407,7 +408,7 @@ export default function WorkPage() {
           <Reveal>
             <h2 className="text-4xl md:text-5xl lg:text-7xl leading-tight mb-8 text-balance font-light">
               Vous avez un projet <br />
-              <span className="font-semibold italic text-background">en tête ?</span>
+              <span className="font-semibold italic text-background">en tête</span><span className="text-accent"></span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

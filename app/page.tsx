@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [isVideoEnded, setIsVideoEnded] = useState(false);
 
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
@@ -22,44 +23,53 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[92vh] flex flex-col justify-center items-center pt-36 pb-20 px-6 overflow-hidden bg-foreground text-background">
         <div className="absolute inset-0 z-0">
-          <Image
-            src={dunamis}
-            alt="Atmospheric architecture"
-            fill
-            className="object-cover opacity-80 mix-blend-luminosity"
-            sizes="100vw"
-            referrerPolicy="no-referrer"
-            priority
-          />
+          <video
+            autoPlay
+            muted
+            playsInline
+            onEnded={() => setIsVideoEnded(true)}
+            className="w-full h-full object-cover opacity-80 mix-blend-luminosity"
+          >
+            <source src="/Hero1.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/90 to-foreground"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
-          <Reveal delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.08] mb-6 text-balance tracking-tight font-light max-w-4xl mx-auto">
-              Façonner le futur numérique <br className="hidden sm:inline" />
-              <span className="font-semibold italic text-background">de votre entreprise.</span>
-            </h1>
-          </Reveal>
+        <AnimatePresence>
+          {isVideoEnded && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              className="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center"
+            >
+              <Reveal delay={0.1}>
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.08] mb-6 text-balance tracking-tight font-light max-w-4xl mx-auto">
+                  Façonner le futur numérique <br className="hidden sm:inline" />
+                  <span className="font-semibold italic text-background">de votre entreprise.</span>
+                </h1>
+              </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto mb-12">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-sm font-semibold text-foreground bg-background hover:bg-background/90 transition-all duration-200 uppercase tracking-widest rounded-none shadow-xl group"
-              >
-                <span>Démarrer un projet</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/work"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-background border border-background/30 hover:bg-background/10 transition-colors uppercase tracking-widest"
-              >
-                Voir nos réalisations
-              </Link>
-            </div>
-          </Reveal>
-        </div>
+              <Reveal delay={0.2}>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto mb-12">
+                  <Link
+                    href="/contact"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-sm font-semibold text-white bg-accent hover:bg-accent-hover transition-all duration-200 uppercase tracking-widest rounded-none shadow-xl group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring"
+                  >
+                    <span>Démarrer un projet</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    href="/work"
+                    className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-background border border-background/30 hover:border-accent hover:text-accent transition-colors uppercase tracking-widest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring"
+                  >
+                    Voir nos réalisations
+                  </Link>
+                </div>
+              </Reveal>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* SECTION 2 — TRUST BAR */}
@@ -99,7 +109,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-serif mb-8 text-balance">
-              Votre entreprise mérite plus qu&apos;un simple site web.
+              Votre entreprise mérite plus qu&apos;un<span className="text-accent"> simple site web</span>.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -136,7 +146,7 @@ export default function Home() {
             <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div className="max-w-2xl">
                 <h2 className="text-4xl md:text-5xl font-serif mb-6 text-balance">
-                  Tout ce dont vous avez besoin pour construire une présence numérique plus forte.
+                  Tout ce dont vous avez besoin pour construire une présence <span className="text-accent">numérique</span>  plus forte.
                 </h2>
                 <p className="text-lg text-muted-foreground">
                   Des compétences spécialisées conçues pour fonctionner ensemble, offrant des solutions complètes de la stratégie au déploiement.
@@ -154,7 +164,7 @@ export default function Home() {
                 <div className="w-12 h-12 mb-8 flex items-center justify-center bg-muted">
                   <Monitor className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-serif mb-4">Développement Web</h3>
+                <h3 className="text-2xl font-serif mb-4 ">Développement Web</h3>
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Sites d&apos;entreprise, landing pages de performance, e-commerce évolutif et applications web sur mesure conçues pour la vitesse et la fiabilité.
                 </p>
@@ -169,7 +179,7 @@ export default function Home() {
                 <div className="w-12 h-12 mb-8 flex items-center justify-center bg-muted">
                   <Smartphone className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-serif mb-4">Développement Mobile</h3>
+                <h3 className="text-2xl font-serif mb-4 ">Développement Mobile</h3>
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Applications métiers natives et multiplateformes conçues pour les utilisateurs modernes. Nous transformons des flux de travail complexes en expériences mobiles intuitives.
                 </p>
@@ -184,7 +194,7 @@ export default function Home() {
                 <div className="w-12 h-12 mb-8 flex items-center justify-center bg-muted">
                   <PenTool className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-serif mb-4">Design & Supports</h3>
+                <h3 className="text-2xl font-serif mb-4 ">Design & Supports</h3>
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Communication visuelle professionnelle pour vos campagnes et votre entreprise. Des créations percutantes pour les réseaux sociaux aux identités visuelles complètes.
                 </p>
@@ -199,7 +209,7 @@ export default function Home() {
                 <div className="w-12 h-12 mb-8 flex items-center justify-center bg-muted">
                   <Lightbulb className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-serif mb-4">Conseil Digital</h3>
+                <h3 className="text-2xl font-serif mb-4 ">Conseil Digital</h3>
                 <p className="text-muted-foreground mb-8 flex-grow">
                   Stratégie, audits UX, transformation numérique et accompagnement technique pour garantir que vos investissements sont alignés avec vos objectifs commerciaux.
                 </p>
@@ -267,85 +277,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6 — FEATURED WORK */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <h2 className="text-4xl md:text-5xl font-serif text-balance">
-                Réalisations Sélectionnées
-              </h2>
-              <Link href="/work" className="inline-flex items-center gap-2 text-sm font-medium group pb-1 border-b border-foreground">
-                Voir tous les projets <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <div className="flex flex-col gap-24">
-            {/* Project 1 */}
-            <Reveal>
-              <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-                <div className="lg:col-span-7 order-2 lg:order-1 overflow-hidden bg-muted">
-                  <div className="relative aspect-[4/3] w-full transform transition-transform duration-700 group-hover:scale-105">
-                    <Image
-                      src={babiCrunchImg}
-                      alt="BABI CRUNCH & DABALI — Plateforme de commande & livraison"
-                      fill
-                      className="object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                </div>
-                <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col justify-center">
-                  <div className="flex gap-4 mb-6 text-sm font-medium text-muted-foreground uppercase tracking-widest">
-                    <span>Restauration</span>
-                    <span>•</span>
-                    <span>E-commerce &amp; Livraison</span>
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-serif mb-6">BABI CRUNCH &amp; DABALI</h3>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    D&apos;une présence en ligne standard à une plateforme moderne de commande express axée sur la conversion qui a augmenté les commandes directes de 140%.
-                  </p>
-                  <Link href="/babi-crunch-dabali.html" className="inline-flex items-center gap-2 text-sm font-medium hover:text-brand-orange transition-colors">
-                    Voir le site <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Project 2 */}
-            <Reveal>
-              <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-                <div className="lg:col-span-5 flex flex-col justify-center">
-                  <div className="flex gap-4 mb-6 text-sm font-medium text-muted-foreground uppercase tracking-widest">
-                    <span>Fintech</span>
-                    <span>•</span>
-                    <span>Néo-Banque</span>
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-serif mb-6">DjiniPay</h3>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    La Néo-Fintech d&apos;Abidjan &amp; d&apos;Afrique de l&apos;Ouest. Une plateforme financière nouvelle génération simplifiant les transferts d&apos;argent et la gestion de compte.
-                  </p>
-                  <Link href="/djinipay.html" className="inline-flex items-center gap-2 text-sm font-medium hover:text-brand-orange transition-colors">
-                    Voir le site <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-                <div className="lg:col-span-7 overflow-hidden bg-muted">
-                  <div className="relative aspect-[4/3] w-full transform transition-transform duration-700 group-hover:scale-105">
-                    <Image
-                      src={djiniPayImg}
-                      alt="DjiniPay — Plateforme Financière Nouvelle Génération"
-                      fill
-                      className="object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      
+      
 
       {/* SECTION 7 — PROCESS */}
       <section className="py-24 md:py-32 px-6 bg-muted">
@@ -371,7 +304,7 @@ export default function Home() {
               <Reveal key={idx} delay={idx * 0.1} direction="up">
                 <div className="border-t border-border pt-6">
                   <div className="flex items-baseline gap-4 mb-4">
-                    <span className="text-sm font-medium text-muted-foreground">{step.num}</span>
+                    <span className="text-sm font-medium text-accent">{step.num}</span>
                     <h3 className="text-xl font-medium">{step.title}</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed pl-8">
@@ -391,7 +324,7 @@ export default function Home() {
             <div>
               <Reveal>
                 <h2 className="text-3xl md:text-5xl font-normal tracking-tight text-balance">
-                  Ce que disent <br /> nos partenaires.
+                  Ce que disent <br /> nos <span className="text-accent">partenaires</span>.
                 </h2>
               </Reveal>
             </div>
@@ -543,7 +476,7 @@ export default function Home() {
           <Reveal>
             <h2 className="text-4xl md:text-6xl lg:text-7xl leading-[1.08] mb-8 text-balance font-light">
               Vous avez un projet <br />
-              <span className="font-semibold italic text-background">en tête ?</span>
+              <span className="font-semibold italic text-background">en tête</span><span className="text-accent font-semibold italic"> ?</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

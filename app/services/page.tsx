@@ -3,6 +3,7 @@ import service from "@/assets/services.png"
 import web from "@/assets/web.png"
 import mobile from "@/assets/mobile.png"
 import graphic from "@/assets/graphic.png"
+import heroservice from '@/images/Service.png'
 
 
 import Link from 'next/link';
@@ -44,18 +45,18 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col w-full">
       {/* HERO SECTION */}
-      <section className="relative min-h-[60vh] flex flex-col justify-end pb-24 pt-40 px-6 overflow-hidden bg-foreground text-background">
+      <section className="relative min-h-[100vh] flex flex-col justify-end pb-24 pt-40 px-6 overflow-hidden bg-foreground text-background">
         <div className="absolute inset-0 z-0">
           <Image 
-            src={service}
+            src={heroservice}
             alt="Services Hero"
             fill
-            className="object-cover opacity-40  "
+            className="object-cover opacity-40 "
             sizes="100vw"
             referrerPolicy="no-referrer"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-transparent"></div>
         </div>
         
         <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
@@ -80,7 +81,7 @@ export default function ServicesPage() {
                     {service.id} — {service.title}
                   </div>
                   <h2 className="text-4xl md:text-5xl font-serif mb-6 text-balance">
-                    {service.title}.
+                    {service.title}<span className="text-accent font-bold">.</span>
                   </h2>
                   <p className="text-lg text-muted-foreground leading-relaxed mb-10">
                     {service.description}
@@ -101,7 +102,7 @@ export default function ServicesPage() {
                     href={service.href}
                     className="inline-flex items-center gap-3 text-sm font-medium group uppercase tracking-wider w-fit"
                   >
-                    <span className="pb-1 border-b border-foreground">{service.cta}</span>
+                    <span className="pb-1 border-b border-accent">{service.cta}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Reveal>

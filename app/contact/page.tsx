@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import HeroContact from '@/images/Contact.png'
 import { Reveal } from '@/components/ui/Reveal';
 import {
   ArrowRight,
@@ -66,6 +68,18 @@ export default function ContactPage() {
     <div className="flex flex-col w-full min-h-screen bg-background text-foreground">
       {/* HERO SECTION */}
       <section className="pt-44 pb-20 px-6 md:px-12 bg-foreground text-background relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src={HeroContact}
+            alt="Contact Hero"
+            fill
+            className="object-cover opacity-40 "
+            sizes="100vw"
+            referrerPolicy="no-referrer"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-foreground via-foreground/40 to-transparent"></div>
+        </div>
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="max-w-3xl">
             <Reveal>
@@ -98,7 +112,7 @@ export default function ContactPage() {
                       href="mailto:info@dunamis-web-agency.com"
                       className="text-lg md:text-xl font-medium text-foreground hover:opacity-75 transition-opacity inline-flex items-center gap-2"
                     >
-                      <Mail className="w-4 h-4 text-muted-foreground" />
+                      <Mail className="w-4 h-4 text-accent" />
                       info@dunamis-web-agency.com
                     </a>
                   </div>
@@ -111,7 +125,7 @@ export default function ContactPage() {
                       href="tel:+2250171483627"
                       className="text-lg md:text-xl font-medium text-foreground hover:opacity-75 transition-opacity inline-flex items-center gap-2"
                     >
-                      <Phone className="w-4 h-4 text-muted-foreground" />
+                      <Phone className="w-4 h-4 text-accent" />
                       +225 01 71 48 36 27
                     </a>
                   </div>
@@ -121,7 +135,7 @@ export default function ContactPage() {
                       Horaires d&apos;échange
                     </span>
                     <div className="text-sm text-foreground/90 inline-flex items-center gap-2 font-medium">
-                      <Clock className="w-4 h-4 text-muted-foreground" />
+                      <Clock className="w-4 h-4 text-accent" />
                       Du Lundi au Vendredi • 09h00 - 18h30 (GMT)
                     </div>
                   </div>
@@ -188,7 +202,7 @@ export default function ContactPage() {
                               key={service}
                               onClick={() => setSelectedService(service)}
                               className={`px-3.5 py-2.5 text-xs font-medium border text-left transition-all cursor-pointer ${isSelected
-                                  ? 'bg-foreground text-background border-foreground shadow-sm'
+                                  ? 'bg-accent text-background border-accent shadow-sm'
                                   : 'bg-background hover:bg-muted text-muted-foreground hover:text-foreground border-border'
                                 }`}
                             >
